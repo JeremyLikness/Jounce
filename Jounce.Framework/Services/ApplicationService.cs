@@ -1,12 +1,14 @@
 using System;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
+using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using Jounce.Core;
 using Jounce.Core.Application;
 using Jounce.Core.Event;
+using Jounce.Core.View;
 using Jounce.Framework.Views;
 
 namespace Jounce.Framework.Services
@@ -37,12 +39,9 @@ namespace Jounce.Framework.Services
 
         [Import]
         public ViewRouter Router { get; set; }
-
-        /// <summary>
-        ///     Shell
-        /// </summary>
-        [Import(Constants.SHELL)]
-        public UserControl Shell { get; set; }
+        
+        [ImportMany(AllowRecomposition = true)]
+        public Lazy<UserControl, IExportAsViewMetadata>[] Views { get; set; }
 
         /// <summary>
         ///     The logger
@@ -97,12 +96,29 @@ namespace Jounce.Framework.Services
         public void Starting()
         {
             Application.Current.UnhandledException += Current_UnhandledException;
-            Application.Current.RootVisual = Shell;
+
+            var viewInfo = (from v in Views where v.Metadata.IsShell select v).FirstOrDefault();
+
+            if (viewInfo == null)
+            {
+                var grid = new Grid();
+                var tb = new TextBlock
+                             {
+                                 Text = Resources.ApplicationService_Starting_Jounce_Error_No_view
+                             };
+                grid.Children.Add(tb);
+                Application.Current.RootVisual = grid;
+                Logger.Log(LogSeverity.Critical, GetType().FullName,  Resources.ApplicationService_Starting_Jounce_Error_No_view);
+                return;
+            }
+
+            Application.Current.RootVisual = viewInfo.Value;
             Logger.LogFormat(LogSeverity.Information, GetType().FullName,
                              Resources.ApplicationService_Starting_ShellResolved, MethodBase.GetCurrentMethod().Name,
-                             Shell.GetType().FullName);
-            Logger.Log(LogSeverity.Information, GetType().FullName, MethodBase.GetCurrentMethod().Name);
-            EventAggregator.Publish(Shell.GetType().AsViewNavigationArgs());
+                             viewInfo.Value.GetType().FullName);
+            Logger.Log(LogSeverity.Information, GetType().FullName, MethodBase.GetCurrentMethod().Name);            
+
+            EventAggregator.Publish(viewInfo.Metadata.ExportedViewType.AsViewNavigationArgs());
         }
 
         private bool _unhandled;

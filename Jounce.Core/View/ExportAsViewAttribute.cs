@@ -13,12 +13,15 @@ namespace Jounce.Core.View
     {
         public ExportAsViewAttribute(string viewType) : base(typeof(UserControl))
         {
-            ExportedViewType = viewType;           
+            ExportedViewType = viewType;
+            IsShell = false;
         }
 
         /// <summary>
         ///     The view type
         /// </summary>
-        public string ExportedViewType { get; private set; }       
+        public string ExportedViewType { get; private set; }
+
+        public bool IsShell { get; set; }
     }
 }

@@ -6,5 +6,6 @@ namespace Jounce.Core.View
     public interface IExportAsViewMetadata
     {
         string ExportedViewType { get; }
+        bool IsShell { get; }
     }
 }

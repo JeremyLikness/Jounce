@@ -132,4 +132,7 @@
 	<data name="ViewModelRouter_ActivateView">
 		<value xml:space="preserve">{0} : activate view {1}</value>
 	</data>
+	<data name="ApplicationService_Starting_Jounce_Error_No_view">
+		<value xml:space="preserve">Jounce Error: No view was flagged as the shell view.</value>
+	</data>
 </root>
