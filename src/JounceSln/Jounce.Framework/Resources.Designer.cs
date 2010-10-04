@@ -61,6 +61,15 @@ namespace Jounce.Framework {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Jounce Error: No view was flagged as the shell view..
+        /// </summary>
+        internal static string ApplicationService_Starting_Jounce_Error_No_view {
+            get {
+                return ResourceManager.GetString("ApplicationService_Starting_Jounce_Error_No_view", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} : Shell resolved to {1}.
         /// </summary>
         internal static string ApplicationService_Starting_ShellResolved {
