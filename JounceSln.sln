@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce", "Jounce\Jounce.csproj", "{EE2A4B9C-8669-4260-8DFB-00875DF26EE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Web", "Jounce.Web\Jounce.Web.csproj", "{9BAABD04-CAF0-4A18-8743-2872486C8A6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Core", "Jounce.Core\Jounce.Core.csproj", "{B981528B-2608-499A-9088-985E6B351F6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Framework", "Jounce.Framework\Jounce.Framework.csproj", "{9198A85F-444D-419A-866D-1589356D2EE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Regions", "Jounce.Regions\Jounce.Regions.csproj", "{91719D5E-03BD-48A6-8583-BE0DBB2B3752}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs04
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Jounce.Core\\Jounce.Core.csproj
+		SccProjectName1 = Jounce.Core
+		SccLocalPath1 = Jounce.Core
+		SccProjectUniqueName2 = Jounce.Framework\\Jounce.Framework.csproj
+		SccProjectName2 = Jounce.Framework
+		SccLocalPath2 = Jounce.Framework
+		SccProjectUniqueName3 = Jounce.Regions\\Jounce.Regions.csproj
+		SccProjectName3 = Jounce.Regions
+		SccLocalPath3 = Jounce.Regions
+		SccProjectUniqueName4 = Jounce.Web\\Jounce.Web.csproj
+		SccProjectName4 = Jounce.Web
+		SccLocalPath4 = Jounce.Web
+		SccProjectUniqueName5 = Jounce\\Jounce.csproj
+		SccProjectName5 = Jounce
+		SccLocalPath5 = Jounce
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE2A4B9C-8669-4260-8DFB-00875DF26EE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE2A4B9C-8669-4260-8DFB-00875DF26EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE2A4B9C-8669-4260-8DFB-00875DF26EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE2A4B9C-8669-4260-8DFB-00875DF26EE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BAABD04-CAF0-4A18-8743-2872486C8A6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BAABD04-CAF0-4A18-8743-2872486C8A6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BAABD04-CAF0-4A18-8743-2872486C8A6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BAABD04-CAF0-4A18-8743-2872486C8A6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B981528B-2608-499A-9088-985E6B351F6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B981528B-2608-499A-9088-985E6B351F6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B981528B-2608-499A-9088-985E6B351F6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B981528B-2608-499A-9088-985E6B351F6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9198A85F-444D-419A-866D-1589356D2EE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9198A85F-444D-419A-866D-1589356D2EE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9198A85F-444D-419A-866D-1589356D2EE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9198A85F-444D-419A-866D-1589356D2EE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91719D5E-03BD-48A6-8583-BE0DBB2B3752}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91719D5E-03BD-48A6-8583-BE0DBB2B3752}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91719D5E-03BD-48A6-8583-BE0DBB2B3752}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91719D5E-03BD-48A6-8583-BE0DBB2B3752}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
