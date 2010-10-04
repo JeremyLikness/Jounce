@@ -26,7 +26,7 @@
 
         public override string ToString()
         {
-            return string.Format("View Route: View {0} in XAP {1}", ViewName, ViewXap);
+            return string.Format(Resources.ViewXapRoute_ToString_View_Route_View, ViewName, ViewXap);
         }
     }
 }

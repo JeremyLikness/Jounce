@@ -13,15 +13,15 @@ namespace Jounce.Core
     {
         private readonly string _name;
 
-        const string MSG_ADD_EXPORT = "Added Export:";
-        const string MSG_CHANGE_EXPORT = "Removed Export:";
-        const string MSG_CHANGE_CONTRACT = "Changed contracts:";
-        const string DBG_MEF_CATALOG = "MEF: Found catalog: {0}";
-        const string DBG_MEF_PART = "MEF: Found part: {0}";
-        const string DBG_MEF_WITH_KEY = "   With key: {0} = {1}";
-        const string DBG_MEF_WITH_EXPORT = "   With export:";
-        const string DBG_MEF_WITH_IMPORT = "   With import: {0}";
-        const string DBG_MEF_KEY = "      With key: {0} = {1}";                
+        private readonly string _msgAddExport = Resources.MefDebugger__msgAddExport_Added_Export;
+        private readonly string _msgChangedExport = Resources.MefDebugger__msgChangedExport_Removed_Export;
+        private readonly string _msgChangeContract = Resources.MefDebugger__msgChangeContract_Changed_contracts;
+        private readonly string _dbgMefCatalog = Resources.MefDebugger__dbgMefCatalog_MEF__Found_catalog;
+        private readonly string _dbgMefPart = Resources.MefDebugger__dbgMefPart_MEF__Found_part;
+        private readonly string _dbgMefWithKey = Resources.MefDebugger__dbgMefWithKey;
+        private readonly string _dbgMefWithExport = Resources.MefDebugger__dbgMefWithExport_With_export;
+        private readonly string _dbgMefWithImport = Resources.MefDebugger__dbgMefWithImport_With_import;
+        private readonly string _dbgMefKey = Resources.MefDebugger__dbgMefKey;                
 
         private readonly CompositionContainer _container;
         private readonly ILogger _logger;
@@ -46,12 +46,12 @@ namespace Jounce.Core
             {
                 if (args.AddedExports != null)
                 {
-                    _ParseExports(MSG_ADD_EXPORT, args.AddedExports);
+                    _ParseExports(_msgAddExport, args.AddedExports);
                 }
 
                 if (args.RemovedExports != null)
                 {
-                    _ParseExports(MSG_CHANGE_EXPORT, args.RemovedExports);
+                    _ParseExports(_msgChangedExport, args.RemovedExports);
                 }
 
                 if (args.ChangedContractNames != null)
@@ -61,7 +61,7 @@ namespace Jounce.Core
                     {
                         if (first)
                         {
-                            _logger.Log(LogSeverity.Verbose, _name, MSG_CHANGE_CONTRACT);
+                            _logger.Log(LogSeverity.Verbose, _name, _msgChangeContract);
                             first = false;
                         }
                         _logger.LogFormat(LogSeverity.Verbose, _name, " ==>{0}", contract);
@@ -82,36 +82,36 @@ namespace Jounce.Core
         {                        
             foreach (var catalog in srcCatalog.Catalogs)
             {    
-                _logger.LogFormat(LogSeverity.Verbose, _name, DBG_MEF_CATALOG, catalog);                    
+                _logger.LogFormat(LogSeverity.Verbose, _name, _dbgMefCatalog, catalog);                    
                 
                 foreach (var part in catalog.Parts)
                 {
-                    _logger.LogFormat(LogSeverity.Verbose, _name, DBG_MEF_PART, part);
+                    _logger.LogFormat(LogSeverity.Verbose, _name, _dbgMefPart, part);
                     
                     if (part.Metadata != null)
                     {
                         foreach (var key in part.Metadata.Keys)
                         {
-                            _logger.LogFormat(LogSeverity.Verbose, _name, DBG_MEF_WITH_KEY, key, part.Metadata[key]);                            
+                            _logger.LogFormat(LogSeverity.Verbose, _name, _dbgMefWithKey, key, part.Metadata[key]);                            
                         }
                     }
 
                     foreach (var import in part.ImportDefinitions)
                     {
-                        _logger.LogFormat(LogSeverity.Verbose, _name, DBG_MEF_WITH_IMPORT, import);                        
+                        _logger.LogFormat(LogSeverity.Verbose, _name, _dbgMefWithImport, import);                        
                     }
 
-                    _ParseExports(DBG_MEF_WITH_EXPORT, part.ExportDefinitions);
+                    _ParseExports(_dbgMefWithExport, part.ExportDefinitions);
 
                     foreach (var export in part.ExportDefinitions)
                     {
-                        _logger.LogFormat(LogSeverity.Verbose, _name, "{0} {1}", DBG_MEF_WITH_EXPORT, export);
+                        _logger.LogFormat(LogSeverity.Verbose, _name, "{0} {1}", _dbgMefWithExport, export);
                         
                         if (export.Metadata == null) continue;
 
                         foreach (var key in export.Metadata.Keys)
                         {
-                            _logger.LogFormat(LogSeverity.Verbose, _name, DBG_MEF_KEY, key, export.Metadata[key]);                         
+                            _logger.LogFormat(LogSeverity.Verbose, _name, _dbgMefKey, key, export.Metadata[key]);                         
                         }
                     }
                 }
@@ -133,14 +133,14 @@ namespace Jounce.Core
 
                 foreach (var key in export.Metadata.Keys)
                 {
-                    _logger.LogFormat(LogSeverity.Verbose, _name, DBG_MEF_KEY, key, export.Metadata[key]);                    
+                    _logger.LogFormat(LogSeverity.Verbose, _name, _dbgMefKey, key, export.Metadata[key]);                    
                 }
             }
         }
 
         public void Close()
         {
-            _logger.Log(LogSeverity.Information, GetType().FullName, "MEF Debugger shutting down.");
+            _logger.Log(LogSeverity.Information, GetType().FullName, Resources.MefDebugger_Close_MEF_Debugger_shutting_down);
             _container.ExportsChanged -= ExportsChanged;
         }
     }    

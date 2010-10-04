@@ -33,7 +33,7 @@ namespace Jounce.Core.ViewModel
 
         public override string ToString()
         {
-            return string.Format("ViewModelRoute: {0} binds to {1}", ViewModelType, ViewType);
+            return string.Format(Resources.ViewModelRoute_ToString_ViewModelRoute, ViewModelType, ViewType);
         }
     }
 }

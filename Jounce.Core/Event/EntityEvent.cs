@@ -66,7 +66,7 @@ namespace Jounce.Core.Event
 
         public override string ToString()
         {
-            return string.Format("EntityEvent : {0} : {1} : {2}", Command, EntityType.FullName, Entity);
+            return string.Format(Resources.EntityEvent_ToString_EntityEvent, Command, EntityType.FullName, Entity);
         }
     }
 }

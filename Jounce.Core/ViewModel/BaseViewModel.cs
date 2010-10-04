@@ -95,7 +95,7 @@ namespace Jounce.Core.ViewModel
         /// <returns>The overridden to string method</returns>
         public override string ToString()
         {
-            return string.Format("ViewModel: {0}", GetType().Name);
+            return string.Format(Resources.BaseViewModel_ToString_ViewModel, GetType().Name);
         }
     }
 }

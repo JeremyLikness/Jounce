@@ -113,5 +113,158 @@ namespace Jounce.Core {
                 return ResourceManager.GetString("BaseViewModel_SetErrors_NoNullErrors", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ViewModel: {0}.
+        /// </summary>
+        public static string BaseViewModel_ToString_ViewModel {
+            get {
+                return ResourceManager.GetString("BaseViewModel_ToString_ViewModel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EntityEvent : {0} : {1} : {2}.
+        /// </summary>
+        public static string EntityEvent_ToString_EntityEvent {
+            get {
+                return ResourceManager.GetString("EntityEvent_ToString_EntityEvent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MEF: Found catalog: {0}.
+        /// </summary>
+        public static string MefDebugger__dbgMefCatalog_MEF__Found_catalog {
+            get {
+                return ResourceManager.GetString("MefDebugger__dbgMefCatalog_MEF__Found_catalog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to       With key: {0} = {1}.
+        /// </summary>
+        public static string MefDebugger__dbgMefKey {
+            get {
+                return ResourceManager.GetString("MefDebugger__dbgMefKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MEF: Found part: {0}.
+        /// </summary>
+        public static string MefDebugger__dbgMefPart_MEF__Found_part {
+            get {
+                return ResourceManager.GetString("MefDebugger__dbgMefPart_MEF__Found_part", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to    With export:.
+        /// </summary>
+        public static string MefDebugger__dbgMefWithExport_With_export {
+            get {
+                return ResourceManager.GetString("MefDebugger__dbgMefWithExport_With_export", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to    With import: {0}.
+        /// </summary>
+        public static string MefDebugger__dbgMefWithImport_With_import {
+            get {
+                return ResourceManager.GetString("MefDebugger__dbgMefWithImport_With_import", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to    With key: {0} = {1}.
+        /// </summary>
+        public static string MefDebugger__dbgMefWithKey {
+            get {
+                return ResourceManager.GetString("MefDebugger__dbgMefWithKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Added Export:.
+        /// </summary>
+        public static string MefDebugger__msgAddExport_Added_Export {
+            get {
+                return ResourceManager.GetString("MefDebugger__msgAddExport_Added_Export", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changed contracts:.
+        /// </summary>
+        public static string MefDebugger__msgChangeContract_Changed_contracts {
+            get {
+                return ResourceManager.GetString("MefDebugger__msgChangeContract_Changed_contracts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removed Export:.
+        /// </summary>
+        public static string MefDebugger__msgChangedExport_Removed_Export {
+            get {
+                return ResourceManager.GetString("MefDebugger__msgChangedExport_Removed_Export", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MEF Debugger shutting down..
+        /// </summary>
+        public static string MefDebugger_Close_MEF_Debugger_shutting_down {
+            get {
+                return ResourceManager.GetString("MefDebugger_Close_MEF_Debugger_shutting_down", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ViewModelRoute: {0} binds to {1}.
+        /// </summary>
+        public static string ViewModelRoute_ToString_ViewModelRoute {
+            get {
+                return ResourceManager.GetString("ViewModelRoute_ToString_ViewModelRoute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activate.
+        /// </summary>
+        public static string ViewNavigationArgs_ToString_Activate {
+            get {
+                return ResourceManager.GetString("ViewNavigationArgs_ToString_Activate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deactivate.
+        /// </summary>
+        public static string ViewNavigationArgs_ToString_Deactivate {
+            get {
+                return ResourceManager.GetString("ViewNavigationArgs_ToString_Deactivate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ViewNavigation : {0} {1}.
+        /// </summary>
+        public static string ViewNavigationArgs_ToString_ViewNavigation {
+            get {
+                return ResourceManager.GetString("ViewNavigationArgs_ToString_ViewNavigation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Route: View {0} in XAP {1}.
+        /// </summary>
+        public static string ViewXapRoute_ToString_View_Route_View {
+            get {
+                return ResourceManager.GetString("ViewXapRoute_ToString_View_Route_View", resourceCulture);
+            }
+        }
     }
 }
