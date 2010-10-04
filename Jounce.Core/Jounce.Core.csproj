@@ -83,7 +83,6 @@
     <Compile Include="View\ViewNavigatedArgs.cs" />
     <Compile Include="View\ViewNavigationArgs.cs" />
     <Compile Include="MefDebugger.cs" />
-    <Compile Include="Serialization\IJounceSerializer.cs" />
     <Compile Include="ViewModel\ExportAsViewModelAttribute.cs" />
     <Compile Include="ViewModel\IExportAsViewModelMetadata.cs" />
     <Compile Include="ViewModel\IViewModel.cs" />
