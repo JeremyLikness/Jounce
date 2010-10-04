@@ -113,7 +113,7 @@ namespace Jounce.Regions
 
             if (Logger != null)
             {
-                Logger.LogFormat(LogSeverity.Verbose, name, "Request to activate view {0}", viewName);
+                Logger.LogFormat(LogSeverity.Verbose, name, Resources.RegionManager_ActivateView_Request_to_activate_view, viewName);
             }
 
             if (string.IsNullOrEmpty(viewName))
@@ -154,7 +154,7 @@ namespace Jounce.Regions
         /// <param name="viewName">The name of the view</param>
         public void DeactivateView(string viewName)
         {
-            Logger.LogFormat(LogSeverity.Verbose, GetType().FullName, "Request to deactive view {0}", viewName);
+            Logger.LogFormat(LogSeverity.Verbose, GetType().FullName, Resources.RegionManager_DeactivateView_Request_to_deactive_view, viewName);
 
             if (string.IsNullOrEmpty(viewName))
             {
@@ -197,13 +197,13 @@ namespace Jounce.Regions
                 
             if (regionAdapter == null)
             {
-                throw new Exception(string.Format("Region type {0} is not supported.",
+                throw new Exception(string.Format(Resources.RegionManager_RegisterRegion_Region_type_is_not_supported,
                                                   region.GetType().FullName));
             }
 
             if (Logger != null)
             {
-                Logger.LogFormat(LogSeverity.Information, GetType().FullName, "Added region {0}", regionTag);
+                Logger.LogFormat(LogSeverity.Information, GetType().FullName, Resources.RegionManager_RegisterRegion_Added_region, regionTag);
             }
 
             _regions.Add(regionTag, region);

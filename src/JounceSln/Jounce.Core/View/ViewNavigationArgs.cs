@@ -5,11 +5,11 @@ namespace Jounce.Core.View
     /// <summary>
     ///     Args when a view navigation is requested
     /// </summary>
-    public class ViewNavigationArgs : EventArgs 
+    public class ViewNavigationArgs : EventArgs
     {
         public ViewNavigationArgs(Type viewType)
         {
-            ViewType = viewType.FullName; 
+            ViewType = viewType.FullName;
         }
 
         public ViewNavigationArgs(string viewType)
@@ -26,7 +26,10 @@ namespace Jounce.Core.View
 
         public override string ToString()
         {
-            return string.Format("ViewNavigation : {0} {1}", Deactivate ? "Deactivate" : "Activate", ViewType);
+            return string.Format(Resources.ViewNavigationArgs_ToString_ViewNavigation,
+                                 Deactivate
+                                     ? Resources.ViewNavigationArgs_ToString_Deactivate
+                                     : Resources.ViewNavigationArgs_ToString_Activate, ViewType);
         }
     }
 }

@@ -133,7 +133,7 @@ namespace Jounce.Regions.Adapters
 
             if (!Controls.ContainsKey(controlName))
             {
-                throw new Exception(string.Format("Control not found: {0}", controlName));
+                throw new Exception(string.Format(Resources.RegionAdapterBase_ValidateControlName_Control_not_found, controlName));
             }
         }
 
@@ -141,7 +141,7 @@ namespace Jounce.Regions.Adapters
         {           
             if (!Regions.ContainsKey(targetRegion))
             {
-                throw new Exception(string.Format("Region not found: {0}", targetRegion));
+                throw new Exception(string.Format(Resources.RegionAdapterBase_ValidateRegionName_Region_not_found, targetRegion));
             }
         }
     }
