@@ -14,12 +14,22 @@ namespace Jounce.ViewModels
         public WelcomeViewModel()
         {
             Title = "Welcome to Jounce!";            
-        }       
+        }
+
+        private string _title;
 
         /// <summary>
         ///     Title
         /// </summary>
-        public string Title { get; set; }             
+        public string Title
+        {
+            get { return _title; }
+            set
+            {
+                _title = value;
+                RaisePropertyChanged(()=>Title);
+            }
+        }
 
         /// <summary>
         ///     On activate, use the auto-linking to go to a visual state and animate the welcome
