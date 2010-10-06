@@ -11,19 +11,52 @@ namespace Jounce.Framework.Workflow
     {
         private readonly BackgroundWorker _bg;
         private readonly Action<BackgroundWorker> _doWork;
-        
-        public WorkflowBackgroundWorker(Action<BackgroundWorker> doWork, bool reportsProgress)
+        private readonly Action<BackgroundWorker, ProgressChangedEventArgs> _reportProgress;
+
+        /// <summary>
+        ///     No progress to report
+        /// </summary>
+        /// <param name="doWork">Worker</param>
+        public WorkflowBackgroundWorker(Action<BackgroundWorker> doWork) : this(doWork, null)
+        {            
+        }
+
+        /// <summary>
+        ///     Spawn a workflow background
+        /// </summary>
+        /// <param name="doWork">Work to do</param>
+        /// <param name="reportProgress">Progress to report</param>
+        public WorkflowBackgroundWorker(Action<BackgroundWorker> doWork, Action<BackgroundWorker, ProgressChangedEventArgs> reportProgress)
         {
-            _bg = new BackgroundWorker {WorkerReportsProgress = reportsProgress, WorkerSupportsCancellation = false};
+            _bg = new BackgroundWorker {WorkerReportsProgress = reportProgress != null, WorkerSupportsCancellation = false};
             _bg.DoWork += BgDoWork;
             _bg.RunWorkerCompleted += BgRunWorkerCompleted;
+            if (reportProgress != null)
+            {
+                _reportProgress = reportProgress;
+                _bg.ProgressChanged += BgProgressChanged;
+            }
             _doWork = doWork;
+        }
+
+        /// <summary>
+        ///     Progress  change
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void BgProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            _reportProgress(_bg, e);
         }
 
         void BgRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             _bg.DoWork -= BgDoWork;
             _bg.RunWorkerCompleted -= BgRunWorkerCompleted;
+            if (_reportProgress != null)
+            {
+                _bg.ProgressChanged -= BgProgressChanged;
+            }
             Invoked();
         }
 
