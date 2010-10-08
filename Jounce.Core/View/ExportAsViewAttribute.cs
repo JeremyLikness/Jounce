@@ -15,6 +15,9 @@ namespace Jounce.Core.View
         {
             ExportedViewType = viewType;
             IsShell = false;
+            Category = string.Empty;
+            CommandName = string.Empty;
+            ToolTip = string.Empty;
         }
 
         /// <summary>
@@ -23,5 +26,11 @@ namespace Jounce.Core.View
         public string ExportedViewType { get; private set; }
 
         public bool IsShell { get; set; }
+
+        public string Category { get; set; }
+
+        public string CommandName { get; set; }
+
+        public string ToolTip { get; set; }
     }
 }
