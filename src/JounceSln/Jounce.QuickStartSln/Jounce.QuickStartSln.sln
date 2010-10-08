@@ -11,18 +11,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Framework", "..\Joun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventAggregator", "EventAggregator\EventAggregator.csproj", "{71A16CDF-A153-48FA-9E66-0FA50D397B4C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleNavigation", "SimpleNavigation\SimpleNavigation.csproj", "{012116A0-E19C-4CE5-925A-735F37EE1428}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
+		SccNumberOfProjects = 7
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs04
-		SccProjectUniqueName0 = ..\\Jounce.Core\\Jounce.Core.csproj
-		SccProjectName0 = ../Jounce.Core
-		SccLocalPath0 = ..\\Jounce.Core
-		SccProjectUniqueName1 = ..\\Jounce.Framework\\Jounce.Framework.csproj
-		SccProjectName1 = ../Jounce.Framework
-		SccLocalPath1 = ..\\Jounce.Framework
-		SccLocalPath2 = .
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ..\\Jounce.Core\\Jounce.Core.csproj
+		SccProjectName1 = ../Jounce.Core
+		SccLocalPath1 = ..\\Jounce.Core
+		SccProjectUniqueName2 = ..\\Jounce.Framework\\Jounce.Framework.csproj
+		SccProjectName2 = ../Jounce.Framework
+		SccLocalPath2 = ..\\Jounce.Framework
 		SccProjectUniqueName3 = EventAggregator\\EventAggregator.csproj
 		SccProjectName3 = EventAggregator
 		SccLocalPath3 = EventAggregator
@@ -32,6 +34,9 @@ Global
 		SccProjectUniqueName5 = Workflow\\Workflow.csproj
 		SccProjectName5 = Workflow
 		SccLocalPath5 = Workflow
+		SccProjectUniqueName6 = SimpleNavigation\\SimpleNavigation.csproj
+		SccProjectName6 = SimpleNavigation
+		SccLocalPath6 = SimpleNavigation
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +63,10 @@ Global
 		{71A16CDF-A153-48FA-9E66-0FA50D397B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71A16CDF-A153-48FA-9E66-0FA50D397B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71A16CDF-A153-48FA-9E66-0FA50D397B4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{012116A0-E19C-4CE5-925A-735F37EE1428}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{012116A0-E19C-4CE5-925A-735F37EE1428}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{012116A0-E19C-4CE5-925A-735F37EE1428}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{012116A0-E19C-4CE5-925A-735F37EE1428}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
