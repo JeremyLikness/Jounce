@@ -8,6 +8,11 @@ namespace Jounce.Core.Model
     /// <summary>
     ///     Base class for items that implement property changed
     /// </summary>
+    /// <remarks>
+    ///     Code for this section was inspired by two other projects: 
+    ///     1. The PRISM implementation and MVVM guidance here: http://compositewpf.codeplex.com/
+    ///     2. The Caliburn.Micro framework here: http://caliburnmicro.codeplex.com/ 
+    /// </remarks>
     public abstract class BaseNotify : INotifyPropertyChanged
     {
         /// <summary>

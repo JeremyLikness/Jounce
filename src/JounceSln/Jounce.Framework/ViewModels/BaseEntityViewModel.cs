@@ -14,9 +14,9 @@ namespace Jounce.Framework.ViewModels
     ///     Base class for view models that maintain "dirty" state (commit) and/or require validation
     /// </summary>
     /// <remarks>
-    ///     This class provides basic support for implementing the <see cref="INotifyPropertyChanged"/> and 
-    /// <see cref="INotifyDataErrorInfo"/> interfaces.
-    /// </remarks>
+    ///     The INotifyDataErrorInfo implementation is based on the Prism MVVM quickstart:
+    ///     http://compositewpf.codeplex.com/
+    /// </remarks>    
     public abstract class BaseEntityViewModel : BaseViewModel, INotifyDataErrorInfo
     {
         protected BaseEntityViewModel()
