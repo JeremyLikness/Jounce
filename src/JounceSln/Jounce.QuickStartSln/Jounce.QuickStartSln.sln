@@ -13,9 +13,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventAggregator", "EventAgg
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleNavigation", "SimpleNavigation\SimpleNavigation.csproj", "{012116A0-E19C-4CE5-925A-735F37EE1428}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegionManagement", "RegionManagement\RegionManagement.csproj", "{71648091-7225-4A61-BF5E-73536B2E321C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Regions", "..\Jounce.Regions\Jounce.Regions.csproj", "{91719D5E-03BD-48A6-8583-BE0DBB2B3752}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 7
+		SccNumberOfProjects = 9
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs04
 		SccLocalPath0 = .
@@ -37,6 +41,12 @@ Global
 		SccProjectUniqueName6 = SimpleNavigation\\SimpleNavigation.csproj
 		SccProjectName6 = SimpleNavigation
 		SccLocalPath6 = SimpleNavigation
+		SccProjectUniqueName7 = RegionManagement\\RegionManagement.csproj
+		SccProjectName7 = RegionManagement
+		SccLocalPath7 = RegionManagement
+		SccProjectUniqueName8 = ..\\Jounce.Regions\\Jounce.Regions.csproj
+		SccProjectName8 = ../Jounce.Regions
+		SccLocalPath8 = ..\\Jounce.Regions
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +77,14 @@ Global
 		{012116A0-E19C-4CE5-925A-735F37EE1428}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{012116A0-E19C-4CE5-925A-735F37EE1428}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{012116A0-E19C-4CE5-925A-735F37EE1428}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71648091-7225-4A61-BF5E-73536B2E321C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71648091-7225-4A61-BF5E-73536B2E321C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71648091-7225-4A61-BF5E-73536B2E321C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71648091-7225-4A61-BF5E-73536B2E321C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91719D5E-03BD-48A6-8583-BE0DBB2B3752}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91719D5E-03BD-48A6-8583-BE0DBB2B3752}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91719D5E-03BD-48A6-8583-BE0DBB2B3752}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91719D5E-03BD-48A6-8583-BE0DBB2B3752}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

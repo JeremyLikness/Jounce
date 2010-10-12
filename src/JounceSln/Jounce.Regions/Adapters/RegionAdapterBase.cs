@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Windows;
 using System.Windows.Controls;
 using Jounce.Core.Application;
 using Jounce.Regions.Core;
@@ -15,13 +14,7 @@ namespace Jounce.Regions.Adapters
     public abstract class RegionAdapterBase<TRegionType> : IRegionAdapterBase where TRegionType: Control 
     {
         protected readonly Dictionary<string, TRegionType> Regions = new Dictionary<string,TRegionType>();
-        protected readonly Dictionary<string, UserControl> Controls = new Dictionary<string, UserControl>();
-
-        [Import(Constants.SHOW_STATE, AllowDefault = true, AllowRecomposition = true)]
-        public string ShowState { get; set; }
-
-        [Import(Constants.HIDE_STATE, AllowDefault = true, AllowRecomposition = true)]
-        public string HideState { get; set; }
+        protected readonly Dictionary<string, UserControl> Controls = new Dictionary<string, UserControl>();       
 
         /// <summary>
         ///     Logger
@@ -101,12 +94,7 @@ namespace Jounce.Regions.Adapters
         /// <param name="viewName">The name of the view</param>
         public virtual void DeactivateControl(string viewName)
         {
-            _ValidateControlName(viewName);
-
-            if (!string.IsNullOrEmpty(HideState))
-            {
-                VisualStateManager.GoToState(Controls[viewName], HideState, true);            
-            }
+            _ValidateControlName(viewName);            
         }
         
         /// <summary>

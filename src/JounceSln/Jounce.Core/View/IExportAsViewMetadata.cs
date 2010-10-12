@@ -8,7 +8,7 @@ namespace Jounce.Core.View
         string ExportedViewType { get; }
         bool IsShell { get; }
         string Category { get; }
-        string CommandName { get; }
+        string MenuName { get; }
         string ToolTip { get; }
     }
 }

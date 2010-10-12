@@ -16,7 +16,7 @@ namespace Jounce.Core.View
             ExportedViewType = viewType;
             IsShell = false;
             Category = string.Empty;
-            CommandName = string.Empty;
+            MenuName = string.Empty;
             ToolTip = string.Empty;
         }
 
@@ -29,7 +29,7 @@ namespace Jounce.Core.View
 
         public string Category { get; set; }
 
-        public string CommandName { get; set; }
+        public string MenuName { get; set; }
 
         public string ToolTip { get; set; }
     }

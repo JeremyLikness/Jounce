@@ -16,20 +16,8 @@ namespace Jounce.Regions.Adapters
             _ValidateControlName(viewName);
             _ValidateRegionName(targetRegion);
 
-            var region = Regions[targetRegion];
-            if (region.Content != null && region.Content is Control)
-            {
-                if (!string.IsNullOrEmpty(HideState))
-                {
-                    VisualStateManager.GoToState((Control) region.Content, HideState, true);
-                }
-            }
-            region.Content = Controls[viewName];
-
-            if (!string.IsNullOrEmpty(ShowState))
-            {
-                VisualStateManager.GoToState((Control) region.Content, ShowState, true);
-            }
+            var region = Regions[targetRegion];            
+            region.Content = Controls[viewName];           
         }        
     }
 }
