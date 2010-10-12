@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Windows;
 using System.Windows.Controls;
 
 namespace Jounce.Regions.Adapters
@@ -33,12 +32,7 @@ namespace Jounce.Regions.Adapters
                 region.Items.Remove(Controls[viewName]); // remove to re-add so it is on top
             }
 
-            region.Items.Add(Controls[viewName]);
-
-            if (ShowState != null)
-            {
-                VisualStateManager.GoToState(Controls[viewName], ShowState, true);
-            }
+            region.Items.Add(Controls[viewName]);            
         }        
     }
 }

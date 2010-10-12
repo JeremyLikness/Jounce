@@ -103,7 +103,7 @@ namespace SimpleNavigation.ViewModels
             foreach(var v in from viewInfo in Views where viewInfo.Metadata.Category.Equals("Navigation")
                                 select Tuple.Create((ICommand)NavigateCommand,
                                 viewInfo.Metadata.ExportedViewType, 
-                                viewInfo.Metadata.CommandName, 
+                                viewInfo.Metadata.MenuName, 
                                 viewInfo.Metadata.ToolTip))
             {
                 _buttonInfo.Add(v);

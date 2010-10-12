@@ -105,9 +105,8 @@ namespace Jounce.Framework.ViewModels
             {
                 var vm = GetViewModelInfoForView(viewName);
                 if (vm != null)
-                {
-                    var firstTime = vm.IsValueCreated;
-                    if (!firstTime)
+                {                    
+                    if (vm.IsValueCreated)
                     {
                         vm.Value.Deactivate(viewName);
                     }

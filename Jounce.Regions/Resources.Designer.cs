@@ -88,7 +88,7 @@ namespace Jounce.Regions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Request to deactive view {0}.
+        ///   Looks up a localized string similar to Request to deactivate view {0}.
         /// </summary>
         internal static string RegionManager_DeactivateView_Request_to_deactive_view {
             get {
