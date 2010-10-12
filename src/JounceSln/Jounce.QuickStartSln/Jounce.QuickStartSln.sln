@@ -17,9 +17,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegionManagement", "RegionM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Regions", "..\Jounce.Regions\Jounce.Regions.csproj", "{91719D5E-03BD-48A6-8583-BE0DBB2B3752}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicXapCalculator", "DynamicXapCalculator\DynamicXapCalculator.csproj", "{1D051EAD-DC8D-40CA-9011-7A9C3C0DC94D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DyanmicXapCalculatorAdvanced", "DyanmicXapCalculatorAdvanced\DyanmicXapCalculatorAdvanced.csproj", "{5E092FC1-EE6B-4546-BBF1-D184E67346FB}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 9
+		SccNumberOfProjects = 11
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs04
 		SccLocalPath0 = .
@@ -47,6 +51,12 @@ Global
 		SccProjectUniqueName8 = ..\\Jounce.Regions\\Jounce.Regions.csproj
 		SccProjectName8 = ../Jounce.Regions
 		SccLocalPath8 = ..\\Jounce.Regions
+		SccProjectUniqueName9 = DynamicXapCalculator\\DynamicXapCalculator.csproj
+		SccProjectName9 = DynamicXapCalculator
+		SccLocalPath9 = DynamicXapCalculator
+		SccProjectUniqueName10 = DyanmicXapCalculatorAdvanced\\DyanmicXapCalculatorAdvanced.csproj
+		SccProjectName10 = DyanmicXapCalculatorAdvanced
+		SccLocalPath10 = DyanmicXapCalculatorAdvanced
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +95,14 @@ Global
 		{91719D5E-03BD-48A6-8583-BE0DBB2B3752}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91719D5E-03BD-48A6-8583-BE0DBB2B3752}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91719D5E-03BD-48A6-8583-BE0DBB2B3752}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D051EAD-DC8D-40CA-9011-7A9C3C0DC94D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D051EAD-DC8D-40CA-9011-7A9C3C0DC94D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D051EAD-DC8D-40CA-9011-7A9C3C0DC94D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D051EAD-DC8D-40CA-9011-7A9C3C0DC94D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E092FC1-EE6B-4546-BBF1-D184E67346FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E092FC1-EE6B-4546-BBF1-D184E67346FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E092FC1-EE6B-4546-BBF1-D184E67346FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E092FC1-EE6B-4546-BBF1-D184E67346FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
