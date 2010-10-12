@@ -10,7 +10,7 @@
         <ListBox HorizontalAlignment="Stretch" VerticalAlignment="Top" ItemsSource="{Binding Messages}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock FontSize="8" TextWrapping="Wrap" Margin="3" Text="{Binding}"/>
+                    <TextBlock FontSize="9" TextWrapping="Wrap" Margin="3" Text="{Binding}"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
