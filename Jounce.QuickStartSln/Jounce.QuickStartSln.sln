@@ -23,9 +23,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DyanmicXapCalculatorAdvance
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegionManagementDynamic", "RegionManagementDynamic\RegionManagementDynamic.csproj", "{F316A368-1FAE-4EDA-93A4-EDE456D29D3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverlightNavigation", "SilverlightNavigation\SilverlightNavigation.csproj", "{D19CC265-6965-464A-9E34-281551A0D480}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 12
+		SccNumberOfProjects = 13
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs04
 		SccLocalPath0 = .
@@ -62,6 +64,9 @@ Global
 		SccProjectUniqueName11 = RegionManagementDynamic\\RegionManagementDynamic.csproj
 		SccProjectName11 = RegionManagementDynamic
 		SccLocalPath11 = RegionManagementDynamic
+		SccProjectUniqueName12 = SilverlightNavigation\\SilverlightNavigation.csproj
+		SccProjectName12 = SilverlightNavigation
+		SccLocalPath12 = SilverlightNavigation
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -112,6 +117,10 @@ Global
 		{F316A368-1FAE-4EDA-93A4-EDE456D29D3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F316A368-1FAE-4EDA-93A4-EDE456D29D3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F316A368-1FAE-4EDA-93A4-EDE456D29D3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D19CC265-6965-464A-9E34-281551A0D480}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D19CC265-6965-464A-9E34-281551A0D480}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D19CC265-6965-464A-9E34-281551A0D480}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D19CC265-6965-464A-9E34-281551A0D480}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
