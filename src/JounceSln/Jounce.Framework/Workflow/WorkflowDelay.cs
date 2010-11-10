@@ -18,9 +18,7 @@ namespace Jounce.Framework.Workflow
                 throw new ArgumentOutOfRangeException("interval");
             }
 
-            _timer = new DispatcherTimer();
-            _timer.Tick += TimerTick;
-            _timer.Interval = interval;
+            _timer = new DispatcherTimer {Interval = interval};
         }
 
         void TimerTick(object sender, EventArgs e)
@@ -32,6 +30,7 @@ namespace Jounce.Framework.Workflow
 
         public void Invoke()
         {
+            _timer.Tick += TimerTick;            
             _timer.Start();
         }
 
