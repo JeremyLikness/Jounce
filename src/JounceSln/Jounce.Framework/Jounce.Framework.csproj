@@ -81,6 +81,7 @@
     <Compile Include="Services\ApplicationService.cs" />
     <Compile Include="Services\DefaultLogger.cs" />
     <Compile Include="Services\DeploymentService.cs" />
+    <Compile Include="Services\NavigationTrigger.cs" />
     <Compile Include="ViewModels\BaseEntityViewModel.cs" />
     <Compile Include="ViewModels\ViewModelRouter.cs" />
     <Compile Include="Views\ViewRouter.cs" />
