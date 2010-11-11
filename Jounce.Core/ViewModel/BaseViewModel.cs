@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Composition;
 using System.Reflection;
@@ -13,10 +14,58 @@ namespace Jounce.Core.ViewModel
     /// </summary>
     public abstract class BaseViewModel : BaseNotify, IViewModel
     {
+        protected BaseViewModel()
+        {
+            RegisteredViews = new List<string>();
+        }        
+
+        /// <summary>
+        ///     Views that are registered with this view model
+        /// </summary>
+        public List<string> RegisteredViews { get; private set; }
+
+        /// <summary>
+        ///     Handle all visual states
+        /// </summary>
+        private readonly Dictionary<string,Action<string,bool>> _visualStates 
+            = new Dictionary<string, Action<string, bool>>();
+
         /// <summary>
         ///     Binder to go to a visual state 
         /// </summary>
         public Action<string, bool> GoToVisualState { get; set; }
+
+        /// <summary>
+        ///     Allow registration to the visual state
+        /// </summary>
+        /// <param name="view">The view being registered</param>
+        /// <param name="action">The visual state action</param>       
+        public void RegisterVisualState(string view, Action<string,bool> action)
+        {
+            _visualStates.Add(view, action);
+            if (GoToVisualState == null)
+            {
+                GoToVisualState = action;
+            }
+        }
+
+        /// <summary>
+        ///     Transition to the visual state for a view
+        /// </summary>
+        /// <param name="view">The view name</param>
+        /// <param name="state">The state</param>
+        /// <param name="useTransitions">True to use transitions</param>
+        /// <returns>True if the view transition is found</returns>
+        public bool GoToVisualStateForView(string view, string state, bool useTransitions)
+        {
+            if (_visualStates.ContainsKey(view))
+            {
+                _visualStates[view](state, useTransitions);
+                return true;
+            }
+
+            return false;
+        }
 
         /// <summary>
         ///     Event aggregator
