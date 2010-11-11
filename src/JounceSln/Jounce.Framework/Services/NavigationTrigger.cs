@@ -36,15 +36,7 @@ namespace Jounce.Framework.Services
                     handler(this, new PropertyChangedEventArgs("NavigationTarget"));
                 }
             }
-        }
-
-        public NavigationTrigger()
-        {
-            if (!DesignerProperties.IsInDesignTool)
-            {
-                CompositionInitializer.SatisfyImports(this);
-            }
-        }
+        }        
 
         protected override void Invoke(object parameter)
         {
