@@ -210,15 +210,23 @@ namespace Jounce.Framework.ViewModels
 
                     var viewModel = viewModelInfo.Value;
 
-                    if (firstTime)
+                    var baseViewModel = (BaseViewModel) viewModel;
+
+                    if (!baseViewModel.RegisteredViews.Contains(viewName))
                     {
-                        viewModel.GoToVisualState =
+                        baseViewModel.RegisterVisualState(viewName, 
                             (state, transitions) =>
                             JounceHelper.ExecuteOnUI(() => VisualStateManager.GoToState(view, state,
-                                                                                        transitions));
+                                                                                        transitions)));
                         _BindViewModel(view, viewModel);
+                        baseViewModel.RegisteredViews.Add(viewName);
+                    }
+                    
+                    if (firstTime)
+                    {
                         viewModel.Initialize();
                     }
+
                     viewModel.Activate(viewName);
                 }
 
