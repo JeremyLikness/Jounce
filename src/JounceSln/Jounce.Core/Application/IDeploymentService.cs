@@ -27,6 +27,11 @@ namespace Jounce.Core.Application
         AggregateCatalog Catalog { get; set; }
 
         /// <summary>
+        ///     The main container
+        /// </summary>
+        CompositionContainer Container { get; set; }
+
+        /// <summary>
         ///     Logger
         /// </summary>
         ILogger Logger { get; set; }

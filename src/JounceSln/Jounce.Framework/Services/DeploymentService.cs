@@ -35,6 +35,11 @@ namespace Jounce.Framework.Services
         public IEventAggregator EventAggregator { get; set; }
 
         /// <summary>
+        ///     The main container
+        /// </summary>
+        public CompositionContainer Container { get; set; }
+        
+        /// <summary>
         ///     Logger
         /// </summary>      
         [Import(AllowDefault = true, AllowRecomposition = true)]

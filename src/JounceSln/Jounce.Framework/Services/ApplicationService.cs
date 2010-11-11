@@ -67,7 +67,7 @@ namespace Jounce.Framework.Services
             _mainCatalog = new AggregateCatalog(new DeploymentCatalog()); // empty one adds current deployment (xap)
 
             var container = new CompositionContainer(_mainCatalog);
-
+            
             CompositionHost.Initialize(container);
             CompositionInitializer.SatisfyImports(this);
 
@@ -78,6 +78,7 @@ namespace Jounce.Framework.Services
             }
 
             DeploymentService.Catalog = _mainCatalog;
+            DeploymentService.Container = container;
             _mefDebugger = new MefDebugger(container, Logger);
         }
 
