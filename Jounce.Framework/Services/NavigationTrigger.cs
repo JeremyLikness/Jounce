@@ -9,7 +9,7 @@ namespace Jounce.Framework.Services
     /// <summary>
     ///     Trigger for navigation
     /// </summary>
-    public class NavigationTrigger : TriggerAction<UIElement>, INotifyPropertyChanged 
+    public class NavigationTrigger : TriggerAction<UIElement>
     {
         private static IEventAggregator _eventAggregator; 
 
@@ -19,25 +19,18 @@ namespace Jounce.Framework.Services
         [Import]
         public IEventAggregator EventAggregator { get; set; }
 
-        private string _navigationTarget; 
+        public static readonly DependencyProperty TargetProperty = DependencyProperty.Register(
+            "Target",
+            typeof (string),
+            typeof (NavigationTrigger),
+            new PropertyMetadata(string.Empty));
 
-        /// <summary>
-        ///     Target (name/tag of view to navigate to)
-        /// </summary>
         public string Target
         {
-            get { return _navigationTarget; }
-            set
-            {
-                _navigationTarget = value;
-                var handler = PropertyChanged;
-                if (handler != null)
-                {
-                    handler(this, new PropertyChangedEventArgs("NavigationTarget"));
-                }
-            }
-        }        
-
+            get { return GetValue(TargetProperty).ToString(); }
+            set { SetValue(TargetProperty, value);}
+        }
+        
         protected override void Invoke(object parameter)
         {
             if (_eventAggregator == null)
@@ -47,7 +40,6 @@ namespace Jounce.Framework.Services
             }
             _eventAggregator.Publish(Target.AsViewNavigationArgs());
         }
-        
-        public event PropertyChangedEventHandler PropertyChanged;
+                
     }    
 }
