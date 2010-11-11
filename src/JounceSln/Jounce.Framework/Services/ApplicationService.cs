@@ -76,6 +76,10 @@ namespace Jounce.Framework.Services
                 ILogger defaultLogger = new DefaultLogger(logLevel);
                 container.ComposeExportedValue(defaultLogger);
             }
+            else
+            {
+                Logger.SetSeverity(logLevel);
+            }
 
             DeploymentService.Catalog = _mainCatalog;
             DeploymentService.Container = container;
