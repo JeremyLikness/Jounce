@@ -25,9 +25,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegionManagementDynamic", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverlightNavigation", "SilverlightNavigation\SilverlightNavigation.csproj", "{D19CC265-6965-464A-9E34-281551A0D480}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleNavigationWithRegion", "SimpleNavigationWithRegion\SimpleNavigationWithRegion.csproj", "{05C65CE6-334B-4EA7-A753-E88B759E26CB}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 13
+		SccNumberOfProjects = 14
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs04
 		SccLocalPath0 = .
@@ -67,6 +69,9 @@ Global
 		SccProjectUniqueName12 = SilverlightNavigation\\SilverlightNavigation.csproj
 		SccProjectName12 = SilverlightNavigation
 		SccLocalPath12 = SilverlightNavigation
+		SccProjectUniqueName13 = SimpleNavigationWithRegion\\SimpleNavigationWithRegion.csproj
+		SccProjectName13 = SimpleNavigationWithRegion
+		SccLocalPath13 = SimpleNavigationWithRegion
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +126,10 @@ Global
 		{D19CC265-6965-464A-9E34-281551A0D480}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D19CC265-6965-464A-9E34-281551A0D480}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D19CC265-6965-464A-9E34-281551A0D480}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05C65CE6-334B-4EA7-A753-E88B759E26CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05C65CE6-334B-4EA7-A753-E88B759E26CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05C65CE6-334B-4EA7-A753-E88B759E26CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05C65CE6-334B-4EA7-A753-E88B759E26CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
