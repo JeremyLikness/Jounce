@@ -210,13 +210,15 @@ namespace Jounce.Regions
             regionAdapter.AddRegion(region, regionTag);
 
             // add any views that were waiting for this region to become available 
-            foreach (var viewInfo in Views.Where(viewInfo => viewInfo.Metadata.TargetRegion.Equals(regionTag)))
+            foreach (var viewInfo in Views
+                .Where(viewInfo => viewInfo.Metadata.TargetRegion.Equals(regionTag))
+                .Distinct(new RegionMetadataComparer()))
             {
                 regionAdapter.AddView(viewInfo.Value, 
                     viewInfo.Metadata.ViewTypeForRegion,                    
                     viewInfo.Metadata.TargetRegion);
             }
-        }
+        }        
       
         /// <summary>
         /// Called when a part's imports have been satisfied and it is safe to use.
@@ -242,5 +244,5 @@ namespace Jounce.Regions
                 ActivateView(navigationEvent.ViewType);
             }
         }
-    }
+    }    
 }
