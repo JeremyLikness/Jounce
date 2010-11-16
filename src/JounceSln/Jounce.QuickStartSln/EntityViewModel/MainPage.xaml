@@ -21,12 +21,7 @@
     </UserControl.Resources>
     <Grid x:Name="LayoutRoot" 
           HorizontalAlignment="Center" MinWidth="400"
-          Background="White" d:DataContext="{d:DesignInstance local:MainViewModel,IsDesignTimeCreatable=True}">
-        <Interactivity:Interaction.Triggers>
-            <Interactivity:EventTrigger EventName="Loaded">
-                <local:FocusTrigger TargetName="{Binding ElementName=FirstName}"/>
-            </Interactivity:EventTrigger>
-        </Interactivity:Interaction.Triggers>
+          Background="White" d:DataContext="{d:DesignInstance local:MainViewModel,IsDesignTimeCreatable=True}">        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -64,6 +59,6 @@
                  Text="{Binding Email, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
         <Button Content="Save" Command="{Binding CommitCommand}" Grid.Row="4" Grid.Column="0"/>
         <Button Content="Cancel" Command="{Binding CancelCommand}" Grid.Row="4" Grid.Column="1"/>
-        <Controls:ValidationSummary Grid.Row="5" Margin="5" Grid.ColumnSpan="2"/>
+        <Controls:ValidationSummary Grid.Row="5" Margin="5" Grid.ColumnSpan="2"/>        
     </Grid>
 </UserControl>
