@@ -26,12 +26,12 @@ namespace EntityViewModel
             {
                 // anytime the committed status changes, we should re-evaluate the cancel button
                 PropertyChanged += (o, e) =>
-                                       {
-                                           if (e.PropertyName.Equals(committedProp))
-                                           {
-                                               CancelCommand.RaiseCanExecuteChanged();
-                                           }
-                                       };
+                                        {
+                                            if (e.PropertyName.Equals(committedProp))
+                                            {
+                                                CancelCommand.RaiseCanExecuteChanged();
+                                            }
+                                        };
             }
         }
 
@@ -100,7 +100,7 @@ namespace EntityViewModel
             var prop = ExtractPropertyName(() => PhoneNumber);
             ClearErrors(prop);
             if (string.IsNullOrEmpty(_phoneNumber) || !Regex.IsMatch(_phoneNumber,
-                                                                     @"^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"))
+                                                                        @"^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"))
             {
                 SetError(prop, "Field should be a valid international phone number such as +1 404-555-1212");
             }
