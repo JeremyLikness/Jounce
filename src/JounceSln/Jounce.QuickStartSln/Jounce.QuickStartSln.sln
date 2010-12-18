@@ -29,9 +29,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleNavigationWithRegion"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityViewModel", "EntityViewModel\EntityViewModel.csproj", "{4891392D-DE4F-479E-AA86-98733F26A7A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentBinding", "FluentBinding\FluentBinding.csproj", "{38036BFA-C96A-46C3-A3E6-749B10C304AF}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 15
+		SccNumberOfProjects = 16
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs04
 		SccLocalPath0 = .
@@ -77,6 +79,9 @@ Global
 		SccProjectUniqueName14 = EntityViewModel\\EntityViewModel.csproj
 		SccProjectName14 = EntityViewModel
 		SccLocalPath14 = EntityViewModel
+		SccProjectUniqueName15 = FluentBinding\\FluentBinding.csproj
+		SccProjectName15 = FluentBinding
+		SccLocalPath15 = FluentBinding
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -139,6 +144,10 @@ Global
 		{4891392D-DE4F-479E-AA86-98733F26A7A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4891392D-DE4F-479E-AA86-98733F26A7A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4891392D-DE4F-479E-AA86-98733F26A7A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38036BFA-C96A-46C3-A3E6-749B10C304AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38036BFA-C96A-46C3-A3E6-749B10C304AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38036BFA-C96A-46C3-A3E6-749B10C304AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38036BFA-C96A-46C3-A3E6-749B10C304AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

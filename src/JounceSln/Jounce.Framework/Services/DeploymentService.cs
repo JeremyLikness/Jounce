@@ -18,8 +18,10 @@ namespace Jounce.Framework.Services
     ///     Implementation of the deployment service
     /// </summary>
     [Export(typeof(IDeploymentService))]
-    public class DeploymentService : IDeploymentService
-    {        
+    public class DeploymentService : IDeploymentService, IPartImportsSatisfiedNotification
+    {
+        private bool _init;
+
         /// <summary>
         ///     List of Xap files already loaded
         /// </summary>
@@ -107,10 +109,7 @@ namespace Jounce.Framework.Services
 
             yield return downloadAction;
 
-            foreach(var moduleInitializer in from m in Modules where !m.Initialized select m)
-            {
-                moduleInitializer.Initialize();
-            }
+            _InitModules();
 
             EventAggregator.Publish(Constants.END_BUSY);
             
@@ -142,6 +141,29 @@ namespace Jounce.Framework.Services
                     xapLoaded(null);
                 }
             }
-        }        
+        }
+
+        /// <summary>
+        ///     Initialize modules
+        /// </summary>
+        private void _InitModules()
+        {
+            foreach(var moduleInitializer in from m in Modules where !m.Initialized select m)
+            {
+                moduleInitializer.Initialize();
+            }
+        }
+
+        /// <summary>
+        /// Called when a part's imports have been satisfied and it is safe to use.
+        /// </summary>
+        public void OnImportsSatisfied()
+        {
+            if (!_init)
+            {
+                _init = true;
+                _InitModules();
+            }
+        }
     }
 }

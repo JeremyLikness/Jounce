@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using Jounce.Core.Application;
+using Jounce.Core.Fluent;
 using Jounce.Core.View;
 using Jounce.Core.ViewModel;
 
@@ -14,7 +16,8 @@ namespace Jounce.Framework.ViewModels
     ///     This class routes views and view models
     /// </summary>
     [Export(typeof (IViewModelRouter))]
-    public class ViewModelRouter : IViewModelRouter
+    [Export(typeof(IFluentViewModelRouter))]
+    public class ViewModelRouter : IViewModelRouter, IFluentViewModelRouter 
     {
         const string LAYOUT_ROOT = "LayoutRoot";
             
@@ -55,6 +58,8 @@ namespace Jounce.Framework.ViewModels
         [ImportMany(AllowRecomposition = true)]
         public ViewModelRoute[] Routes { get; set; }
 
+        private readonly List<ViewModelRoute> _fluentRoutes = new List<ViewModelRoute>();
+
         /// <summary>
         ///     The list of views
         /// </summary>
@@ -84,7 +89,12 @@ namespace Jounce.Framework.ViewModels
         /// <returns>The corresponding view model information</returns>
         private Lazy<IViewModel, IExportAsViewModelMetadata> GetViewModelInfoForView(string view)
         {
-            return (from r in Routes
+            return (from r in _fluentRoutes
+                    from vm in ViewModels
+                    where r.ViewType.Equals(view)
+                          && r.ViewModelType.Equals(vm.Metadata.ViewModelType)
+                    select vm).FirstOrDefault() ??
+                    (from r in Routes
                     from vm in ViewModels
                     where r.ViewType.Equals(view)
                           && r.ViewModelType.Equals(vm.Metadata.ViewModelType)
@@ -251,6 +261,16 @@ namespace Jounce.Framework.ViewModels
             {
                 view.Loaded += (o, e) => view.DataContext = viewModel;
             }
+        }
+
+        /// <summary>
+        ///     Route a view to a view model
+        /// </summary>
+        /// <param name="viewModel">The view model</param>
+        /// <param name="view">The view</param>
+        public void RouteViewModelForView(string viewModel, string view)
+        {
+            _fluentRoutes.Add(ViewModelRoute.Create(viewModel, view));
         }
     }
 }
