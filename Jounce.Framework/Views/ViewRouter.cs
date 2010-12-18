@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using Jounce.Core.Application;
 using Jounce.Core.Event;
+using Jounce.Core.Fluent;
 using Jounce.Core.View;
 using Jounce.Core.ViewModel;
 
@@ -14,7 +16,8 @@ namespace Jounce.Framework.Views
     ///     activates the view
     /// </summary>
     [Export]
-    public class ViewRouter : IPartImportsSatisfiedNotification, IEventSink<ViewNavigationArgs>
+    [Export(typeof(IFluentViewXapRouter))]
+    public class ViewRouter : IFluentViewXapRouter, IPartImportsSatisfiedNotification, IEventSink<ViewNavigationArgs>
     {
         private bool _initialized;
 
@@ -35,6 +38,8 @@ namespace Jounce.Framework.Views
         /// </summary>
         [ImportMany(AllowRecomposition = true)]
         public ViewXapRoute[] ViewLocations { get; set; }
+
+        private readonly List<ViewXapRoute> _fluentRoutes = new List<ViewXapRoute>();
 
         /// <summary>
         ///     Event aggregator
@@ -74,7 +79,11 @@ namespace Jounce.Framework.Views
             }
 
             // does a view location exist?
-            var viewLocation = (from location in ViewLocations
+            var viewLocation =
+                (from location in _fluentRoutes
+                 where location.ViewName.Equals(e.ViewType, StringComparison.InvariantCultureIgnoreCase)
+                 select location).FirstOrDefault() ??
+                (from location in ViewLocations
                                 where location.ViewName.Equals(e.ViewType, StringComparison.InvariantCultureIgnoreCase)
                                 select location).FirstOrDefault();
 
@@ -106,6 +115,11 @@ namespace Jounce.Framework.Views
         {            
             ViewModelRouter.ActivateView(viewName);
             EventAggregator.Publish(new ViewNavigatedArgs(viewName));
-        }      
+        }
+
+        public void RouteViewInXap(string view, string xap)
+        {
+            _fluentRoutes.Add(ViewXapRoute.Create(view, xap));
+        }
     }
 }
