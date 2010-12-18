@@ -54,7 +54,7 @@ namespace EntityViewModel
             set
             {
                 _firstName = value;
-                RaisePropertyChanged(() => FirstName);
+                RaisePropertyChanged();
                 _ValidateName(ExtractPropertyName(() => FirstName), value);
             }
         }
@@ -67,7 +67,7 @@ namespace EntityViewModel
             set
             {
                 _lastName = value;
-                RaisePropertyChanged(() => LastName);
+                RaisePropertyChanged();
                 _ValidateName(ExtractPropertyName(() => LastName), value);
             }
         }
@@ -90,7 +90,7 @@ namespace EntityViewModel
             set
             {
                 _phoneNumber = value;
-                RaisePropertyChanged(() => PhoneNumber);
+                RaisePropertyChanged();
                 _ValidatePhoneNumber();
             }
         }
@@ -114,7 +114,7 @@ namespace EntityViewModel
             set
             {
                 _email = value;
-                RaisePropertyChanged(() => Email);
+                RaisePropertyChanged();
                 _ValidateEmail();
             }
         }

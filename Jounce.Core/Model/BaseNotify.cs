@@ -21,6 +21,26 @@ namespace Jounce.Core.Model
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
+        ///     Raise a property change and infer the frame from the stack
+        /// </summary>
+        public virtual void RaisePropertyChanged()
+        {
+            var frames = new System.Diagnostics.StackTrace();
+            for (var i = 0; i < frames.FrameCount; i++)
+            {
+                var frame = frames.GetFrame(i).GetMethod() as MethodInfo;
+                if (frame != null)
+                    if (frame.IsSpecialName && frame.Name.StartsWith("set_"))
+                    {
+                        RaisePropertyChanged(frame.Name.Substring(4));
+                        return;
+                    }
+            }
+            throw new InvalidOperationException("NotifyPropertyChanged() can only by invoked within a property setter.");
+        }
+
+
+        /// <summary>
         /// Raises this object's PropertyChanged event.
         /// </summary>
         /// <param name="propertyName">The property that has a new value.</param>
