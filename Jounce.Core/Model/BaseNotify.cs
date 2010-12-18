@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace Jounce.Core.Model
 {
@@ -23,6 +24,10 @@ namespace Jounce.Core.Model
         /// <summary>
         ///     Raise a property change and infer the frame from the stack
         /// </summary>
+        /// <remarks>
+        ///     May not work on some systems (64-bit, for example, not yet supported by Silverlight). 
+        /// </remarks>
+        [MethodImpl(MethodImplOptions.NoInlining)]
         public virtual void RaisePropertyChanged()
         {
             var frames = new System.Diagnostics.StackTrace();
