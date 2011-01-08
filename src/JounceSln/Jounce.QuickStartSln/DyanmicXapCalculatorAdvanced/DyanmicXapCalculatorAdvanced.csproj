@@ -93,11 +93,6 @@
       <Name>Jounce.Framework</Name>
       <Private>False</Private>
     </ProjectReference>
-    <ProjectReference Include="..\DynamicXapCalculator\DynamicXapCalculator.csproj">
-      <Project>{1D051EAD-DC8D-40CA-9011-7A9C3C0DC94D}</Project>
-      <Name>DynamicXapCalculator</Name>
-      <Private>False</Private>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
