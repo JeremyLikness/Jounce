@@ -42,11 +42,11 @@ namespace DynamicXapCalculator.ViewModels
         {
             // need to make sure this is mispelled correctly :)
             Deployment.RequestXap("DyanmicXapCalculatorAdvanced.xap",ex=>
-                                                                         {
-                                                                             if (ex == null) return;
-                                                                             _loaded = true;
-                                                                             ((IActionCommand)LoadCommand).RaiseCanExecuteChanged();
-                                                                         });
+                                                                            {
+                                                                                if (ex == null) return;
+                                                                                _loaded = true;
+                                                                                ((IActionCommand)LoadCommand).RaiseCanExecuteChanged();
+                                                                            });
 
         }
 
@@ -55,6 +55,12 @@ namespace DynamicXapCalculator.ViewModels
         /// </summary>
         [ImportMany(AllowRecomposition = true)]
         public ObservableCollection<Tuple<string,ICommand>> Commands { get; set; }
+
+        [Export]
+        public Action<Func<int,int,int>> ExecuteCommandExport
+        {
+            get { return ExecuteCommand; }
+        }
 
         /// <summary>
         ///     Last command
