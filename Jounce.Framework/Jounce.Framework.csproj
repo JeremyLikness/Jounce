@@ -85,6 +85,10 @@
     <Compile Include="ViewModels\BaseEntityViewModel.cs" />
     <Compile Include="ViewModels\ViewModelRouter.cs" />
     <Compile Include="Views\ViewRouter.cs" />
+    <Compile Include="Views\VisualStateAggregator.cs" />
+    <Compile Include="Views\VisualStateAggregatorTrigger.cs" />
+    <Compile Include="Views\VisualStateSubscription.cs" />
+    <Compile Include="Views\VisualStateSubscriptionBehavior.cs" />
     <Compile Include="Workflow\WorkflowAction.cs" />
     <Compile Include="Workflow\WorkflowBackgroundWorker.cs" />
     <Compile Include="Workflow\WorkflowController.cs" />
