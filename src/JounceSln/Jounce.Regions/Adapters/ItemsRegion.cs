@@ -25,14 +25,9 @@ namespace Jounce.Regions.Adapters
 
             if (!_addedViews.Contains(viewName))
             {
-                _addedViews.Add(viewName);                                
-            }
-            else
-            {
-                region.Items.Remove(Controls[viewName]); // remove to re-add so it is on top
-            }
-
-            region.Items.Add(Controls[viewName]);            
+                _addedViews.Add(viewName);
+                region.Items.Add(Controls[viewName]);   
+            }                     
         }        
     }
 }
