@@ -21,17 +21,15 @@ namespace VSMAggregator.Views
             var groups = VisualStateManager.GetVisualStateGroups(LayoutRoot);
             foreach(var group in groups.Cast<VisualStateGroup>().Where(g=>g.Name.Equals("NavigationStates")))
             {
-                foreach (var state in
-                    group.States.Cast<VisualState>().Where(state => state.Name.Equals("HideState")))
-                {
-                    state.Storyboard.Completed += Storyboard_Completed;
-                }
+                group.CurrentStateChanged += GroupCurrentStateChanged;                
             }
         }
 
-        static void Storyboard_Completed(object sender, System.EventArgs e)
+        static void GroupCurrentStateChanged(object sender, VisualStateChangedEventArgs e)
         {
-            JounceHelper.ExecuteOnUI(()=>MessageBox.Show("Red transition completed."));
+            JounceHelper.ExecuteOnUI(() => MessageBox.Show(string.Format("Transition {0}=>{1}", e.OldState.Name, e.NewState.Name)));
         }
+
+        
     }
 }
