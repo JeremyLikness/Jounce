@@ -7,7 +7,7 @@
 
     <Grid x:Name="LayoutRoot" Background="White">
         <ItemsControl HorizontalAlignment="Center" HorizontalContentAlignment="Stretch"
-                      Width="800" Height="600"
+                      Width="480" Height="300"
                       VerticalAlignment="Center" VerticalContentAlignment="Stretch"
                       Regions:ExportAsRegion.RegionName="MainRegion">
             <ItemsControl.ItemsPanel>
