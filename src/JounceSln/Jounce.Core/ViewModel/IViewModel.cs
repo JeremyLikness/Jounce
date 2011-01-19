@@ -14,6 +14,15 @@ namespace Jounce.Core.ViewModel
         Action<string,bool> GoToVisualState { get; set; }
 
         /// <summary>
+        ///     Visual state for a specific view
+        /// </summary>
+        /// <param name="view">The view</param>
+        /// <param name="state">The state</param>
+        /// <param name="useTransitions">Use transitions?</param>
+        /// <returns>True if the view is registered</returns>
+        bool GoToVisualStateForView(string view, string state, bool useTransitions);
+
+        /// <summary>
         ///     Called first time the view model is created
         /// </summary>
         void Initialize();
