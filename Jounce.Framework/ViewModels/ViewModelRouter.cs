@@ -235,9 +235,18 @@ namespace Jounce.Framework.ViewModels
                     if (firstTime)
                     {
                         viewModel.Initialize();
+                        RoutedEventHandler loaded = null;
+                        loaded = (o, e) =>
+                                                        {
+                                                            ((UserControl) o).Loaded -= loaded;
+                                                            viewModel.Activate(viewName);
+                                                        };
+                        view.Loaded += loaded;
                     }
-
-                    viewModel.Activate(viewName);
+                    else
+                    {
+                        viewModel.Activate(viewName);
+                    }
                 }
 
                 return true;
