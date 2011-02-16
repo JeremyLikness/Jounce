@@ -67,25 +67,17 @@
     <Content Include="ClientBin\SimpleNavigationWithRegion.xap" />
     <Content Include="ClientBin\VSMAggregator.xap" />
     <Content Include="ClientBin\Workflow.xap" />
+    <Content Include="Default.htm" />
     <Content Include="DynamicXapCalculatorTestPage.aspx" />
-    <Content Include="DynamicXapCalculatorTestPage.html" />
     <Content Include="EntityViewModelTestPage.aspx" />
-    <Content Include="EntityViewModelTestPage.html" />
     <Content Include="EventAggregatorTestPage.aspx" />
-    <Content Include="EventAggregatorTestPage.html" />
     <Content Include="FluentBindingTestPage.aspx" />
-    <Content Include="FluentBindingTestPage.html" />
     <Content Include="RegionManagementTestPage.aspx" />
-    <Content Include="RegionManagementTestPage.html" />
     <Content Include="Silverlight.js" />
     <Content Include="SilverlightNavigationTestPage.aspx" />
-    <Content Include="SilverlightNavigationTestPage.html" />
     <Content Include="SimpleNavigationTestPage.aspx" />
-    <Content Include="SimpleNavigationTestPage.html" />
     <Content Include="SimpleNavigationWithRegionTestPage.aspx" />
-    <Content Include="SimpleNavigationWithRegionTestPage.html" />
     <Content Include="VSMAggregatorTestPage.aspx" />
-    <Content Include="VSMAggregatorTestPage.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -94,7 +86,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="WorkflowTestPage.aspx" />
-    <Content Include="WorkflowTestPage.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />

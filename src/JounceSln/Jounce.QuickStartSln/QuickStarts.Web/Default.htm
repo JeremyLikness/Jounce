@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Jounce Tests</title>
+    <script type="text/javascript" language=javascript>
+        function LoadExample(example) {
+            frames['SilverlightFrame'].location.href = example;
+            Subheader.innerHTML = example;
+        }
+    </script>
+</head>
+<body>
+<h1>Jounce Examples</h1>
+<p><a href="javascript:LoadExample('DynamicXAPCalculatorTestPage.aspx');">Dynamic XAP Calculator</a>&nbsp;
+<a href="javascript:LoadExample('EntityViewModelTestPage.aspx');">Entity View Model</a>&nbsp;
+<a href="javascript:LoadExample('EventAggregatorTestPage.aspx');">Event Aggregator</a>&nbsp;
+<a href="javascript:LoadExample('FluentBindingTestPage.aspx');">Fluent Binding</a>&nbsp;
+<a href="javascript:LoadExample('RegionManagementTestPage.aspx');">Region Management</a>&nbsp;
+<a href="javascript:LoadExample('SilverlightNavigationTestPage.aspx');">Silverlight Navigation Framework</a>&nbsp;
+<a href="javascript:LoadExample('SimpleNavigationTestPage.aspx');">Simple Navigation</a>&nbsp;
+<a href="javascript:LoadExample('SimpleNavigationWithRegionTestPage.aspx');">Simple Navigation with Region</a>&nbsp;
+<a href="javascript:LoadExample('VSMAggregatorTestPage.aspx');">VSM Aggregator</a>&nbsp;
+<a href="javascript:LoadExample('WorkflowTestPage.aspx');">Workflows</a>
+</p>
+<h2 id="Subheader" name="Subheader">(Nothing Loaded Yet)</h2>
+<iframe id="SilverlightFrame" name="SilverlightFrame" height="800" width="100%">
+The test will load here.
+</iframe>
+</body>
+</html>
