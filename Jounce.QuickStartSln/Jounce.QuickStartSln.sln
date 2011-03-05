@@ -5,17 +5,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickStarts.Web", "QuickSta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workflow", "Workflow\Workflow.csproj", "{EA03F0B8-DD9E-4A2B-A4D6-7BDDDDB15BA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Core", "..\Jounce.Core\Jounce.Core.csproj", "{B981528B-2608-499A-9088-985E6B351F6B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Framework", "..\Jounce.Framework\Jounce.Framework.csproj", "{9198A85F-444D-419A-866D-1589356D2EE1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce", "..\Jounce.Core\Jounce.csproj", "{B981528B-2608-499A-9088-985E6B351F6B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventAggregator", "EventAggregator\EventAggregator.csproj", "{71A16CDF-A153-48FA-9E66-0FA50D397B4C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleNavigation", "SimpleNavigation\SimpleNavigation.csproj", "{012116A0-E19C-4CE5-925A-735F37EE1428}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegionManagement", "RegionManagement\RegionManagement.csproj", "{71648091-7225-4A61-BF5E-73536B2E321C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Regions", "..\Jounce.Regions\Jounce.Regions.csproj", "{91719D5E-03BD-48A6-8583-BE0DBB2B3752}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicXapCalculator", "DynamicXapCalculator\DynamicXapCalculator.csproj", "{1D051EAD-DC8D-40CA-9011-7A9C3C0DC94D}"
 EndProject
@@ -35,58 +31,52 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSMAggregator", "VSMAggrega
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 17
+		SccNumberOfProjects = 15
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs04
 		SccLocalPath0 = .
-		SccProjectUniqueName1 = ..\\Jounce.Core\\Jounce.Core.csproj
-		SccProjectName1 = ../Jounce.Core
-		SccLocalPath1 = ..\\Jounce.Core
-		SccProjectUniqueName2 = ..\\Jounce.Framework\\Jounce.Framework.csproj
-		SccProjectName2 = ../Jounce.Framework
-		SccLocalPath2 = ..\\Jounce.Framework
-		SccProjectUniqueName3 = EventAggregator\\EventAggregator.csproj
-		SccProjectName3 = EventAggregator
-		SccLocalPath3 = EventAggregator
-		SccProjectUniqueName4 = QuickStarts.Web\\QuickStarts.Web.csproj
-		SccProjectName4 = QuickStarts.Web
-		SccLocalPath4 = QuickStarts.Web
-		SccProjectUniqueName5 = Workflow\\Workflow.csproj
-		SccProjectName5 = Workflow
-		SccLocalPath5 = Workflow
-		SccProjectUniqueName6 = SimpleNavigation\\SimpleNavigation.csproj
-		SccProjectName6 = SimpleNavigation
-		SccLocalPath6 = SimpleNavigation
-		SccProjectUniqueName7 = RegionManagement\\RegionManagement.csproj
-		SccProjectName7 = RegionManagement
-		SccLocalPath7 = RegionManagement
-		SccProjectUniqueName8 = ..\\Jounce.Regions\\Jounce.Regions.csproj
-		SccProjectName8 = ../Jounce.Regions
-		SccLocalPath8 = ..\\Jounce.Regions
-		SccProjectUniqueName9 = DynamicXapCalculator\\DynamicXapCalculator.csproj
-		SccProjectName9 = DynamicXapCalculator
-		SccLocalPath9 = DynamicXapCalculator
-		SccProjectUniqueName10 = DyanmicXapCalculatorAdvanced\\DyanmicXapCalculatorAdvanced.csproj
-		SccProjectName10 = DyanmicXapCalculatorAdvanced
-		SccLocalPath10 = DyanmicXapCalculatorAdvanced
-		SccProjectUniqueName11 = RegionManagementDynamic\\RegionManagementDynamic.csproj
-		SccProjectName11 = RegionManagementDynamic
-		SccLocalPath11 = RegionManagementDynamic
-		SccProjectUniqueName12 = SilverlightNavigation\\SilverlightNavigation.csproj
-		SccProjectName12 = SilverlightNavigation
-		SccLocalPath12 = SilverlightNavigation
-		SccProjectUniqueName13 = SimpleNavigationWithRegion\\SimpleNavigationWithRegion.csproj
-		SccProjectName13 = SimpleNavigationWithRegion
-		SccLocalPath13 = SimpleNavigationWithRegion
-		SccProjectUniqueName14 = EntityViewModel\\EntityViewModel.csproj
-		SccProjectName14 = EntityViewModel
-		SccLocalPath14 = EntityViewModel
-		SccProjectUniqueName15 = FluentBinding\\FluentBinding.csproj
-		SccProjectName15 = FluentBinding
-		SccLocalPath15 = FluentBinding
-		SccProjectUniqueName16 = VSMAggregator\\VSMAggregator.csproj
-		SccProjectName16 = VSMAggregator
-		SccLocalPath16 = VSMAggregator
+		SccProjectUniqueName1 = EventAggregator\\EventAggregator.csproj
+		SccProjectName1 = EventAggregator
+		SccLocalPath1 = EventAggregator
+		SccProjectUniqueName2 = QuickStarts.Web\\QuickStarts.Web.csproj
+		SccProjectName2 = QuickStarts.Web
+		SccLocalPath2 = QuickStarts.Web
+		SccProjectUniqueName3 = Workflow\\Workflow.csproj
+		SccProjectName3 = Workflow
+		SccLocalPath3 = Workflow
+		SccProjectUniqueName4 = SimpleNavigation\\SimpleNavigation.csproj
+		SccProjectName4 = SimpleNavigation
+		SccLocalPath4 = SimpleNavigation
+		SccProjectUniqueName5 = RegionManagement\\RegionManagement.csproj
+		SccProjectName5 = RegionManagement
+		SccLocalPath5 = RegionManagement
+		SccProjectUniqueName6 = DynamicXapCalculator\\DynamicXapCalculator.csproj
+		SccProjectName6 = DynamicXapCalculator
+		SccLocalPath6 = DynamicXapCalculator
+		SccProjectUniqueName7 = DyanmicXapCalculatorAdvanced\\DyanmicXapCalculatorAdvanced.csproj
+		SccProjectName7 = DyanmicXapCalculatorAdvanced
+		SccLocalPath7 = DyanmicXapCalculatorAdvanced
+		SccProjectUniqueName8 = RegionManagementDynamic\\RegionManagementDynamic.csproj
+		SccProjectName8 = RegionManagementDynamic
+		SccLocalPath8 = RegionManagementDynamic
+		SccProjectUniqueName9 = SilverlightNavigation\\SilverlightNavigation.csproj
+		SccProjectName9 = SilverlightNavigation
+		SccLocalPath9 = SilverlightNavigation
+		SccProjectUniqueName10 = SimpleNavigationWithRegion\\SimpleNavigationWithRegion.csproj
+		SccProjectName10 = SimpleNavigationWithRegion
+		SccLocalPath10 = SimpleNavigationWithRegion
+		SccProjectUniqueName11 = EntityViewModel\\EntityViewModel.csproj
+		SccProjectName11 = EntityViewModel
+		SccLocalPath11 = EntityViewModel
+		SccProjectUniqueName12 = FluentBinding\\FluentBinding.csproj
+		SccProjectName12 = FluentBinding
+		SccLocalPath12 = FluentBinding
+		SccProjectUniqueName13 = VSMAggregator\\VSMAggregator.csproj
+		SccProjectName13 = VSMAggregator
+		SccLocalPath13 = VSMAggregator
+		SccProjectUniqueName14 = ..\\Jounce.Core\\Jounce.csproj
+		SccProjectName14 = ../Jounce.Core
+		SccLocalPath14 = ..\\Jounce.Core
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,10 +95,6 @@ Global
 		{B981528B-2608-499A-9088-985E6B351F6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B981528B-2608-499A-9088-985E6B351F6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B981528B-2608-499A-9088-985E6B351F6B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9198A85F-444D-419A-866D-1589356D2EE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9198A85F-444D-419A-866D-1589356D2EE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9198A85F-444D-419A-866D-1589356D2EE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9198A85F-444D-419A-866D-1589356D2EE1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{71A16CDF-A153-48FA-9E66-0FA50D397B4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{71A16CDF-A153-48FA-9E66-0FA50D397B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71A16CDF-A153-48FA-9E66-0FA50D397B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -121,10 +107,6 @@ Global
 		{71648091-7225-4A61-BF5E-73536B2E321C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71648091-7225-4A61-BF5E-73536B2E321C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71648091-7225-4A61-BF5E-73536B2E321C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{91719D5E-03BD-48A6-8583-BE0DBB2B3752}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91719D5E-03BD-48A6-8583-BE0DBB2B3752}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91719D5E-03BD-48A6-8583-BE0DBB2B3752}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91719D5E-03BD-48A6-8583-BE0DBB2B3752}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1D051EAD-DC8D-40CA-9011-7A9C3C0DC94D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1D051EAD-DC8D-40CA-9011-7A9C3C0DC94D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D051EAD-DC8D-40CA-9011-7A9C3C0DC94D}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -1,6 +1,6 @@
 using Jounce.Core.ViewModel;
 
-namespace Jounce.ViewModels
+namespace JounceApplication.ViewModels
 {
     /// <summary>
     ///     Main view model - just export the type to register

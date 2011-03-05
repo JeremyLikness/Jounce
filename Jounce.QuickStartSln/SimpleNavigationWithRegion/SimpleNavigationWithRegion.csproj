@@ -129,17 +129,9 @@
     <None Include="Properties\AppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Jounce.Core\Jounce.Core.csproj">
+    <ProjectReference Include="..\..\Jounce.Core\Jounce.csproj">
       <Project>{B981528B-2608-499A-9088-985E6B351F6B}</Project>
-      <Name>Jounce.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Jounce.Framework\Jounce.Framework.csproj">
-      <Project>{9198A85F-444D-419A-866D-1589356D2EE1}</Project>
-      <Name>Jounce.Framework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Jounce.Regions\Jounce.Regions.csproj">
-      <Project>{91719D5E-03BD-48A6-8583-BE0DBB2B3752}</Project>
-      <Name>Jounce.Regions</Name>
+      <Name>Jounce</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
