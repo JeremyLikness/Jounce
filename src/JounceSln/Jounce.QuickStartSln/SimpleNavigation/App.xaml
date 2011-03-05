@@ -1,5 +1,5 @@
 ﻿<Application xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Services="clr-namespace:Jounce.Framework.Services;assembly=Jounce.Framework" x:Class="SimpleNavigation.App"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Services="clr-namespace:Jounce.Framework.Services;assembly=Jounce" x:Class="SimpleNavigation.App"
              >
     <Application.ApplicationLifetimeObjects>
         <Services:ApplicationService/>

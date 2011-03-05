@@ -2,7 +2,7 @@
 using Jounce.Core.View;
 using Jounce.Core.ViewModel;
 
-namespace Jounce.Views
+namespace JounceApplication.Views
 {
     /// <summary>
     ///     Jounce expects exactly one view to be exported with the "IsShell" contract

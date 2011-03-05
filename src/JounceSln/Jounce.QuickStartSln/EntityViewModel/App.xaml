@@ -1,6 +1,7 @@
 ﻿<Application xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Services="clr-namespace:Jounce.Framework.Services;assembly=Jounce.Framework" x:Class="EntityViewModel.App"
-             >
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:Services="clr-namespace:Jounce.Framework.Services;assembly=Jounce" 
+             x:Class="EntityViewModel.App">
     <Application.ApplicationLifetimeObjects>
         <Services:ApplicationService/>
     </Application.ApplicationLifetimeObjects>

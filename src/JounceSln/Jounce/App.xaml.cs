@@ -1,4 +1,4 @@
-﻿namespace Jounce
+﻿namespace JounceApplication
 {
     public partial class App
     {

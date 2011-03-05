@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClientBin\Jounce.xap" />
+    <Content Include="ClientBin\JounceApplication.xap" />
     <Content Include="JounceTestPage.aspx" />
     <Content Include="JounceTestPage.html" />
     <Content Include="Silverlight.js" />
