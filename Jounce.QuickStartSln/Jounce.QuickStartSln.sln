@@ -29,9 +29,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentBinding", "FluentBind
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSMAggregator", "VSMAggregator\VSMAggregator.csproj", "{6694C6CB-AEAB-43E6-9B5D-677CEF7AF9E0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavigationWithBackButton", "NavigationWithBackButton\NavigationWithBackButton.csproj", "{D32C20A8-0CE2-488C-AD53-89FFC0D840E0}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 15
+		SccNumberOfProjects = 16
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs04
 		SccLocalPath0 = .
@@ -77,6 +79,9 @@ Global
 		SccProjectUniqueName14 = ..\\Jounce.Core\\Jounce.csproj
 		SccProjectName14 = ../Jounce.Core
 		SccLocalPath14 = ..\\Jounce.Core
+		SccProjectUniqueName15 = NavigationWithBackButton\\NavigationWithBackButton.csproj
+		SccProjectName15 = NavigationWithBackButton
+		SccLocalPath15 = NavigationWithBackButton
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -139,6 +144,10 @@ Global
 		{6694C6CB-AEAB-43E6-9B5D-677CEF7AF9E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6694C6CB-AEAB-43E6-9B5D-677CEF7AF9E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6694C6CB-AEAB-43E6-9B5D-677CEF7AF9E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D32C20A8-0CE2-488C-AD53-89FFC0D840E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D32C20A8-0CE2-488C-AD53-89FFC0D840E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D32C20A8-0CE2-488C-AD53-89FFC0D840E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D32C20A8-0CE2-488C-AD53-89FFC0D840E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
