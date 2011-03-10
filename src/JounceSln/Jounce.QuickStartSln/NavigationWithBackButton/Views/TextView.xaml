@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="NavigationWithBackButton.Views.TextView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+    
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RenderTransform>
+            <TranslateTransform/>
+        </Grid.RenderTransform>
+        <Grid.Projection>
+            <PlaneProjection CenterOfRotationX="0"/>
+        </Grid.Projection>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisibilityStates">
+                <VisualState x:Name="VisibleState">
+                    <Storyboard TargetName="LayoutRoot" TargetProperty="(UIElement.Visibility)">
+                        <ObjectAnimationUsingKeyFrames>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="InvisibleState">
+                    <Storyboard TargetName="LayoutRoot" TargetProperty="(UIElement.Visibility)">
+                        <ObjectAnimationUsingKeyFrames>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualStateGroup.Transitions>
+                    <VisualTransition To="VisibleState">
+                        <Storyboard Duration="0:0:1">
+                            <DoubleAnimation Storyboard.TargetName="LayoutRoot" Storyboard.TargetProperty="(UIElement.Opacity)"
+                                             From="0" To="1"/>
+                            <DoubleAnimation Storyboard.TargetName="LayoutRoot" Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TranslateTransform.X)"
+                                             From="20" To="0"/>
+                        </Storyboard>
+                    </VisualTransition>
+                    <VisualTransition To="InvisibleState">
+                        <Storyboard Duration="0:0:1">
+                            <DoubleAnimation Storyboard.TargetName="LayoutRoot" Storyboard.TargetProperty="(UIElement.Opacity)"
+                                             From="1" To="0"/>
+                            <DoubleAnimation Storyboard.TargetName="LayoutRoot" Storyboard.TargetProperty="(FrameworkElement.Projection).(PlaneProjection.RotationY)"
+                                             From="0" To="-90"/>
+                        </Storyboard>
+                    </VisualTransition>
+                </VisualStateGroup.Transitions>
+            </VisualStateGroup>            
+        </VisualStateManager.VisualStateGroups>
+        <Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <TextBlock Width="400" TextWrapping="Wrap">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat, diam eu sodales vehicula, dui quam viverra dui, ac tincidunt lectus ipsum vel nunc. Aliquam fermentum euismod condimentum. Aliquam aliquam faucibus risus id eleifend. Ut convallis sagittis dignissim. Aliquam mauris enim, fringilla eget egestas quis, mattis eu erat. Duis et vulputate velit. Aenean quis nibh justo, at imperdiet magna. Vivamus neque nunc, imperdiet at dapibus sed, elementum in nisl. Duis imperdiet bibendum lacus, sed tempus purus dapibus vitae. Pellentesque et dolor nibh, a ornare lacus. Nunc pharetra, ante sed egestas dignissim, nisi nunc imperdiet purus, et feugiat magna justo cursus mauris. Sed faucibus, nisi sed varius imperdiet, nisi nisl tristique massa, a lacinia tortor mi eget nulla. Quisque vestibulum mi eget augue porta at elementum risus tincidunt. Duis sit amet adipiscing est. Suspendisse congue odio lacus, a faucibus massa. Cras sit amet ante in elit dapibus cursus ut vitae erat. Ut dolor tortor, ultricies sed dictum et, mattis sed sapien. Fusce ac felis mauris, eu imperdiet nisi. Vestibulum erat diam, consectetur ut laoreet nec, vestibulum commodo lacus. Donec turpis felis, varius vitae lacinia quis, blandit vitae urna.
+        </TextBlock>
+        </Viewbox>
+    </Grid>
+</UserControl>
