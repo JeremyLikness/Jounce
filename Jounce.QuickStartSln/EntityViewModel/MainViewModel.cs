@@ -3,7 +3,7 @@ using System.Windows;
 using Jounce.Core.Command;
 using Jounce.Core.ViewModel;
 using Jounce.Framework.Command;
-using Jounce.Framework.ViewModels;
+using Jounce.Framework.ViewModel;
 
 namespace EntityViewModel
 {
@@ -130,7 +130,7 @@ namespace EntityViewModel
             }
         }
 
-        protected override void _ValidateAll()
+        protected override void ValidateAll()
         {
             _ValidateName(ExtractPropertyName(() => FirstName), _firstName);
             _ValidateName(ExtractPropertyName(() => LastName), _lastName);
@@ -138,7 +138,7 @@ namespace EntityViewModel
             _ValidateEmail();
         }
 
-        protected override void _OnCommitted()
+        protected override void OnCommitted()
         {
             MessageBox.Show("Record was saved.");
             _Reset();

@@ -5,7 +5,7 @@ using Jounce.Core.Event;
 using Jounce.Core.View;
 using Jounce.Core.ViewModel;
 using Jounce.Framework;
-using Jounce.Framework.ViewModels;
+using Jounce.Framework.ViewModel;
 
 namespace NavigationWithBackButton.ViewModels
 {
@@ -43,7 +43,7 @@ namespace NavigationWithBackButton.ViewModels
 
         public ObservableCollection<Tuple<string, string>> Menu { get; private set; }
 
-        public override void _Initialize()
+        protected override void InitializeVm()
         {
             var query = (from vi in ((ViewModelRouter) Router).Views
                          where vi.Metadata.Category.Equals("Content")
@@ -59,7 +59,7 @@ namespace NavigationWithBackButton.ViewModels
 
             EventAggregator.Subscribe(this);
 
-            base._Initialize();
+            base.InitializeVm();
         }
 
         public void HandleEvent(ViewNavigationArgs publishedEvent)

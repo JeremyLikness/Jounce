@@ -8,7 +8,7 @@ namespace SimpleNavigationWithRegion.ViewModels
     {
         private string _lastView = string.Empty;
 
-        public override void _Activate(string viewName)
+        protected override void ActivateView(string viewName)
         {
             if (string.IsNullOrEmpty(_lastView))
             {
@@ -23,7 +23,7 @@ namespace SimpleNavigationWithRegion.ViewModels
             GoToVisualStateForView(viewName, "ShowState", true);
         }
 
-        public override void _Deactivate(string viewName)
+        protected override void DeactivateView(string viewName)
         {
             GoToVisualStateForView(viewName, "HideState", true);
         }

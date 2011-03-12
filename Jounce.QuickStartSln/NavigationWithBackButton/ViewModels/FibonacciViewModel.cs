@@ -39,9 +39,9 @@ namespace NavigationWithBackButton.ViewModels
             }
         }
 
-        public override void _Initialize()
+        protected override void InitializeVm()
         {
-            base._Initialize();   
+            base.InitializeVm();   
         
             WorkflowController.Begin(_GetSequence());
         }    

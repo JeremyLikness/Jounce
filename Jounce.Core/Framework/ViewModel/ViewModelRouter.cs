@@ -10,7 +10,7 @@ using Jounce.Core.Fluent;
 using Jounce.Core.View;
 using Jounce.Core.ViewModel;
 
-namespace Jounce.Framework.ViewModels
+namespace Jounce.Framework.ViewModel
 {
     /// <summary>
     ///     This class routes views and view models
@@ -20,7 +20,18 @@ namespace Jounce.Framework.ViewModels
     public class ViewModelRouter : IViewModelRouter, IFluentViewModelRouter 
     {
         const string LAYOUT_ROOT = "LayoutRoot";
-            
+
+        /// <summary>
+        ///     Get the view model tag for the view
+        /// </summary>
+        /// <param name="view">The view</param>
+        /// <returns>The view model tag</returns>
+        public string GetViewModelTagForView(string view)
+        {
+            var vm = _GetViewModelInfoForView(view);
+            return vm == null ? string.Empty : vm.Metadata.ViewModelType;
+        }
+
         /// <summary>
         ///     Indexer to user controls
         /// </summary>
@@ -38,7 +49,7 @@ namespace Jounce.Framework.ViewModels
         /// <returns></returns>
         public UserControl ViewQuery(string name)
         {
-            var v = GetViewInfo(name);
+            var v = _GetViewInfo(name);
             return v == null ? null : v.Value;
         }
 
@@ -49,7 +60,7 @@ namespace Jounce.Framework.ViewModels
         /// <returns></returns>
         public bool HasView(string name)
         {
-            return GetViewInfo(name) != null;
+            return _GetViewInfo(name) != null;
         }
 
         /// <summary>
@@ -71,7 +82,7 @@ namespace Jounce.Framework.ViewModels
         /// </summary>
         /// <param name="viewName">The name of the view</param>
         /// <returns></returns>
-        private Lazy<UserControl, IExportAsViewMetadata> GetViewInfo(string viewName)
+        private Lazy<UserControl, IExportAsViewMetadata> _GetViewInfo(string viewName)
         {
             return (from v in Views where v.Metadata.ExportedViewType.Equals(viewName) select v).FirstOrDefault();
         }
@@ -87,7 +98,7 @@ namespace Jounce.Framework.ViewModels
         /// </summary>
         /// <param name="view">The view</param>
         /// <returns>The corresponding view model information</returns>
-        private Lazy<IViewModel, IExportAsViewModelMetadata> GetViewModelInfoForView(string view)
+        private Lazy<IViewModel, IExportAsViewModelMetadata> _GetViewModelInfoForView(string view)
         {
             return (from r in _fluentRoutes
                     from vm in ViewModels
@@ -113,7 +124,7 @@ namespace Jounce.Framework.ViewModels
         {
             if (HasView(viewName))
             {
-                var vm = GetViewModelInfoForView(viewName);
+                var vm = _GetViewModelInfoForView(viewName);
                 if (vm != null)
                 {                    
                     if (vm.IsValueCreated)
@@ -198,6 +209,17 @@ namespace Jounce.Framework.ViewModels
         }
 
         /// <summary>
+        ///     Get the meta data for a view
+        /// </summary>
+        /// <param name="view">The view</param>
+        /// <returns>The meta data for the view</returns>
+        public IExportAsViewMetadata GetMetadataForView(string view)
+        {
+            var viewInfo = _GetViewInfo(view);
+            return viewInfo == null ? null : viewInfo.Metadata;
+        }
+
+        /// <summary>
         ///     Activates a view and returns the view
         /// </summary>
         /// <param name="viewName">The view name</param>
@@ -212,7 +234,7 @@ namespace Jounce.Framework.ViewModels
             {
                 var view = ViewQuery(viewName);
 
-                var viewModelInfo = GetViewModelInfoForView(viewName);
+                var viewModelInfo = _GetViewModelInfoForView(viewName);
 
                 if (viewModelInfo != null)
                 {
@@ -238,7 +260,9 @@ namespace Jounce.Framework.ViewModels
                         RoutedEventHandler loaded = null;
                         loaded = (o, e) =>
                                                         {
+// ReSharper disable AccessToModifiedClosure
                                                             ((UserControl) o).Loaded -= loaded;
+// ReSharper restore AccessToModifiedClosure
                                                             viewModel.Activate(viewName);
                                                         };
                         view.Loaded += loaded;

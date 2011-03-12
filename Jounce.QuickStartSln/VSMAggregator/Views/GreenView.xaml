@@ -3,8 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:Interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
-    xmlns:Views="clr-namespace:Jounce.Framework.Views;assembly=Jounce" mc:Ignorable="d"
+    xmlns:Interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:View="clr-namespace:Jounce.Framework.View;assembly=Jounce" mc:Ignorable="d"
     d:DesignHeight="300" d:DesignWidth="400">
     
     <Grid x:Name="LayoutRoot" Background="Green" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5">
@@ -73,8 +72,8 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <Interactivity:Interaction.Behaviors>
-            <Views:VisualStateSubscriptionBehavior EventName="NavigateGreen" StateName="ShowState" UseTransitions="True"/>
-            <Views:VisualStateSubscriptionBehavior EventName="NavigateRed" StateName="HideState" UseTransitions="True"/>
+            <View:VisualStateSubscriptionBehavior EventName="NavigateGreen" StateName="ShowState" UseTransitions="True"/>
+            <View:VisualStateSubscriptionBehavior EventName="NavigateRed" StateName="HideState" UseTransitions="True"/>
         </Interactivity:Interaction.Behaviors>
         <TextBlock 
             FontSize="16"
@@ -83,7 +82,7 @@
         <Button Margin="10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content=" BACK ">
             <Interactivity:Interaction.Triggers>
                 <Interactivity:EventTrigger EventName="Click">
-                    <Views:VisualStateAggregatorTrigger EventName="NavigateRed"/>
+                    <View:VisualStateAggregatorTrigger EventName="NavigateRed"/>
                 </Interactivity:EventTrigger>
             </Interactivity:Interaction.Triggers>
         </Button>

@@ -9,8 +9,8 @@
     <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DyanmicXapCalculatorAdvanced</RootNamespace>
-    <AssemblyName>DyanmicXapCalculatorAdvanced</AssemblyName>
+    <RootNamespace>DynamicXapCalculatorAdvanced</RootNamespace>
+    <AssemblyName>DynamicXapCalculatorAdvanced</AssemblyName>
     <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
@@ -19,7 +19,7 @@
     </SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
-    <XapFilename>DyanmicXapCalculatorAdvanced.xap</XapFilename>
+    <XapFilename>DynamicXapCalculatorAdvanced.xap</XapFilename>
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
     <SilverlightAppEntry>DyanmicXapCalculatorAdvanced.App</SilverlightAppEntry>
     <TestPageFileName>DyanmicXapCalculatorAdvancedTestPage.html</TestPageFileName>
@@ -86,6 +86,7 @@
     <ProjectReference Include="..\..\Jounce.Core\Jounce.csproj">
       <Project>{B981528B-2608-499A-9088-985E6B351F6B}</Project>
       <Name>Jounce</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />

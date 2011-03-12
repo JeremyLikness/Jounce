@@ -2,7 +2,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Jounce.Framework.Views
+namespace Jounce.Framework.View
 {
     /// <summary>
     ///     Subscription to the visual state aggregator service
@@ -39,7 +39,11 @@ namespace Jounce.Framework.Views
             if (IsExpired || !_event.Equals(eventName)) return;
 
             var control = _targetControl.Target as Control;
-            VisualStateManager.GoToState(control, _state, _useTransitions);
+
+            if (control != null)
+            {
+                VisualStateManager.GoToState(control, _state, _useTransitions);
+            }
         }
 
         public override bool Equals(object obj)
