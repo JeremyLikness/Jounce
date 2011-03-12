@@ -169,13 +169,26 @@ namespace Jounce.Framework.ViewModel
         }
 
         /// <summary>
+        ///     Old resolve view model
+        /// </summary>
+        /// <typeparam name="T">Type</typeparam>
+        /// <param name="activate">True to call activate</param>
+        /// <param name="viewModelType">The type of the view model</param>
+        /// <returns>The view model</returns>
+        public T ResolveViewModel<T>(bool activate, string viewModelType = null) where T : IViewModel
+        {
+            return ResolveViewModel<T>(activate, viewModelType, new Dictionary<string, object>());
+        }
+
+        /// <summary>
         ///     Resolve the view model based on type
         /// </summary>
         /// <typeparam name="T">Type of the view model</typeparam>
         /// <param name="activate">False to suppress activation</param>
         /// <param name="viewModelType">Optional type when not using type names</param>
+        /// <param name="parameters">Parameters for the view</param>
         /// <returns>The view model instance</returns>
-        public T ResolveViewModel<T>(bool activate, string viewModelType = null) where T : IViewModel
+        public T ResolveViewModel<T>(bool activate, string viewModelType = null, IDictionary<string, object> parameters = null) where T : IViewModel
         {
             if (viewModelType == null)
             {
@@ -202,7 +215,7 @@ namespace Jounce.Framework.ViewModel
 
             if (activate)
             {
-                viewModel.Activate(string.Empty);
+                viewModel.Activate(string.Empty, parameters);
             }
 
             return (T) viewModel;
@@ -223,8 +236,9 @@ namespace Jounce.Framework.ViewModel
         ///     Activates a view and returns the view
         /// </summary>
         /// <param name="viewName">The view name</param>
+        /// <param name="parameters">The parameters for the view</param>
         /// <returns>The user control</returns>
-        public bool ActivateView(string viewName)
+        public bool ActivateView(string viewName, IDictionary<string, object> parameters)
         {
             Logger.LogFormat(LogSeverity.Verbose, GetType().FullName, Resources.ViewModelRouter_ActivateView,
                              MethodBase.GetCurrentMethod().Name,
@@ -263,13 +277,13 @@ namespace Jounce.Framework.ViewModel
 // ReSharper disable AccessToModifiedClosure
                                                             ((UserControl) o).Loaded -= loaded;
 // ReSharper restore AccessToModifiedClosure
-                                                            viewModel.Activate(viewName);
+                                                            viewModel.Activate(viewName, parameters);
                                                         };
                         view.Loaded += loaded;
                     }
                     else
                     {
-                        viewModel.Activate(viewName);
+                        viewModel.Activate(viewName, parameters);
                     }
                 }
 

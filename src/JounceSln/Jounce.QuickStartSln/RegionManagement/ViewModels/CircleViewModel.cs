@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Jounce.Core.ViewModel;
 
 namespace RegionManagement.ViewModels
@@ -13,7 +14,7 @@ namespace RegionManagement.ViewModels
     {
        public const string CIRCLE_VM = "CircleViewModel";
 
-        protected override void ActivateView(string viewName)
+       protected override void ActivateView(string viewName, IDictionary<string, object> parameters)
         {
             GoToVisualState("ShowState", true);
         }

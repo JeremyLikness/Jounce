@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
 using Jounce.Core.Command;
@@ -39,7 +40,7 @@ namespace VSMAggregator.ViewModels
             GoToVisualState("HideState", false);
         }
 
-        protected override void ActivateView(string viewName)
+        protected override void ActivateView(string viewName, IDictionary<string, object> parameters)
         {
             Dates.Add(string.Format("Activated: {0}", DateTime.Now));
             GoToVisualState("ShowState", true);

@@ -40,7 +40,7 @@ namespace SimpleNavigation.ViewModels
                 view =>
                     {
                         CurrentView = view;
-                        EventAggregator.Publish(view.AsViewNavigationArgs());
+                        EventAggregator.Publish(view.AsViewNavigationArgs().AddNamedParameter("Guid", Guid.NewGuid()));
                     },
                 view => !string.IsNullOrEmpty(view) && !view.Equals(CurrentView));
             }
@@ -66,7 +66,7 @@ namespace SimpleNavigation.ViewModels
                 {
                     if (Views != null && Views.Count() > 0)
                     {
-                        _WireButtonInfo();                        
+                        WireButtonInfo();                        
                     }
                 }
                 return _buttonInfo;
@@ -97,7 +97,7 @@ namespace SimpleNavigation.ViewModels
         /// <summary>
         /// Called when a part's imports have been satisfied and it is safe to use.
         /// </summary>
-        public void _WireButtonInfo()
+        public void WireButtonInfo()
         {
             // filter only those views that are in the navigation category
             foreach(var v in from viewInfo in Views where viewInfo.Metadata.Category.Equals("Navigation")

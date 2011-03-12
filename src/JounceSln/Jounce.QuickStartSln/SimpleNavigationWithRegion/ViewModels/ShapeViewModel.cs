@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Jounce.Core.View;
 using Jounce.Core.ViewModel;
 
@@ -8,7 +9,7 @@ namespace SimpleNavigationWithRegion.ViewModels
     {
         private string _lastView = string.Empty;
 
-        protected override void ActivateView(string viewName)
+        protected override void ActivateView(string viewName, IDictionary<string, object> parameters)
         {
             if (string.IsNullOrEmpty(_lastView))
             {

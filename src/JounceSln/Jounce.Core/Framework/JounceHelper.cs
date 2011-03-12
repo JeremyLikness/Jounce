@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using Jounce.Core.View;
 
@@ -28,7 +29,37 @@ namespace Jounce.Framework
         {
             return new ViewNavigationArgs(viewName);            
         }
+        
+        /// <summary>
+        ///     Allow fluent addition of parameters
+        /// </summary>
+        /// <typeparam name="T">The type of the parameter</typeparam>
+        /// <param name="name">The name of the parameter</param>
+        /// <param name="value">The value of the parameter</param>
+        /// <returns></returns>
+        public static ViewNavigationArgs AddNamedParameter<T>(this ViewNavigationArgs args, string name, T value)
+        {
+            args.ViewParameters.Add(name, value);
+            return args;
+        }
 
+        /// <summary>
+        ///     Retrieve the parameter value from the dictionary
+        /// </summary>
+        /// <typeparam name="T">The type</typeparam>
+        /// <param name="parameters">The parameter collection</param>
+        /// <param name="name">The name of the parameter</param>
+        /// <returns>The parameter value</returns>
+        public static T ParameterValue<T>(this IDictionary<string, object> parameters, string name)
+        {
+            if (parameters.ContainsKey(name) && parameters[name] is T)
+            {
+                return (T) parameters[name];
+            }
+
+            return default(T);
+        }
+        
         /// <summary>
         ///     Safely dispatch an action
         /// </summary>

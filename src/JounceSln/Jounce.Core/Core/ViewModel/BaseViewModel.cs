@@ -105,6 +105,9 @@ namespace Jounce.Core.ViewModel
             InitializeVm();
         }
 
+        /// <summary>
+        ///     Called the very first time the view model is created
+        /// </summary>
         protected virtual void InitializeVm()
         {
             
@@ -115,11 +118,24 @@ namespace Jounce.Core.ViewModel
         /// </summary>
         public void Activate(string viewName)
         {
-            Logger.LogFormat(LogSeverity.Information, GetType().FullName, "{0} [{1}]", MethodBase.GetCurrentMethod().Name, viewName);
-            ActivateView(viewName);
+            Activate(viewName, new Dictionary<string, object>());
         }
 
-        protected virtual void ActivateView(string viewName)
+        /// <summary>
+        ///     Called whenever the view model has a corresponding view come into focus
+        /// </summary>
+        public void Activate(string viewName, IDictionary<string, object> parameters)
+        {
+            Logger.LogFormat(LogSeverity.Information, GetType().FullName, "{0} [{1}]", MethodBase.GetCurrentMethod().Name, viewName);
+            ActivateView(viewName, parameters);
+        }
+
+        /// <summary>
+        ///     Called when a view is activated through navigation
+        /// </summary>
+        /// <param name="viewName">The tag for the view</param>
+        /// <param name="viewParameters">Parameters requested for the activation</param>
+        protected virtual void ActivateView(string viewName, IDictionary<string, object> viewParameters)
         {
             
         }
@@ -133,6 +149,10 @@ namespace Jounce.Core.ViewModel
             DeactivateView(viewName);
         }       
 
+        /// <summary>
+        ///     Called when a view is deactivated through navigation
+        /// </summary>
+        /// <param name="viewName">The tag for the view</param>
         protected virtual void DeactivateView(string viewName)
         {
             

@@ -97,13 +97,13 @@ namespace Jounce.Framework.View
                                                      {
                                                          throw exception;
                                                      }
-                                                     _ActivateView(e.ViewType);
+                                                     _ActivateView(e.ViewType, e.ViewParameters);
                                                  });
             }
             else
             {
                 // just activate the view directly
-                _ActivateView(e.ViewType);
+                _ActivateView(e.ViewType, e.ViewParameters);
             }
         }
 
@@ -111,9 +111,10 @@ namespace Jounce.Framework.View
         ///     Activate the view
         /// </summary>
         /// <param name="viewName">The name of the view</param>
-        private void _ActivateView(string viewName)
+        /// <param name="parameters">Parameters for the view</param>
+        private void _ActivateView(string viewName, IDictionary<string, object> parameters)
         {            
-            ViewModelRouter.ActivateView(viewName);
+            ViewModelRouter.ActivateView(viewName, parameters);
             EventAggregator.Publish(new ViewNavigatedArgs(viewName));
         }
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace Jounce.Core.ViewModel
@@ -31,6 +32,11 @@ namespace Jounce.Core.ViewModel
         ///     Called whenever the view model has a corresponding view come into focus
         /// </summary>
         void Activate(string viewName);
+
+        /// <summary>
+        ///     Called whenever the view model has a corresponding view come into focus
+        /// </summary>
+        void Activate(string viewName, IDictionary<string, object> parameters);
 
         /// <summary>
         ///     Called whenever a corresponding view goes out of focus
