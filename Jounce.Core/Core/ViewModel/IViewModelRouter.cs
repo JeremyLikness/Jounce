@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Windows.Controls;
 using Jounce.Core.View;
 
@@ -13,8 +14,9 @@ namespace Jounce.Core.ViewModel
         ///     Activates a view
         /// </summary>
         /// <param name="viewName">The view name</param>
+        /// <param name="parameters">The parameters for the view</param>
         /// <returns>The user control</returns>
-        bool ActivateView(string viewName);
+        bool ActivateView(string viewName, IDictionary<string, object> parameters);
 
         /// <summary>
         ///     Deactivates a view

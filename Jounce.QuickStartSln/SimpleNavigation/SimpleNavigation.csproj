@@ -78,6 +78,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\GreenViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\GreenCircle.xaml.cs">

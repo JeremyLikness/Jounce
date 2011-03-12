@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Jounce.Core.View
 {
@@ -7,15 +8,28 @@ namespace Jounce.Core.View
     /// </summary>
     public class ViewNavigationArgs : EventArgs
     {
-        public ViewNavigationArgs(Type viewType)
+        public ViewNavigationArgs()
+        {
+            ViewParameters = new Dictionary<string, object>();
+        }
+
+        public ViewNavigationArgs(Type viewType) : this()
         {
             ViewType = viewType.FullName;
         }
 
-        public ViewNavigationArgs(string viewType)
+        public ViewNavigationArgs(string viewType) : this()
         {
             ViewType = viewType;
         }
+
+        public ViewNavigationArgs(string viewType, IDictionary<string, object> parms)            
+        {
+            ViewType = viewType;
+            ViewParameters = parms;
+        }
+
+        public IDictionary<string, object> ViewParameters { get; set; }
 
         public bool Deactivate { get; set; }
 

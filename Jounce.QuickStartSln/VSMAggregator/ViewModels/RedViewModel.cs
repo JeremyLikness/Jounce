@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Jounce.Core.ViewModel;
 using Jounce.Framework;
 using VSMAggregator.Contracts;
@@ -24,7 +25,7 @@ namespace VSMAggregator.ViewModels
             CurrentDate = DateTime.Now.ToString();
         }
 
-        protected override void ActivateView(string viewName)
+        protected override void ActivateView(string viewName, IDictionary<string, object> parameters)
         {
             CurrentDate = DateTime.Now.ToString();
         }

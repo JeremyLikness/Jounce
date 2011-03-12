@@ -1,4 +1,6 @@
-﻿using Jounce.Core.View;
+﻿using System.ComponentModel.Composition;
+using Jounce.Core.View;
+using Jounce.Core.ViewModel;
 
 namespace SimpleNavigation.Views
 {
@@ -9,5 +11,11 @@ namespace SimpleNavigation.Views
         {
             InitializeComponent();
         }
-    }
+
+        [Export]
+        public ViewModelRoute Binding
+        {
+            get { return ViewModelRoute.Create("GreenCircle", "GreenCircle"); }
+        }
+    }    
 }

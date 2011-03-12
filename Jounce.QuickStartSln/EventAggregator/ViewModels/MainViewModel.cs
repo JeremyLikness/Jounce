@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using Jounce.Core.ViewModel;
 using Jounce.Framework;
@@ -17,7 +18,7 @@ namespace EventAggregator.ViewModels
         ///     On activation, active the sub-views as well
         /// </summary>
         /// <param name="viewName"></param>
-        protected override void ActivateView(string viewName)
+        protected override void ActivateView(string viewName, IDictionary<string, object> parameters)
         {
             EventAggregator.Publish(Constants.VIEW_SENDER.AsViewNavigationArgs());
             EventAggregator.Publish(Constants.VIEW_RECEIVER.AsViewNavigationArgs());            
