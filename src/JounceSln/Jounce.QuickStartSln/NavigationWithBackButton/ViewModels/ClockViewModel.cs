@@ -20,10 +20,10 @@ namespace NavigationWithBackButton.ViewModels
 
         public string Time { get; set; }
 
-        public override void _Initialize()
+        protected override void InitializeVm()
         {
             WorkflowController.Begin(ClockWorkflow());
-            base._Initialize();
+            base.InitializeVm();
         }
 
         public IEnumerable<IWorkflow> ClockWorkflow()

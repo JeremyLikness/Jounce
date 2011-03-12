@@ -3,7 +3,7 @@ using System.ComponentModel.Composition;
 using System.Windows;
 using System.Windows.Interactivity;
 
-namespace Jounce.Framework.Views
+namespace Jounce.Framework.View
 {
     /// <summary>
     ///     Trigger to raise the visual state aggregator event

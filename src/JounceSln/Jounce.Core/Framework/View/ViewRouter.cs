@@ -8,7 +8,7 @@ using Jounce.Core.Fluent;
 using Jounce.Core.View;
 using Jounce.Core.ViewModel;
 
-namespace Jounce.Framework.Views
+namespace Jounce.Framework.View
 {
     /// <summary>
     ///     The view router is responsible for on-demand loading

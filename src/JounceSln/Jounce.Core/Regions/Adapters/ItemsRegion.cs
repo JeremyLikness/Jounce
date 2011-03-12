@@ -18,8 +18,8 @@ namespace Jounce.Regions.Adapters
         /// <param name="targetRegion">The name of the region</param>
         public override void ActivateControl(string viewName, string targetRegion)
         {
-            _ValidateControlName(viewName);
-            _ValidateRegionName(targetRegion);
+            ValidateControlName(viewName);
+            ValidateRegionName(targetRegion);
 
             var region = Regions[targetRegion];
 

@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 using Jounce.Core.ViewModel;
 using Jounce.Framework.Command;
 
-namespace Jounce.Framework.ViewModels
+namespace Jounce.Framework.ViewModel
 {
     /// <summary>
     ///     Base class for view models that maintain "dirty" state (commit) and/or require validation
@@ -25,11 +25,11 @@ namespace Jounce.Framework.ViewModels
             CommitCommand = new ActionCommand<object>(
                 obj =>
                 {
-                    _ValidateAll();
+                    ValidateAll();
 
                     if (HasErrors) return;
                     
-                    _OnCommitted();
+                    OnCommitted();
                     
                     Committed = true;
                 },
@@ -51,7 +51,7 @@ namespace Jounce.Framework.ViewModels
         /// <summary>
         ///     Use this to validate any late-bound fields before committing
         /// </summary>
-        protected virtual void _ValidateAll()
+        protected virtual void ValidateAll()
         {
             
         }
@@ -59,7 +59,7 @@ namespace Jounce.Framework.ViewModels
         /// <summary>
         ///     Use this to perform whatever action is needed when committed
         /// </summary>
-        protected virtual void _OnCommitted()
+        protected virtual void OnCommitted()
         {
             
         }
@@ -219,7 +219,7 @@ namespace Jounce.Framework.ViewModels
             IEnumerable<string> currentPropertyErrors;
             if (_errors.TryGetValue(propertyNameKey, out currentPropertyErrors))
             {
-                if (!AreErrorCollectionsEqual(currentPropertyErrors, propertyErrors))
+                if (!_AreErrorCollectionsEqual(currentPropertyErrors, propertyErrors))
                 {
                     if (propertyErrors.Any())
                     {
@@ -273,7 +273,7 @@ namespace Jounce.Framework.ViewModels
         /// <param name="propertyErrors">The property errors</param>
         /// <param name="currentPropertyErrors">The current</param>
         /// <returns>True if there are/aren't equal</returns>
-        private static bool AreErrorCollectionsEqual(IEnumerable<string> propertyErrors,
+        private static bool _AreErrorCollectionsEqual(IEnumerable<string> propertyErrors,
                                                      IEnumerable<string> currentPropertyErrors)
         {
             var equals = currentPropertyErrors.Zip(propertyErrors, (current, newError) => current == newError);

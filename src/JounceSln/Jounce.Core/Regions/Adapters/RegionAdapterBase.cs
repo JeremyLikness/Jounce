@@ -75,7 +75,7 @@ namespace Jounce.Regions.Adapters
                 return;
             }
 
-            _ValidateRegionName(targetRegion);
+            ValidateRegionName(targetRegion);
 
             Controls.Add(viewName, view);
         }
@@ -94,7 +94,7 @@ namespace Jounce.Regions.Adapters
         /// <param name="viewName">The name of the view</param>
         public virtual void DeactivateControl(string viewName)
         {
-            _ValidateControlName(viewName);            
+            ValidateControlName(viewName);            
         }
         
         /// <summary>
@@ -112,7 +112,7 @@ namespace Jounce.Regions.Adapters
             return Controls.ContainsKey(viewName);
         }
 
-        protected virtual void _ValidateControlName(string controlName)
+        protected virtual void ValidateControlName(string controlName)
         {
             if (string.IsNullOrEmpty(controlName))
             {
@@ -125,7 +125,7 @@ namespace Jounce.Regions.Adapters
             }
         }
 
-        protected virtual void _ValidateRegionName(string targetRegion)
+        protected virtual void ValidateRegionName(string targetRegion)
         {           
             if (!Regions.ContainsKey(targetRegion))
             {

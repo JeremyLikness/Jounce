@@ -24,12 +24,12 @@ namespace VSMAggregator.ViewModels
             CurrentDate = DateTime.Now.ToString();
         }
 
-        public override void _Activate(string viewName)
+        protected override void ActivateView(string viewName)
         {
             CurrentDate = DateTime.Now.ToString();
         }
 
-        public override void _Initialize()
+        protected override void InitializeVm()
         {
             EventAggregator.Publish(Globals.VIEW_GREEN.AsViewNavigationArgs());
             GoToVisualState("ShowState", false);

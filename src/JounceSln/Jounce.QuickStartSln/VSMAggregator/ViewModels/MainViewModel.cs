@@ -9,7 +9,7 @@ namespace VSMAggregator.ViewModels
         /// <summary>
         ///     Just get the red view routed
         /// </summary>
-        public override void _Initialize()
+        protected override void InitializeVm()
         {
             EventAggregator.Publish(Globals.VIEW_RED.AsViewNavigationArgs());
         }

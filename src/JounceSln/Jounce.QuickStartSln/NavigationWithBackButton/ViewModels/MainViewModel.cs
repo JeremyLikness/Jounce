@@ -6,7 +6,7 @@ using Jounce.Core.View;
 using Jounce.Core.ViewModel;
 using Jounce.Framework;
 using Jounce.Framework.Command;
-using Jounce.Framework.ViewModels;
+using Jounce.Framework.ViewModel;
 using NavigationWithBackButton.Messages;
 
 namespace NavigationWithBackButton.ViewModels
@@ -26,11 +26,11 @@ namespace NavigationWithBackButton.ViewModels
                 o => _history.Count > 0);
         }
 
-        public override void _Initialize()
+        protected override void InitializeVm()
         {
             EventAggregator.Subscribe<ViewNavigationArgs>(this);
             EventAggregator.Subscribe<GoBack>(this);
-            base._Initialize();
+            base.InitializeVm();
             EventAggregator.Publish("Navigation".AsViewNavigationArgs());
         }
 

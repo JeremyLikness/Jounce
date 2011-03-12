@@ -13,12 +13,12 @@ namespace RegionManagement.ViewModels
     {
        public const string CIRCLE_VM = "CircleViewModel";
 
-        public override void _Activate(string viewName)
+        protected override void ActivateView(string viewName)
         {
             GoToVisualState("ShowState", true);
         }
 
-        public override void _Deactivate(string viewName)
+        protected override void DeactivateView(string viewName)
         {
             GoToVisualState("HideState", true);
         }

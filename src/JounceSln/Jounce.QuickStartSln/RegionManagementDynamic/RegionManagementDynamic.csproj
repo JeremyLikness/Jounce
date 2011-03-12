@@ -95,6 +95,7 @@
     <ProjectReference Include="..\..\Jounce.Core\Jounce.csproj">
       <Project>{B981528B-2608-499A-9088-985E6B351F6B}</Project>
       <Name>Jounce</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />

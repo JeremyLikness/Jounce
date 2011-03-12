@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Windows.Controls;
 
-namespace Jounce.Framework.Views
+namespace Jounce.Framework.View
 {
     /// <summary>
     ///     Handles aggregation of visual state events between separate controls

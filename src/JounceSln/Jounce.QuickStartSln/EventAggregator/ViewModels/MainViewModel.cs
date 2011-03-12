@@ -17,7 +17,7 @@ namespace EventAggregator.ViewModels
         ///     On activation, active the sub-views as well
         /// </summary>
         /// <param name="viewName"></param>
-        public override void _Activate(string viewName)
+        protected override void ActivateView(string viewName)
         {
             EventAggregator.Publish(Constants.VIEW_SENDER.AsViewNavigationArgs());
             EventAggregator.Publish(Constants.VIEW_RECEIVER.AsViewNavigationArgs());            

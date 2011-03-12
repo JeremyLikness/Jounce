@@ -4,10 +4,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:design="clr-namespace:VSMAggregator.DesignData" 
-    xmlns:Interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
-    xmlns:Views="clr-namespace:Jounce.Framework.Views;assembly=Jounce" 
-    xmlns:Services="clr-namespace:Jounce.Framework.Services;assembly=Jounce" 
-    mc:Ignorable="d"  d:DesignHeight="300" d:DesignWidth="400">    
+    xmlns:Interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:Services="clr-namespace:Jounce.Framework.Services;assembly=Jounce" xmlns:View="clr-namespace:Jounce.Framework.View;assembly=Jounce" mc:Ignorable="d"  d:DesignHeight="300" d:DesignWidth="400">    
     <Grid x:Name="LayoutRoot" Background="Red" d:DataContext="{d:DesignInstance design:DesignRedViewModel, IsDesignTimeCreatable=True}"
           RenderTransformOrigin="0.5,0.5">
         <Grid.Projection>
@@ -123,22 +120,22 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <Interactivity:Interaction.Behaviors>
-            <Views:VisualStateSubscriptionBehavior EventName="NavigateGreen" StateName="GreenState" UseTransitions="True"/>
-            <Views:VisualStateSubscriptionBehavior EventName="NavigateRed" StateName="ShowState" UseTransitions="True"/>
-            <Views:VisualStateSubscriptionBehavior EventName="NavigateBlue" StateName="HideState" UseTransitions="True"/>
+            <View:VisualStateSubscriptionBehavior EventName="NavigateGreen" StateName="GreenState" UseTransitions="True"/>
+            <View:VisualStateSubscriptionBehavior EventName="NavigateRed" StateName="ShowState" UseTransitions="True"/>
+            <View:VisualStateSubscriptionBehavior EventName="NavigateBlue" StateName="HideState" UseTransitions="True"/>
         </Interactivity:Interaction.Behaviors>
         <TextBlock FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding CurrentDate}"/>
         <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Content=" GREEN ">
             <Interactivity:Interaction.Triggers>
                 <Interactivity:EventTrigger EventName="Click">
-                    <Views:VisualStateAggregatorTrigger EventName="NavigateGreen"/>
+                    <View:VisualStateAggregatorTrigger EventName="NavigateGreen"/>
                 </Interactivity:EventTrigger>
             </Interactivity:Interaction.Triggers>
         </Button>
         <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" Content=" BLUE ">
             <Interactivity:Interaction.Triggers>
                 <Interactivity:EventTrigger EventName="Click">
-                    <Views:VisualStateAggregatorTrigger EventName="NavigateBlue"/>
+                    <View:VisualStateAggregatorTrigger EventName="NavigateBlue"/>
                     <Services:NavigationTrigger Target="BlueView"/>
                 </Interactivity:EventTrigger>
             </Interactivity:Interaction.Triggers>

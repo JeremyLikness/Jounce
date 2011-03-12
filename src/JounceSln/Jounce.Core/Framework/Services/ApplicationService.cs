@@ -9,19 +9,26 @@ using Jounce.Core;
 using Jounce.Core.Application;
 using Jounce.Core.Event;
 using Jounce.Core.View;
-using Jounce.Framework.Views;
+using Jounce.Framework.View;
 
 namespace Jounce.Framework.Services
 {
     /// <summary>
     ///     Main application service
     /// </summary>        
-    public class ApplicationService : IApplicationService, IApplicationLifetimeAware
+    public class ApplicationService : IApplicationService, IApplicationLifetimeAware, IDisposable
     {
+        private bool _disposed;
+
         /// <summary>
         ///     Main aggregate catalog used by the system
         /// </summary>
         private AggregateCatalog _mainCatalog;
+
+        /// <summary>
+        ///     Container
+        /// </summary>
+        private CompositionContainer _container;
 
         /// <summary>
         ///     Mef debugger
@@ -66,15 +73,15 @@ namespace Jounce.Framework.Services
 
             _mainCatalog = new AggregateCatalog(new DeploymentCatalog()); // empty one adds current deployment (xap)
 
-            var container = new CompositionContainer(_mainCatalog);
+            _container = new CompositionContainer(_mainCatalog);
             
-            CompositionHost.Initialize(container);
+            CompositionHost.Initialize(_container);
             CompositionInitializer.SatisfyImports(this);
 
             if (Logger == null)
             {
                 ILogger defaultLogger = new DefaultLogger(logLevel);
-                container.ComposeExportedValue(defaultLogger);
+                _container.ComposeExportedValue(defaultLogger);
             }
             else
             {
@@ -82,8 +89,8 @@ namespace Jounce.Framework.Services
             }
 
             DeploymentService.Catalog = _mainCatalog;
-            DeploymentService.Container = container;
-            _mefDebugger = new MefDebugger(container, Logger);
+            DeploymentService.Container = _container;
+            _mefDebugger = new MefDebugger(_container, Logger);
         }
 
         /// <summary>
@@ -100,7 +107,7 @@ namespace Jounce.Framework.Services
         /// </summary>
         public void Starting()
         {
-            Application.Current.UnhandledException += Current_UnhandledException;
+            Application.Current.UnhandledException += _CurrentUnhandledException;
 
             var viewInfo = (from v in Views where v.Metadata.IsShell select v).FirstOrDefault();
 
@@ -133,7 +140,7 @@ namespace Jounce.Framework.Services
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void Current_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
+        void _CurrentUnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
         {
             // we didn't come back from a broadcast
             if (_unhandled)
@@ -176,6 +183,38 @@ namespace Jounce.Framework.Services
         public void Exited()
         {
             Logger.Log(LogSeverity.Information, GetType().FullName, MethodBase.GetCurrentMethod().Name);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed) return;
+
+            if (!disposing) return;
+
+            if (_mainCatalog != null)
+            {
+                _mainCatalog.Dispose();
+                _mainCatalog = null;
+            }
+
+            if (_container != null)
+            {
+                _container.Dispose();
+                _container = null;
+            }
+
+            _mefDebugger = null;
+
+            _disposed = true;
+        }
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }

@@ -5,7 +5,7 @@ using Jounce.Core.Command;
 using Jounce.Core.ViewModel;
 using Jounce.Framework;
 using Jounce.Framework.Command;
-using Jounce.Framework.Views;
+using Jounce.Framework.View;
 using VSMAggregator.Contracts;
 
 namespace VSMAggregator.ViewModels
@@ -33,13 +33,13 @@ namespace VSMAggregator.ViewModels
             EventAggregator.Publish(Globals.VIEW_RED.AsViewNavigationArgs());
         }
 
-        public override void _Initialize()
+        protected override void InitializeVm()
         {
             Dates.Add(string.Format("Initialized: {0}", DateTime.Now));
             GoToVisualState("HideState", false);
         }
 
-        public override void _Activate(string viewName)
+        protected override void ActivateView(string viewName)
         {
             Dates.Add(string.Format("Activated: {0}", DateTime.Now));
             GoToVisualState("ShowState", true);

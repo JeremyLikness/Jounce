@@ -3,7 +3,7 @@ using System.ComponentModel.Composition;
 using System.Windows.Input;
 using Jounce.Framework.Command;
 
-namespace DyanmicXapCalculatorAdvanced
+namespace DynamicXapCalculatorAdvanced
 {
     /// <summary>
     ///     Adds multiplication and division

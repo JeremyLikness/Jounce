@@ -102,10 +102,10 @@ namespace Jounce.Core.ViewModel
         public void Initialize()
         {            
             Logger.Log(LogSeverity.Information, GetType().FullName, MethodBase.GetCurrentMethod().Name);
-            _Initialize();
+            InitializeVm();
         }
 
-        public virtual void _Initialize()
+        protected virtual void InitializeVm()
         {
             
         }
@@ -116,10 +116,10 @@ namespace Jounce.Core.ViewModel
         public void Activate(string viewName)
         {
             Logger.LogFormat(LogSeverity.Information, GetType().FullName, "{0} [{1}]", MethodBase.GetCurrentMethod().Name, viewName);
-            _Activate(viewName);
+            ActivateView(viewName);
         }
 
-        public virtual void _Activate(string viewName)
+        protected virtual void ActivateView(string viewName)
         {
             
         }
@@ -130,10 +130,10 @@ namespace Jounce.Core.ViewModel
         public void Deactivate(string viewName)
         {
             Logger.LogFormat(LogSeverity.Information, GetType().FullName, "{0} [{1}]", MethodBase.GetCurrentMethod().Name, viewName);
-            _Deactivate(viewName);
+            DeactivateView(viewName);
         }       
 
-        public virtual void _Deactivate(string viewName)
+        protected virtual void DeactivateView(string viewName)
         {
             
         }

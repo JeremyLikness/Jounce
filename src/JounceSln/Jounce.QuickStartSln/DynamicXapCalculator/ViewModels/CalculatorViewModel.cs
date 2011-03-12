@@ -41,7 +41,7 @@ namespace DynamicXapCalculator.ViewModels
         private void _Load()
         {
             // need to make sure this is mispelled correctly :)
-            Deployment.RequestXap("DyanmicXapCalculatorAdvanced.xap",ex=>
+            Deployment.RequestXap("DynamicXapCalculatorAdvanced.xap",ex=>
                                                                             {
                                                                                 if (ex == null) return;
                                                                                 _loaded = true;

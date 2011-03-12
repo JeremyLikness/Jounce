@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Controls;
+using Jounce.Core.View;
 
 namespace Jounce.Core.ViewModel
 {
@@ -51,6 +52,20 @@ namespace Jounce.Core.ViewModel
         /// <param name="viewModelType">Optional type if typename not used</param>
         /// <returns>The view model instance</returns>
         T ResolveViewModel<T>(bool activate, string viewModelType) where T : IViewModel;
+
+        /// <summary>
+        ///     Get the meta data for a view
+        /// </summary>
+        /// <param name="view">The view</param>
+        /// <returns>The meta data for the view</returns>
+        IExportAsViewMetadata GetMetadataForView(string view);
+
+        /// <summary>
+        ///     Get the view model tag for the view
+        /// </summary>
+        /// <param name="view">The view</param>
+        /// <returns>The view model tag</returns>
+        string GetViewModelTagForView(string view);
 
         /// <summary>
         ///     Indexer to view

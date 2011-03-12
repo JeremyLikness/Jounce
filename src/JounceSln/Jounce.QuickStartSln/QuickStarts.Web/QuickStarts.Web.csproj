@@ -58,6 +58,7 @@
   <ItemGroup>
     <Content Include="ClientBin\DyanmicXapCalculatorAdvanced.xap" />
     <Content Include="ClientBin\DynamicXapCalculator.xap" />
+    <Content Include="ClientBin\DynamicXapCalculatorAdvanced.xap" />
     <Content Include="ClientBin\EntityViewModel.xap" />
     <Content Include="ClientBin\EventAggregator.xap" />
     <Content Include="ClientBin\FluentBinding.xap" />

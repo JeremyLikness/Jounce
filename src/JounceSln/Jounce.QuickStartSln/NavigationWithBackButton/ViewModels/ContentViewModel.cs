@@ -4,16 +4,16 @@ namespace NavigationWithBackButton.ViewModels
 {
     public abstract class ContentViewModel : BaseViewModel 
     {
-        public override void _Activate(string viewName)
+        protected override void ActivateView(string viewName)
         {
             GoToVisualState("VisibleState", true);
-            base._Activate(viewName);
+            base.ActivateView(viewName);
         }
 
-        public override void _Deactivate(string viewName)
+        protected override void DeactivateView(string viewName)
         {
             GoToVisualState("InvisibleState", true);
-            base._Deactivate(viewName);
+            base.DeactivateView(viewName);
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Interactivity;
 using System.Windows.Media;
 
-namespace Jounce.Framework.Views
+namespace Jounce.Framework.View
 {
     public class VisualStateSubscriptionBehavior : Behavior<FrameworkElement>
     {
@@ -40,7 +40,7 @@ namespace Jounce.Framework.Views
 
         protected override void OnAttached()
         {
-            AssociatedObject.Loaded += AssociatedObject_Loaded;
+            AssociatedObject.Loaded += _AssociatedObjectLoaded;
         }
 
         /// <summary>
@@ -48,9 +48,9 @@ namespace Jounce.Framework.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void AssociatedObject_Loaded(object sender, RoutedEventArgs e)
+        void _AssociatedObjectLoaded(object sender, RoutedEventArgs e)
         {
-            AssociatedObject.Loaded -= AssociatedObject_Loaded; // don't repeat this
+            AssociatedObject.Loaded -= _AssociatedObjectLoaded; // don't repeat this
 
             Control control = null;
 
