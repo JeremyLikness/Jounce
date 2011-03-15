@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Web", "Jounce.Web\Jo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce", "Jounce.Core\Jounce.csproj", "{B981528B-2608-499A-9088-985E6B351F6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Test", "Jounce.Test\Jounce.Test.csproj", "{0FEF726F-F0E5-4EC6-8AF2-E989B75FF2F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Test", "Tests\Jounce.Test\Jounce.Test.csproj", "{0FEF726F-F0E5-4EC6-8AF2-E989B75FF2F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Test.Web", "Jounce.Test.Web\Jounce.Test.Web.csproj", "{9727E4C7-78B4-4003-837B-18438B59D1C5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Test.Web", "Tests\Jounce.Test.Web\Jounce.Test.Web.csproj", "{9727E4C7-78B4-4003-837B-18438B59D1C5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{60DD768A-81B3-4F0E-B144-6114F1F47D6F}"
 	ProjectSection(SolutionItems) = preProject

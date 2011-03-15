@@ -69,10 +69,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Shared\SharedAssemblyInfo.cs">
+    <Compile Include="..\..\Shared\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Shared\VersionInfo.cs">
+    <Compile Include="..\..\Shared\VersionInfo.cs">
       <Link>Properties\VersionInfo.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
