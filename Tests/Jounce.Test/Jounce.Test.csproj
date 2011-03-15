@@ -93,10 +93,10 @@
     <Reference Include="System.Windows.Browser" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Shared\SharedAssemblyInfo.cs">
+    <Compile Include="..\..\Shared\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Shared\VersionInfo.cs">
+    <Compile Include="..\..\Shared\VersionInfo.cs">
       <Link>Properties\VersionInfo.cs</Link>
     </Compile>
     <Compile Include="App.xaml.cs">
@@ -116,7 +116,7 @@
     <None Include="Properties\AppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Jounce.Core\Jounce.csproj">
+    <ProjectReference Include="..\..\Jounce.Core\Jounce.csproj">
       <Project>{B981528B-2608-499A-9088-985E6B351F6B}</Project>
       <Name>Jounce</Name>
     </ProjectReference>
