@@ -6,19 +6,19 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9BAABD04-CAF0-4A18-8743-2872486C8A6C}</ProjectGuid>
+    <ProjectGuid>{9727E4C7-78B4-4003-837B-18438B59D1C5}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Jounce.Web</RootNamespace>
-    <AssemblyName>Jounce.Web</AssemblyName>
+    <RootNamespace>Jounce.Test.Web</RootNamespace>
+    <AssemblyName>Jounce.Test.Web</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <SilverlightApplicationList>{EE2A4B9C-8669-4260-8DFB-00875DF26EE9}|..\Jounce\Jounce.csproj|ClientBin|False</SilverlightApplicationList>
+    <UseIISExpress>false</UseIISExpress>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <UseIISExpress>false</UseIISExpress>
+    <SilverlightApplicationList>{0FEF726F-F0E5-4EC6-8AF2-E989B75FF2F0}|..\Jounce.Test\Jounce.Test.csproj|ClientBin|False</SilverlightApplicationList>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -57,8 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ClientBin\Jounce.xap" />
-    <Content Include="ClientBin\JounceApplication.xap" />
+    <Content Include="ClientBin\Jounce.Test.xap" />
     <Content Include="Default.html" />
     <Content Include="Silverlight.js" />
     <Content Include="Web.config" />
@@ -87,7 +86,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>4813</DevelopmentServerPort>
+          <DevelopmentServerPort>1712</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
