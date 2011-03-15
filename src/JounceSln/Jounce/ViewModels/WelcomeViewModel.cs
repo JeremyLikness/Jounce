@@ -34,10 +34,10 @@ namespace JounceApplication.ViewModels
         /// <summary>
         ///     On activate, use the auto-linking to go to a visual state and animate the welcome
         /// </summary>
-        /// <param name="viewName"></param>
-        public override void _Activate(string viewName)
-        {            
-            GoToVisualState("WelcomeState",true);
+        protected override void ActivateView(string viewName, System.Collections.Generic.IDictionary<string, object> viewParameters)
+        {
+            base.ActivateView(viewName, viewParameters);
+            GoToVisualState("WelcomeState", true);
         }
     }
 }
