@@ -107,6 +107,7 @@
     </Compile>
     <Compile Include="Core\Model\BaseNotifyFixture.cs" />
     <Compile Include="Core\ViewModel\BaseViewModelFixture.cs" />
+    <Compile Include="Framework\Command\ActionCommandFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SanityFixture.cs" />
   </ItemGroup>
@@ -126,7 +127,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Framework\" />
     <Folder Include="Regions\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
