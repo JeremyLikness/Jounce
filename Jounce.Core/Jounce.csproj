@@ -109,6 +109,7 @@
     <Compile Include="Framework\Services\EventAggregatorService.cs" />
     <Compile Include="Framework\Services\NavigationTrigger.cs" />
     <Compile Include="Framework\ViewModel\BaseEntityViewModel.cs" />
+    <Compile Include="Framework\ViewModel\JounceViewConverter.cs" />
     <Compile Include="Framework\ViewModel\ViewModelRouter.cs" />
     <Compile Include="Framework\View\ViewRouter.cs" />
     <Compile Include="Framework\View\VisualStateAggregator.cs" />

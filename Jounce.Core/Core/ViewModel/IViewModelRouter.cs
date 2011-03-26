@@ -56,6 +56,21 @@ namespace Jounce.Core.ViewModel
         T ResolveViewModel<T>(bool activate, string viewModelType) where T : IViewModel;
 
         /// <summary>
+        ///     Get a non-shared version of the view model
+        /// </summary>
+        /// <param name="viewModelType">The tag for the view model</param>
+        /// <returns>A new instance</returns>
+        IViewModel GetNonSharedViewModel(string viewModelType);
+
+        /// <summary>
+        ///     Returns a non-shared version of the view
+        /// </summary>
+        /// <param name="viewTag">The view tag</param>
+        /// <param name="dataContext">Data context to wire</param>
+        /// <returns>The view</returns>
+        UserControl GetNonSharedView(string viewTag, object dataContext);
+
+        /// <summary>
         ///     Get the meta data for a view
         /// </summary>
         /// <param name="view">The view</param>
@@ -68,6 +83,13 @@ namespace Jounce.Core.ViewModel
         /// <param name="view">The view</param>
         /// <returns>The view model tag</returns>
         string GetViewModelTagForView(string view);
+
+        /// <summary>
+        ///     Get the view model tag for the view
+        /// </summary>
+        /// <param name="viewModel">The view model tag</param>
+        /// <returns>The view tag</returns>
+        string[] GetViewTagsForViewModel(string viewModel);   
 
         /// <summary>
         ///     Indexer to view

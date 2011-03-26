@@ -105,7 +105,7 @@ namespace Jounce.Framework.View
                 // just activate the view directly
                 _ActivateView(e.ViewType, e.ViewParameters);
             }
-        }
+        }       
 
         /// <summary>
         ///     Activate the view

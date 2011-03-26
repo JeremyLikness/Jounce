@@ -16,10 +16,42 @@ namespace Jounce.Framework.ViewModel
     ///     This class routes views and view models
     /// </summary>
     [Export(typeof (IViewModelRouter))]
-    [Export(typeof(IFluentViewModelRouter))]
-    public class ViewModelRouter : IViewModelRouter, IFluentViewModelRouter 
+    [Export(typeof (IFluentViewModelRouter))]
+    public class ViewModelRouter : IViewModelRouter, IFluentViewModelRouter
     {
-        const string LAYOUT_ROOT = "LayoutRoot";
+        private const string LAYOUT_ROOT = "LayoutRoot";
+
+        /// <summary>
+        ///     The defined routes
+        /// </summary>
+        [ImportMany(AllowRecomposition = true)]
+        public ViewModelRoute[] Routes { get; set; }
+
+        private readonly List<ViewModelRoute> _fluentRoutes = new List<ViewModelRoute>();
+
+        /// <summary>
+        ///     The list of views
+        /// </summary>
+        [ImportMany(AllowRecomposition = true)]
+        public Lazy<UserControl, IExportAsViewMetadata>[] Views { get; set; }
+
+        /// <summary>
+        ///     View factories
+        /// </summary>
+        [ImportMany(AllowRecomposition = true)]
+        public List<ExportFactory<UserControl, IExportAsViewMetadata>> ViewFactory { get; set; }
+
+        /// <summary>
+        ///     The list of view models
+        /// </summary>
+        [ImportMany(AllowRecomposition = true)]
+        public Lazy<IViewModel, IExportAsViewModelMetadata>[] ViewModels { get; set; }
+
+        /// <summary>
+        ///     View model factories
+        /// </summary>
+        [ImportMany(AllowRecomposition = true)]
+        public List<ExportFactory<IViewModel, IExportAsViewModelMetadata>> ViewModelFactory { get; set; }
 
         /// <summary>
         ///     Get the view model tag for the view
@@ -30,6 +62,19 @@ namespace Jounce.Framework.ViewModel
         {
             var vm = _GetViewModelInfoForView(view);
             return vm == null ? string.Empty : vm.Metadata.ViewModelType;
+        }
+
+        /// <summary>
+        ///     Get the view model tag for the view
+        /// </summary>
+        /// <param name="viewModel">The view model tag</param>
+        /// <returns>The view tag</returns>
+        public string[] GetViewTagsForViewModel(string viewModel)
+        {
+            var fluent = from r in _fluentRoutes where r.ViewModelType.Equals(viewModel) select r.ViewType;
+            var exported = from r in Routes where r.ViewModelType.Equals(viewModel) select r.ViewType;
+
+            return (from v in fluent.Union(exported) select v).Distinct().ToArray();
         }
 
         /// <summary>
@@ -63,19 +108,6 @@ namespace Jounce.Framework.ViewModel
             return _GetViewInfo(name) != null;
         }
 
-        /// <summary>
-        ///     The defined routes
-        /// </summary>
-        [ImportMany(AllowRecomposition = true)]
-        public ViewModelRoute[] Routes { get; set; }
-
-        private readonly List<ViewModelRoute> _fluentRoutes = new List<ViewModelRoute>();
-
-        /// <summary>
-        ///     The list of views
-        /// </summary>
-        [ImportMany(AllowRecomposition = true)]
-        public Lazy<UserControl, IExportAsViewMetadata>[] Views { get; set; }
 
         /// <summary>
         ///     Get info for a view
@@ -86,12 +118,6 @@ namespace Jounce.Framework.ViewModel
         {
             return (from v in Views where v.Metadata.ExportedViewType.Equals(viewName) select v).FirstOrDefault();
         }
-
-        /// <summary>
-        ///     The list of view models
-        /// </summary>
-        [ImportMany(AllowRecomposition = true)]
-        public Lazy<IViewModel, IExportAsViewModelMetadata>[] ViewModels { get; set; }
 
         /// <summary>
         ///     Gets the view model information for a view
@@ -105,7 +131,7 @@ namespace Jounce.Framework.ViewModel
                     where r.ViewType.Equals(view)
                           && r.ViewModelType.Equals(vm.Metadata.ViewModelType)
                     select vm).FirstOrDefault() ??
-                    (from r in Routes
+                   (from r in Routes
                     from vm in ViewModels
                     where r.ViewType.Equals(view)
                           && r.ViewModelType.Equals(vm.Metadata.ViewModelType)
@@ -126,7 +152,7 @@ namespace Jounce.Framework.ViewModel
             {
                 var vm = _GetViewModelInfoForView(viewName);
                 if (vm != null)
-                {                    
+                {
                     if (vm.IsValueCreated)
                     {
                         vm.Value.Deactivate(viewName);
@@ -181,6 +207,59 @@ namespace Jounce.Framework.ViewModel
         }
 
         /// <summary>
+        ///     Get a non-shared version of the view model
+        /// </summary>
+        /// <param name="viewModelType">The tag for the view model</param>
+        /// <returns>A new instance</returns>
+        public IViewModel GetNonSharedViewModel(string viewModelType)
+        {
+            return (from factory in ViewModelFactory
+                    where factory.Metadata.ViewModelType.Equals(viewModelType)
+                    select factory.CreateExport().Value).FirstOrDefault();
+        }
+
+        /// <summary>
+        ///     Returns a non-shared version of the view
+        /// </summary>
+        /// <param name="viewTag">The view tag</param>
+        /// <param name="dataContext">Data context to wire</param>
+        /// <returns>The view</returns>
+        public UserControl GetNonSharedView(string viewTag, object dataContext)
+        {
+            var view = (from factory in ViewFactory
+                        where factory.Metadata.ExportedViewType.Equals(viewTag)
+                        select factory.CreateExport().Value).FirstOrDefault();
+
+            if (view == null)
+            {
+                return null;
+            }
+
+            var baseViewModel = dataContext as BaseViewModel;
+            if (baseViewModel != null)
+            {
+                baseViewModel.RegisterVisualState(viewTag,
+                                                  (state, transitions) =>
+                                                  JounceHelper.ExecuteOnUI(
+                                                      () => VisualStateManager.GoToState(view, state,
+                                                                                         transitions)));
+                _BindViewModel(view, baseViewModel);
+                baseViewModel.RegisteredViews.Add(viewTag);
+                baseViewModel.Initialize();
+                RoutedEventHandler loaded = null;
+                loaded = (o, e) =>
+                             {
+                                 // ReSharper disable AccessToModifiedClosure
+                                 ((UserControl) o).Loaded -= loaded;
+                                 // ReSharper restore AccessToModifiedClosure
+                                 baseViewModel.Activate(viewTag, new Dictionary<string, object>());
+                             };
+                view.Loaded += loaded;
+            }
+            return view;
+        }
+
+        /// <summary>
         ///     Resolve the view model based on type
         /// </summary>
         /// <typeparam name="T">Type of the view model</typeparam>
@@ -188,7 +267,8 @@ namespace Jounce.Framework.ViewModel
         /// <param name="viewModelType">Optional type when not using type names</param>
         /// <param name="parameters">Parameters for the view</param>
         /// <returns>The view model instance</returns>
-        public T ResolveViewModel<T>(bool activate, string viewModelType = null, IDictionary<string, object> parameters = null) where T : IViewModel
+        public T ResolveViewModel<T>(bool activate, string viewModelType = null,
+                                     IDictionary<string, object> parameters = null) where T : IViewModel
         {
             if (viewModelType == null)
             {
@@ -260,25 +340,26 @@ namespace Jounce.Framework.ViewModel
 
                     if (!baseViewModel.RegisteredViews.Contains(viewName))
                     {
-                        baseViewModel.RegisterVisualState(viewName, 
-                            (state, transitions) =>
-                            JounceHelper.ExecuteOnUI(() => VisualStateManager.GoToState(view, state,
-                                                                                        transitions)));
+                        baseViewModel.RegisterVisualState(viewName,
+                                                          (state, transitions) =>
+                                                          JounceHelper.ExecuteOnUI(
+                                                              () => VisualStateManager.GoToState(view, state,
+                                                                                                 transitions)));
                         _BindViewModel(view, viewModel);
                         baseViewModel.RegisteredViews.Add(viewName);
                     }
-                    
+
                     if (firstTime)
                     {
                         viewModel.Initialize();
                         RoutedEventHandler loaded = null;
                         loaded = (o, e) =>
-                                                        {
+                                     {
 // ReSharper disable AccessToModifiedClosure
-                                                            ((UserControl) o).Loaded -= loaded;
+                                         ((UserControl) o).Loaded -= loaded;
 // ReSharper restore AccessToModifiedClosure
-                                                            viewModel.Activate(viewName, parameters);
-                                                        };
+                                         viewModel.Activate(viewName, parameters);
+                                     };
                         view.Loaded += loaded;
                     }
                     else
