@@ -78,7 +78,6 @@
     <Content Include="FluentBindingTestPage.aspx" />
     <Content Include="NavigationWithBackButtonTestPage.aspx" />
     <Content Include="NonSharedViewsTestPage.aspx" />
-    <Content Include="NonSharedViewsTestPage.html" />
     <Content Include="RegionManagementTestPage.aspx" />
     <Content Include="Silverlight.js" />
     <Content Include="SilverlightNavigationTestPage.aspx" />
