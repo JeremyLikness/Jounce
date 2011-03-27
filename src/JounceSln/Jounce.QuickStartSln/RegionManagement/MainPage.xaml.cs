@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.Composition;
 using Jounce.Core.Event;
+using Jounce.Core.Fluent;
 using Jounce.Core.View;
 using RegionManagement.Views;
 
@@ -14,7 +15,10 @@ namespace RegionManagement
         public const string MAIN = "Main";
 
         [Import]
-        public IEventAggregator EventAggregator { get; set; }        
+        public IEventAggregator EventAggregator { get; set; }
+
+        [Import]
+        public IFluentRegionManager RegionManager { get; set; }
 
         public MainPage()
         {
@@ -26,6 +30,10 @@ namespace RegionManagement
         /// </summary>
         public void OnImportsSatisfied()
         {
+            // fluently bind the region and view
+            RegionManager.RegisterRegion(AppRegion, LocalRegions.APP_REGION);
+            RegionManager.ExportViewToRegion(Circle.CIRCLE, LocalRegions.APP_REGION);
+
             // activate debug view
             EventAggregator.Publish(new ViewNavigationArgs(DebugView.DEBUG));
 
@@ -36,6 +44,7 @@ namespace RegionManagement
             
             // now let's activate the square again (shift the focus of the tab)
             EventAggregator.Publish(new ViewNavigationArgs(RequestSquare.REQUEST_SQUARE));
+
         }
     }
 }

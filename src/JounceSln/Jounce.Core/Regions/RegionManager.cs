@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Jounce.Core.Application;
 using Jounce.Core.Event;
+using Jounce.Core.Fluent;
 using Jounce.Core.View;
 using Jounce.Regions.Adapters;
 using Jounce.Regions.Core;
@@ -16,7 +17,8 @@ namespace Jounce.Regions
     ///     Region manager - handles all region adapters
     /// </summary>
     [Export(typeof (IRegionManager))]
-    public class RegionManager : IRegionManager, IPartImportsSatisfiedNotification, IEventSink<ViewNavigatedArgs>
+    [Export(typeof(IFluentRegionManager))]
+    public class RegionManager : IRegionManager, IFluentRegionManager, IPartImportsSatisfiedNotification, IEventSink<ViewNavigatedArgs>
     {
         /// <summary>
         ///     Event aggregator to subscribe to view navigation events
@@ -51,7 +53,7 @@ namespace Jounce.Regions
         /// </summary>
         /// <param name="targetRegionType">The type of the region</param>
         /// <returns>The region adapter</returns>
-        private Lazy<IRegionAdapterBase, IRegionAdapterMetadata> GetRegionAdapterForType(Type targetRegionType)
+        private Lazy<IRegionAdapterBase, IRegionAdapterMetadata> _GetRegionAdapterForType(Type targetRegionType)
         {
             return (from r in RegionAdapters where r.Metadata.TargetType.Equals(targetRegionType) select r).
                 FirstOrDefault();
@@ -62,7 +64,7 @@ namespace Jounce.Regions
         /// </summary>
         /// <param name="viewName">The name of the view</param>
         /// <returns>The list of region adapters that manage the view</returns>
-        private IEnumerable<IRegionAdapterBase> GetRegionAdaptersForView(string viewName)
+        private IEnumerable<IRegionAdapterBase> _GetRegionAdaptersForView(string viewName)
         {
             return from r in RegionAdapters where r.IsValueCreated && r.Value.HasView(viewName) select r.Value;
         }
@@ -74,6 +76,17 @@ namespace Jounce.Regions
         public Lazy<UserControl, IExportViewToRegionMetadata>[] Views { get; set; }
 
         /// <summary>
+        ///     Fluent views
+        /// </summary>
+        [ImportMany(AllowRecomposition = true)]
+        public Lazy<UserControl, IExportAsViewMetadata>[] FluentViews { get; set; }
+
+        /// <summary>
+        ///     Fluently configured views
+        /// </summary>
+        private readonly Dictionary<string,string> _fluentViews = new Dictionary<string, string>();
+
+        /// <summary>
         ///     Keep track of the regions
         /// </summary>
         private readonly Dictionary<string,UIElement> _regions = new Dictionary<string, UIElement>();
@@ -83,7 +96,7 @@ namespace Jounce.Regions
         /// </summary>
         /// <param name="viewName"></param>
         /// <returns></returns>
-        private Lazy<UserControl, IExportViewToRegionMetadata> GetViewInfo(string viewName)
+        private Lazy<UserControl, IExportViewToRegionMetadata> _GetViewInfo(string viewName)
         {
             return (from v in Views where v.Metadata.ViewTypeForRegion.Equals(viewName) select v).FirstOrDefault();
         }
@@ -121,30 +134,41 @@ namespace Jounce.Regions
                 throw new ArgumentNullException("viewName");
             }
 
-            var viewInfo = GetViewInfo(viewName);
+            var viewInfo = _GetViewInfo(viewName);
 
-            if (viewInfo == null)
+            string targetRegion;
+            UserControl view;
+
+            if (viewInfo != null)
             {
-                return;
+                targetRegion = viewInfo.Metadata.TargetRegion;
+                view = viewInfo.Value;
+            }
+            else
+            {
+                _fluentViews.TryGetValue(viewName, out targetRegion);
+                view =
+                    (from v in FluentViews where v.Metadata.ExportedViewType.Equals(viewName) select v.Value).
+                        FirstOrDefault();
             }
 
-            if (!_processedViews.Contains(viewName) && _regions.ContainsKey(viewInfo.Metadata.TargetRegion))
+            if (!string.IsNullOrEmpty(targetRegion) && !_processedViews.Contains(viewName) && _regions.ContainsKey(targetRegion))
             {
                 // add any views that were waiting for this region to become available 
-                var region = _regions[viewInfo.Metadata.TargetRegion];
-                var regionAdapterInfo = GetRegionAdapterForType(region.GetType());
+                var region = _regions[targetRegion];
+                var regionAdapterInfo = _GetRegionAdapterForType(region.GetType());
                 if (regionAdapterInfo != null)
                 {
                     var regionAdapter = regionAdapterInfo.Value;
-                    regionAdapter.AddView(viewInfo.Value, viewName, viewInfo.Metadata.TargetRegion);
+                    regionAdapter.AddView(view, viewName, targetRegion);
                     _processedViews.Add(viewName);
                 }
                 
             }
             
-            foreach(var ra in GetRegionAdaptersForView(viewName))
+            foreach(var ra in _GetRegionAdaptersForView(viewName))
             {
-                ra.ActivateControl(viewName, viewInfo.Metadata.TargetRegion);                
+                ra.ActivateControl(viewName, targetRegion);                
             }                                  
         }
 
@@ -161,18 +185,29 @@ namespace Jounce.Regions
                 throw new ArgumentNullException("viewName");
             }
 
-            var viewInfo = GetViewInfo(viewName);
+            var viewInfo = _GetViewInfo(viewName);
 
-            if (viewInfo == null)
+            if (viewInfo == null && !_fluentViews.ContainsKey(viewName))
             {
                 return;
             }
             
-            foreach (var ra in GetRegionAdaptersForView(viewName))
+            foreach (var ra in _GetRegionAdaptersForView(viewName))
             {
                 ra.DeactivateControl(viewName);
             }                                  
-        }        
+        }
+
+        public void ExportViewToRegion(string viewName, string regionTag)
+        {
+            _fluentViews.Add(viewName, regionTag);
+
+        }
+
+        public void ExportViewToRegion<T>(string regionTag) where T : UserControl
+        {
+            ExportViewToRegion(typeof(T).FullName, regionTag);
+        }
 
         /// <summary>
         ///     Register a region
@@ -186,7 +221,7 @@ namespace Jounce.Regions
                 return;
             }
 
-            var regionAdapterInfo = GetRegionAdapterForType(region.GetType());
+            var regionAdapterInfo = _GetRegionAdapterForType(region.GetType());
 
             IRegionAdapterBase regionAdapter = null;
 
