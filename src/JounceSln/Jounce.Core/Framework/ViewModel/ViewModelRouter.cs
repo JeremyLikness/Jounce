@@ -241,20 +241,20 @@ namespace Jounce.Framework.ViewModel
             if (baseViewModel != null)
             {
                 baseViewModel.RegisterVisualState(viewTag,
-                                                  (state, transitions) =>
-                                                  JounceHelper.ExecuteOnUI(
-                                                      () => VisualStateManager.GoToState(view, state,
-                                                                                         transitions)));
+                                                    (state, transitions) =>
+                                                    JounceHelper.ExecuteOnUI(
+                                                        () => VisualStateManager.GoToState(view, state,
+                                                                                            transitions)));
                 baseViewModel.RegisteredViews.Add(viewTag);
                 baseViewModel.Initialize();
                 RoutedEventHandler loaded = null;
                 loaded = (o, e) =>
-                             {
-                                 // ReSharper disable AccessToModifiedClosure
-                                 ((UserControl) o).Loaded -= loaded;
-                                 // ReSharper restore AccessToModifiedClosure
-                                 baseViewModel.Activate(viewTag, new Dictionary<string, object>());
-                             };
+                                {
+                                    // ReSharper disable AccessToModifiedClosure
+                                    ((UserControl) o).Loaded -= loaded;
+                                    // ReSharper restore AccessToModifiedClosure
+                                    baseViewModel.Activate(viewTag, new Dictionary<string, object>());
+                                };
                 view.Loaded += loaded;
             }
             return view;
