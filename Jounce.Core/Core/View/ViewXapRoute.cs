@@ -1,4 +1,6 @@
-﻿namespace Jounce.Core.View
+﻿using System.Windows.Controls;
+
+namespace Jounce.Core.View
 {
     /// <summary>
     ///     The view locator element - maps views to dynamically loaded xaps
@@ -12,6 +14,11 @@
         public static ViewXapRoute Create(string viewName, string viewXap)
         {
             return new ViewXapRoute {ViewName = viewName, ViewXap = viewXap};
+        }
+
+        public static ViewXapRoute Create<T>(string viewXap) where T: UserControl
+        {
+            return Create(typeof (T).FullName, viewXap);
         }
 
         /// <summary>

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
+using System.Windows.Controls;
 using Jounce.Core.Application;
 using Jounce.Core.Event;
 using Jounce.Core.Fluent;
@@ -121,6 +122,11 @@ namespace Jounce.Framework.View
         public void RouteViewInXap(string view, string xap)
         {
             _fluentRoutes.Add(ViewXapRoute.Create(view, xap));
+        }
+
+        public void RouteViewInXap<T>(string xap) where T : UserControl
+        {
+            RouteViewInXap(typeof(T).FullName, xap);
         }
     }
 }
