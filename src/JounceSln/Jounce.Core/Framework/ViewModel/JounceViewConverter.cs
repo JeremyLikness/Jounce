@@ -46,9 +46,20 @@ namespace Jounce.Framework.ViewModel
                 }
             }
 
+            if (_composedConverter.Router == null)
+            {
+                return value;
+            }
+
             // if the value is a view model and a view tag was passed, resolve them
             if (value is IViewModel)
             {
+                // if tag is passed in
+                if (parameter != null)
+                {
+                    return _composedConverter.Router.GetNonSharedView(parameter.ToString(), value);
+                }
+
                 // first get the view model tag 
                 var exportAttribute =
                     (from c in value.GetType().GetCustomAttributes(true) where c is ExportAsViewModelAttribute select (ExportAsViewModelAttribute)c)
