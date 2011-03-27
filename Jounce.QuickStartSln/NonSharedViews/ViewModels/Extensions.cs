@@ -16,7 +16,7 @@ namespace NonSharedViews.ViewModels
         /// <returns>The supporting view model</returns>
         public static ContactViewModel ToViewModel(this Contact contact, IViewModelRouter router)
         {
-            var vm = router.GetNonSharedViewModel("ContactVM") as ContactViewModel;
+            var vm = router.GetNonSharedViewModel<ContactViewModel>();
 
             if (vm == null)
             {

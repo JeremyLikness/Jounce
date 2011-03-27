@@ -4,7 +4,7 @@ using NonSharedViews.Models;
 
 namespace NonSharedViews.ViewModels
 {
-    [ExportAsViewModel("ContactVM")]
+    [ExportAsViewModel(typeof(ContactViewModel))]
     public partial class ContactViewModel : BaseViewModel
     {
         public ContactViewModel()

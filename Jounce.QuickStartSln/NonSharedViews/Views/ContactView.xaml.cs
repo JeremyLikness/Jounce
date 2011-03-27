@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.Composition;
 using Jounce.Core.View;
 using Jounce.Core.ViewModel;
+using NonSharedViews.ViewModels;
 
 namespace NonSharedViews.Views
 {
-    [ExportAsView("ContactView")]
+    [ExportAsView(typeof(ContactView))]
     public partial class ContactView
     {
         public ContactView()
@@ -15,7 +16,7 @@ namespace NonSharedViews.Views
         [Export]
         public ViewModelRoute Binding
         {
-            get { return ViewModelRoute.Create("ContactVM", "ContactView"); }
+            get { return ViewModelRoute.Create<ContactViewModel,ContactView>(); }
         }
     }
 }

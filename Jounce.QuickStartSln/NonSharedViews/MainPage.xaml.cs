@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.Composition;
 using Jounce.Core.View;
 using Jounce.Core.ViewModel;
+using NonSharedViews.ViewModels;
 
 namespace NonSharedViews
 {
-    [ExportAsView("MainPage", IsShell=true)]
+    [ExportAsView(typeof(MainPage), IsShell=true)]
     public partial class MainPage
     {
         public MainPage()
@@ -15,7 +16,7 @@ namespace NonSharedViews
         [Export]
         public ViewModelRoute Binding
         {
-            get { return ViewModelRoute.Create("MainVM", "MainPage"); }
+            get { return ViewModelRoute.Create<MainViewModel,MainPage>(); }
         }
     }
 }

@@ -5,7 +5,7 @@ using NonSharedViews.Models;
 
 namespace NonSharedViews.ViewModels
 {
-    [ExportAsViewModel("MainVM")]
+    [ExportAsViewModel(typeof(MainViewModel))]
     public class MainViewModel : BaseViewModel
     {
         private readonly List<Contact> _sampleData = new List<Contact>

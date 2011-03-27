@@ -11,6 +11,19 @@ namespace Jounce.Core.View
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property, AllowMultiple = false)]
     public class ExportAsViewAttribute : ExportAttribute 
     {
+        /// <summary>
+        ///     Constructor to use type
+        /// </summary>
+        /// <param name="viewType">Default to type</param>
+        public ExportAsViewAttribute(Type viewType)
+            : this(viewType.FullName)
+        {
+        }
+
+        /// <summary>
+        ///     Constructor to use tag
+        /// </summary>
+        /// <param name="viewType">The tag</param>
         public ExportAsViewAttribute(string viewType) : base(typeof(UserControl))
         {
             ExportedViewType = viewType;
