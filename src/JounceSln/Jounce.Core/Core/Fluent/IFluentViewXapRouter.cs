@@ -1,3 +1,5 @@
+using System.Windows.Controls;
+
 namespace Jounce.Core.Fluent
 {
     /// <summary>
@@ -6,5 +8,6 @@ namespace Jounce.Core.Fluent
     public interface IFluentViewXapRouter
     {
         void RouteViewInXap(string view, string xap);
+        void RouteViewInXap<T>(string xap) where T : UserControl; 
     }
 }
