@@ -1,3 +1,6 @@
+using System.Windows.Controls;
+using Jounce.Core.ViewModel;
+
 namespace Jounce.Core.Fluent
 {
     /// <summary>
@@ -6,5 +9,6 @@ namespace Jounce.Core.Fluent
     public interface IFluentViewModelRouter
     {
         void RouteViewModelForView(string viewModel, string view);
+        void RouteViewModelForView<T,TView>() where T: IViewModel where TView: UserControl;
     }
 }

@@ -421,5 +421,10 @@ namespace Jounce.Framework.ViewModel
         {
             _fluentRoutes.Add(ViewModelRoute.Create(viewModel, view));
         }
+
+        public void RouteViewModelForView<T, TView>() where T : IViewModel where TView : UserControl
+        {
+            RouteViewModelForView(typeof(T).FullName, typeof(TView).FullName);
+        }
     }
 }
