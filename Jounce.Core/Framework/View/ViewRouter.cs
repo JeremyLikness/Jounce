@@ -122,11 +122,6 @@ namespace Jounce.Framework.View
         public void RouteViewInXap(string view, string xap)
         {
             _fluentRoutes.Add(ViewXapRoute.Create(view, xap));
-        }
-
-        public void RouteViewInXap<T>(string xap) where T : UserControl
-        {
-            RouteViewInXap(typeof(T).FullName, xap);
-        }
+        }        
     }
 }
