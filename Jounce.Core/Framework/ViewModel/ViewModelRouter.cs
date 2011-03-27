@@ -235,6 +235,8 @@ namespace Jounce.Framework.ViewModel
                 return null;
             }
 
+            _BindViewModel(view, dataContext);
+                
             var baseViewModel = dataContext as BaseViewModel;
             if (baseViewModel != null)
             {
@@ -243,7 +245,6 @@ namespace Jounce.Framework.ViewModel
                                                   JounceHelper.ExecuteOnUI(
                                                       () => VisualStateManager.GoToState(view, state,
                                                                                          transitions)));
-                _BindViewModel(view, baseViewModel);
                 baseViewModel.RegisteredViews.Add(viewTag);
                 baseViewModel.Initialize();
                 RoutedEventHandler loaded = null;
@@ -276,8 +277,8 @@ namespace Jounce.Framework.ViewModel
             }
 
             var vmInfo = (from vm in ViewModels
-                          where vm.Metadata.ViewModelType.Equals(viewModelType)
-                          select vm).FirstOrDefault();
+                            where vm.Metadata.ViewModelType.Equals(viewModelType)
+                            select vm).FirstOrDefault();
 
             if (vmInfo == null)
             {
@@ -378,7 +379,7 @@ namespace Jounce.Framework.ViewModel
         /// </summary>
         /// <param name="view"></param>
         /// <param name="viewModel"></param>
-        private static void _BindViewModel(FrameworkElement view, IViewModel viewModel)
+        private static void _BindViewModel(FrameworkElement view, object viewModel)
         {
             var root = view.FindName(LAYOUT_ROOT);
             if (root != null)
