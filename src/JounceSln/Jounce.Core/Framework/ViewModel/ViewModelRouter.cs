@@ -219,6 +219,16 @@ namespace Jounce.Framework.ViewModel
         }
 
         /// <summary>
+        ///     Typed version 
+        /// </summary>
+        /// <typeparam name="T">The type</typeparam>
+        /// <returns>The view model typed</returns>
+        public T GetNonSharedViewModel<T>() where T : IViewModel
+        {
+            return (T)GetNonSharedViewModel(typeof (T).FullName);
+        }
+
+        /// <summary>
         ///     Returns a non-shared version of the view
         /// </summary>
         /// <param name="viewTag">The view tag</param>
@@ -258,6 +268,16 @@ namespace Jounce.Framework.ViewModel
                 view.Loaded += loaded;
             }
             return view;
+        }
+
+        /// <summary>
+        ///     Returns a non-shared version of the view
+        /// </summary>
+        /// <param name="dataContext">Data context to wire</param>
+        /// <returns>The view</returns>
+        public T GetNonSharedView<T>(object dataContext) where T : UserControl
+        {
+            return (T)GetNonSharedView(typeof (T).FullName, dataContext);
         }
 
         /// <summary>

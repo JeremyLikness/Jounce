@@ -63,12 +63,26 @@ namespace Jounce.Core.ViewModel
         IViewModel GetNonSharedViewModel(string viewModelType);
 
         /// <summary>
+        ///     Typed version 
+        /// </summary>
+        /// <typeparam name="T">The type</typeparam>
+        /// <returns>The view model typed</returns>
+        T GetNonSharedViewModel<T>() where T : IViewModel;
+
+        /// <summary>
         ///     Returns a non-shared version of the view
         /// </summary>
         /// <param name="viewTag">The view tag</param>
         /// <param name="dataContext">Data context to wire</param>
         /// <returns>The view</returns>
         UserControl GetNonSharedView(string viewTag, object dataContext);
+
+        /// <summary>
+        ///     Returns a non-shared version of the view
+        /// </summary>
+        /// <param name="dataContext">Data context to wire</param>
+        /// <returns>The view</returns>
+        T GetNonSharedView<T>(object dataContext) where T : UserControl;
 
         /// <summary>
         ///     Get the meta data for a view

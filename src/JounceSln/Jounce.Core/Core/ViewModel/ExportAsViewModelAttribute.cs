@@ -11,6 +11,15 @@ namespace Jounce.Core.ViewModel
     public class ExportAsViewModelAttribute : ExportAttribute 
     {
         /// <summary>
+        ///     Use the type as the tag
+        /// </summary>
+        /// <param name="viewModelType">The view model type</param>
+        public ExportAsViewModelAttribute(Type viewModelType)
+            : this(viewModelType.FullName)
+        {
+        }
+
+        /// <summary>
         ///     Target view model
         /// </summary>
         public ExportAsViewModelAttribute(string viewModelType) : base(typeof(IViewModel))
