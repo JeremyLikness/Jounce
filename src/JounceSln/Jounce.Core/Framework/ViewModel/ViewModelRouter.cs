@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using Jounce.Core.Application;
 using Jounce.Core.Fluent;
 using Jounce.Core.View;
@@ -19,8 +20,6 @@ namespace Jounce.Framework.ViewModel
     [Export(typeof (IFluentViewModelRouter))]
     public class ViewModelRouter : IViewModelRouter, IFluentViewModelRouter
     {
-        private const string LAYOUT_ROOT = "LayoutRoot";
-
         /// <summary>
         ///     The defined routes
         /// </summary>
@@ -401,7 +400,8 @@ namespace Jounce.Framework.ViewModel
         /// <param name="viewModel"></param>
         private static void _BindViewModel(FrameworkElement view, object viewModel)
         {
-            var root = view.FindName(LAYOUT_ROOT);
+            var root = VisualTreeHelper.GetChild(view, 0);
+            
             if (root != null)
             {
                 ((FrameworkElement) root).DataContext = viewModel;
