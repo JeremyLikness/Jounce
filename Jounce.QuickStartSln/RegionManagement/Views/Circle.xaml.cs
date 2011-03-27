@@ -3,7 +3,6 @@ using System.Windows;
 using Jounce.Core.Event;
 using Jounce.Core.View;
 using Jounce.Core.ViewModel;
-using Jounce.Regions.Core;
 using RegionManagement.ViewModels;
 
 namespace RegionManagement.Views
@@ -12,7 +11,6 @@ namespace RegionManagement.Views
     ///     Just a circle
     /// </summary>
     [ExportAsView(CIRCLE)]
-    [ExportViewToRegion(CIRCLE,LocalRegions.APP_REGION)]
     public partial class Circle
     {
         public const string CIRCLE = "Circle";

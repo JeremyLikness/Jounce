@@ -11,6 +11,21 @@ namespace Jounce.Regions.Core
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property, AllowMultiple = false)]
     public class ExportViewToRegionAttribute : ExportAttribute
     {
+        /// <summary>
+        ///     Allow typed view export
+        /// </summary>
+        /// <param name="viewType">The type of the view</param>
+        /// <param name="targetRegion">The target region</param>
+        public ExportViewToRegionAttribute(Type viewType, string targetRegion) : this(viewType.FullName, targetRegion)
+        {
+            
+        }
+
+        /// <summary>
+        ///     Allow tagged view export
+        /// </summary>
+        /// <param name="viewType">The type of the view</param>
+        /// <param name="targetRegion">The target region</param>
         public ExportViewToRegionAttribute(string viewType, string targetRegion) : base(typeof(UserControl))
         {
             ViewTypeForRegion = viewType;

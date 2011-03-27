@@ -15,9 +15,8 @@
         </Grid.RowDefinitions>
         <TextBox Grid.Row="0" Text="Region Management Example"/>
         <Controls:TabControl Grid.Row="1" Regions:ExportAsRegion.RegionName="TabRegion"/>
-        <ItemsControl Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                      HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
-                      Regions:ExportAsRegion.RegionName="AppRegion">
+        <ItemsControl x:Name="AppRegion" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                      HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal"/>

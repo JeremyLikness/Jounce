@@ -1,4 +1,5 @@
 using System.Windows;
+using System.Windows.Controls;
 using Jounce.Core.View;
 
 namespace Jounce.Regions.Core
@@ -14,7 +15,7 @@ namespace Jounce.Regions.Core
         /// <param name="viewType">The view type</param>
         /// <returns>The metadata for the view</returns>
         IExportViewToRegionMetadata this[string viewType] { get; }
-
+               
         /// <summary>
         ///     Activate a view, anywhere
         /// </summary>

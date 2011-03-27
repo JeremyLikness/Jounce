@@ -86,6 +86,7 @@
     <Compile Include="Core\Event\EntityEvent.cs" />
     <Compile Include="Core\Event\IEventSink.cs" />
     <Compile Include="Core\Event\UnhandledExceptionEvent.cs" />
+    <Compile Include="Core\Fluent\IFluentRegionManager.cs" />
     <Compile Include="Core\Fluent\IFluentViewModelRouter.cs" />
     <Compile Include="Core\Fluent\IFluentViewXapRouter.cs" />
     <Compile Include="Core\ViewModel\BaseViewModel.cs" />
