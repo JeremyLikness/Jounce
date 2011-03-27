@@ -7,7 +7,6 @@ namespace Jounce.Core.Fluent
     /// </summary>
     public interface IFluentViewXapRouter
     {
-        void RouteViewInXap(string view, string xap);
-        void RouteViewInXap<T>(string xap) where T : UserControl; 
+        void RouteViewInXap(string view, string xap);        
     }
 }
