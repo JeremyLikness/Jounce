@@ -29,11 +29,12 @@ namespace Jounce.Framework
         {
             return new ViewNavigationArgs(viewName);            
         }
-        
+
         /// <summary>
         ///     Allow fluent addition of parameters
         /// </summary>
         /// <typeparam name="T">The type of the parameter</typeparam>
+        /// <param name="args">The view navigation arguments</param>
         /// <param name="name">The name of the parameter</param>
         /// <param name="value">The value of the parameter</param>
         /// <returns></returns>

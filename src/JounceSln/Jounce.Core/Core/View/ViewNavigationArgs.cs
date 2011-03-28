@@ -23,6 +23,12 @@ namespace Jounce.Core.View
             ViewType = viewType;
         }
 
+        public ViewNavigationArgs(Type viewType, IDictionary<string, object> parms)
+        {
+            ViewType = viewType.FullName;
+            ViewParameters = parms;
+        }
+
         public ViewNavigationArgs(string viewType, IDictionary<string, object> parms)            
         {
             ViewType = viewType;
