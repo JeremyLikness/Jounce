@@ -232,8 +232,9 @@ namespace Jounce.Framework.ViewModel
         /// </summary>
         /// <param name="viewTag">The view tag</param>
         /// <param name="dataContext">Data context to wire</param>
+        /// <param name="parameters">Parameters to pass to the view</param>
         /// <returns>The view</returns>
-        public UserControl GetNonSharedView(string viewTag, object dataContext)
+        public UserControl GetNonSharedView(string viewTag, object dataContext, Dictionary<string,object> parameters)
         {
             var view = (from factory in ViewFactory
                         where factory.Metadata.ExportedViewType.Equals(viewTag)
@@ -262,11 +263,22 @@ namespace Jounce.Framework.ViewModel
                                     // ReSharper disable AccessToModifiedClosure
                                     ((UserControl) o).Loaded -= loaded;
                                     // ReSharper restore AccessToModifiedClosure
-                                    baseViewModel.Activate(viewTag, new Dictionary<string, object>());
+                                    baseViewModel.Activate(viewTag, parameters);
                                 };
                 view.Loaded += loaded;
             }
             return view;
+        }
+
+        /// <summary>
+        ///     Overload without parameters
+        /// </summary>
+        /// <param name="viewTag">The view tag</param>
+        /// <param name="dataContext">The data context</param>
+        /// <returns>The new view instance</returns>
+        public UserControl GetNonSharedView(string viewTag, object dataContext)
+        {
+            return GetNonSharedView(viewTag, dataContext, new Dictionary<string, object>());
         }
 
         /// <summary>
@@ -276,7 +288,18 @@ namespace Jounce.Framework.ViewModel
         /// <returns>The view</returns>
         public T GetNonSharedView<T>(object dataContext) where T : UserControl
         {
-            return (T)GetNonSharedView(typeof (T).FullName, dataContext);
+            return GetNonSharedView<T>(dataContext, new Dictionary<string, object>());
+        }
+
+        /// <summary>
+        ///     Returns a non-shared version of the view
+        /// </summary>
+        /// <param name="dataContext">Data context to wire</param>
+        /// <param name="parameters">Parametrs to pass to the view</param>
+        /// <returns>The view</returns>
+        public T GetNonSharedView<T>(object dataContext, Dictionary<string,object> parameters) where T : UserControl
+        {
+            return (T)GetNonSharedView(typeof(T).FullName, dataContext, parameters);
         }
 
         /// <summary>
