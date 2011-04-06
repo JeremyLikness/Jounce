@@ -40,6 +40,16 @@ namespace Jounce.Framework.Workflow
         }
 
         /// <summary>
+        ///     Supply your own BackgroundWorker.
+        /// </summary>
+        /// <param name="backgroundWorker"></param>
+        public WorkflowBackgroundWorker(BackgroundWorker backgroundWorker)
+        {
+            _bg = backgroundWorker;
+            _bg.RunWorkerCompleted += BgRunWorkerCompleted;
+        }
+
+        /// <summary>
         ///     Progress  change
         /// </summary>
         /// <param name="sender"></param>
