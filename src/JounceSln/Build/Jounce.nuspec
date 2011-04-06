@@ -1,5 +1,5 @@
-<?xml version="1.0"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+<?xml version="1.0" encoding="utf-8"?>
+<package>
   <metadata>
     <id>Jounce</id>
     <version>1.0</version>
@@ -7,9 +7,13 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Jounce is a reference framework for Silverlight intended to provide guidance for building modular line of business applications that follow the MVVM pattern and utilize the Managed Extensibility Framework (MEF).</description>
 	<projectUrl>http://jounce.codeplex.com/</projectUrl>
-  </metadata>
-	<files>
-	  <file src="..\Jounce\Bin\Release\Jounce.dll" target="lib" /> 
-	  <file src="..\Jounce\Bin\Release\Jounce.pdb" target="lib" /> 
-	</files>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.ComponentModel.Composition" targetFramework="sl4" />
+	  <frameworkAssembly assemblyName="System.Windows.Interactivity" targetFramework="sl4" />
+    </frameworkAssemblies> 	
+  </metadata> 
+  <files>
+    <file src="..\Jounce\Bin\Release\Jounce.dll" target="lib" /> 
+	<file src="..\Jounce\Bin\Release\Jounce.pdb" target="lib" /> 
+  </files>
 </package>
