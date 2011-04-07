@@ -9,6 +9,7 @@
 	<projectUrl>http://jounce.codeplex.com/</projectUrl>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System.ComponentModel.Composition" targetFramework="sl4" />
+	  <frameworkAssembly assemblyName="System.ComponentModel.Composition.Initialization" targetFramework="sl4" />
 	  <frameworkAssembly assemblyName="System.Windows.Interactivity" targetFramework="sl4" />
     </frameworkAssemblies> 	
   </metadata> 
