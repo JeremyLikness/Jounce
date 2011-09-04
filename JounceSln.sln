@@ -19,9 +19,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Test", "Tests\Jounce
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Test.Web", "Tests\Jounce.Test.Web\Jounce.Test.Web.csproj", "{9727E4C7-78B4-4003-837B-18438B59D1C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Silverlight5", "Jounce.Silverlight5\Jounce.Silverlight5.csproj", "{51E06FF4-B2BC-4D26-8646-2315BC691430}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
+		SccNumberOfProjects = 7
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs04
 		SccLocalPath0 = .
@@ -42,6 +44,9 @@ Global
 		SccProjectTopLevelParentUniqueName5 = JounceSln.sln
 		SccProjectName5 = Tests/Jounce.Test.Web
 		SccLocalPath5 = Tests\\Jounce.Test.Web
+		SccProjectUniqueName6 = Jounce.Silverlight5\\Jounce.Silverlight5.csproj
+		SccProjectName6 = Jounce.Silverlight5
+		SccLocalPath6 = Jounce.Silverlight5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +73,10 @@ Global
 		{9727E4C7-78B4-4003-837B-18438B59D1C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9727E4C7-78B4-4003-837B-18438B59D1C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9727E4C7-78B4-4003-837B-18438B59D1C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51E06FF4-B2BC-4D26-8646-2315BC691430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51E06FF4-B2BC-4D26-8646-2315BC691430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51E06FF4-B2BC-4D26-8646-2315BC691430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51E06FF4-B2BC-4D26-8646-2315BC691430}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
