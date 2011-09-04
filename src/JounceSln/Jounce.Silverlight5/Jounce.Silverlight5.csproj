@@ -5,14 +5,14 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B981528B-2608-499A-9088-985E6B351F6B}</ProjectGuid>
+    <ProjectGuid>{51E06FF4-B2BC-4D26-8646-2315BC691430}</ProjectGuid>
     <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Jounce</RootNamespace>
     <AssemblyName>Jounce</AssemblyName>
     <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
     <SilverlightApplication>false</SilverlightApplication>
     <ValidateXaml>true</ValidateXaml>
@@ -38,9 +38,6 @@
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -54,56 +51,54 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
-    <Reference Include="System.ComponentModel.Composition, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.ComponentModel.Composition.Initialization, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.ComponentModel.Composition, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.ComponentModel.Composition.Initialization, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Interactivity, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>False</Private>
-    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Net" />
     <Reference Include="System.Windows.Browser" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Shared\SharedAssemblyInfo.cs">
-      <Link>Properties\SharedAssemblyInfo.cs</Link>
-    </Compile>
-    <Compile Include="..\Shared\VersionInfo.cs">
-      <Link>Properties\VersionInfo.cs</Link>
-    </Compile>
     <Compile Include="Core\Application\IDeploymentService.cs" />
-    <Compile Include="Core\Application\IModuleInitializer.cs" />
-    <Compile Include="Core\Event\IEventAggregator.cs" />
     <Compile Include="Core\Application\ILogger.cs" />
+    <Compile Include="Core\Application\IModuleInitializer.cs" />
     <Compile Include="Core\Application\LogSeverity.cs" />
     <Compile Include="Core\Command\IActionCommand.cs" />
     <Compile Include="Core\Constants.cs" />
     <Compile Include="Core\Event\EntityCommand.cs" />
     <Compile Include="Core\Event\EntityEvent.cs" />
+    <Compile Include="Core\Event\IEventAggregator.cs" />
     <Compile Include="Core\Event\IEventSink.cs" />
     <Compile Include="Core\Event\UnhandledExceptionEvent.cs" />
     <Compile Include="Core\Fluent\IFluentRegionManager.cs" />
     <Compile Include="Core\Fluent\IFluentViewModelRouter.cs" />
     <Compile Include="Core\Fluent\IFluentViewXapRouter.cs" />
-    <Compile Include="Core\ViewModel\BaseViewModel.cs" />
-    <Compile Include="Core\View\ViewNavigatedArgs.cs" />
-    <Compile Include="Core\View\ViewNavigationArgs.cs" />
     <Compile Include="Core\MefDebugger.cs" />
-    <Compile Include="Core\ViewModel\ExportAsViewModelAttribute.cs" />
-    <Compile Include="Core\ViewModel\IExportAsViewModelMetadata.cs" />
-    <Compile Include="Core\ViewModel\IViewModel.cs" />
-    <Compile Include="Framework\Command\ActionCommand.cs" />
-    <Compile Include="Framework\Exceptions\DeploymentCatalogDownloadException.cs" />
-    <Compile Include="Framework\JounceHelper.cs" />
-    <Compile Include="Framework\Resources.Designer.cs">
+    <Compile Include="Core\Model\BaseNotify.cs" />
+    <Compile Include="Core\Resources.Designer.cs">
       <DependentUpon>Resources.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Core\ViewModel\BaseViewModel.cs" />
+    <Compile Include="Core\ViewModel\ExportAsViewModelAttribute.cs" />
+    <Compile Include="Core\ViewModel\IExportAsViewModelMetadata.cs" />
+    <Compile Include="Core\ViewModel\IViewModel.cs" />
+    <Compile Include="Core\ViewModel\IViewModelRouter.cs" />
+    <Compile Include="Core\ViewModel\ViewModelRoute.cs" />
+    <Compile Include="Core\View\ExportAsViewAttribute.cs" />
+    <Compile Include="Core\View\IExportAsViewMetadata.cs" />
+    <Compile Include="Core\View\ViewNavigatedArgs.cs" />
+    <Compile Include="Core\View\ViewNavigationArgs.cs" />
+    <Compile Include="Core\View\ViewXapRoute.cs" />
+    <Compile Include="Core\Workflow\IWorkflow.cs" />
+    <Compile Include="Framework\Command\ActionCommand.cs" />
+    <Compile Include="Framework\Exceptions\DeploymentCatalogDownloadException.cs" />
+    <Compile Include="Framework\JounceHelper.cs" />
+    <Compile Include="Framework\Resources.Designer.cs" />
     <Compile Include="Framework\Services\ApplicationService.cs" />
     <Compile Include="Framework\Services\DefaultLogger.cs" />
     <Compile Include="Framework\Services\DeploymentService.cs" />
@@ -124,18 +119,6 @@
     <Compile Include="Framework\Workflow\WorkflowEvent.cs" />
     <Compile Include="Framework\Workflow\WorkflowRoutedEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Core\Model\BaseNotify.cs" />
-    <Compile Include="Core\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Core\ViewModel\IViewModelRouter.cs" />
-    <Compile Include="Core\ViewModel\ViewModelRoute.cs" />
-    <Compile Include="Core\View\ExportAsViewAttribute.cs" />
-    <Compile Include="Core\View\IExportAsViewMetadata.cs" />
-    <Compile Include="Core\View\ViewXapRoute.cs" />
-    <Compile Include="Core\Workflow\IWorkflow.cs" />
     <Compile Include="Regions\Adapters\ContentRegion.cs" />
     <Compile Include="Regions\Adapters\IRegionAdapterMetadata.cs" />
     <Compile Include="Regions\Adapters\ItemsRegion.cs" />
@@ -148,11 +131,7 @@
     <Compile Include="Regions\ExportAsRegion.cs" />
     <Compile Include="Regions\RegionManager.cs" />
     <Compile Include="Regions\RegionMetadataComparer.cs" />
-    <Compile Include="Regions\Resources.Designer.cs">
-      <DependentUpon>Resources.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <Compile Include="Regions\Resources.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Core\Resources.resx">
@@ -160,16 +139,8 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Framework\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Regions\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Framework\Resources.resx" />
+    <EmbeddedResource Include="Regions\Resources.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <ProjectExtensions>
@@ -179,10 +150,6 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
