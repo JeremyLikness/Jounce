@@ -12,8 +12,14 @@ namespace Jounce.Core.ViewModel
     /// <summary>
     ///     Base view model for data-binding
     /// </summary>
+    /// <remarks>
+    /// Use this for most view models that aren't tracking read/update/delete etc. operations
+    /// </remarks>
     public abstract class BaseViewModel : BaseNotify, IViewModel
     {
+        /// <summary>
+        /// Constructor creates an internal list of view tags
+        /// </summary>
         protected BaseViewModel()
         {
             RegisteredViews = new List<string>();
@@ -68,19 +74,19 @@ namespace Jounce.Core.ViewModel
         }
 
         /// <summary>
-        ///     Event aggregator
+        /// An instance of the <see cref="IEventAggregator"/>
         /// </summary>
         [Import]
         public IEventAggregator EventAggregator { get; set; }
 
         /// <summary>
-        ///     Router
+        /// An instance of the <see cref="IViewModelRouter"/>
         /// </summary>
         [Import]
         public IViewModelRouter Router { get; set; }
 
         /// <summary>
-        ///     Logger
+        /// The instance of the <see cref="ILogger"/>
         /// </summary>
         [Import(AllowDefault = true,AllowRecomposition = true)]
         public ILogger Logger { get; set; }
@@ -97,7 +103,7 @@ namespace Jounce.Core.ViewModel
         }
 
         /// <summary>
-        ///     Called first time the view model is created
+        ///  Called first time the view model is created
         /// </summary>
         public void Initialize()
         {            
@@ -106,8 +112,12 @@ namespace Jounce.Core.ViewModel
         }
 
         /// <summary>
-        ///     Called the very first time the view model is created
+        ///  User override to be called the very first time the view model is created
         /// </summary>
+        /// <remarks>
+        /// Safest place for initialization code, rather than in the constructor, because the
+        /// view model has been bound and wired at this point
+        /// </remarks>        
         protected virtual void InitializeVm()
         {
             
@@ -115,7 +125,7 @@ namespace Jounce.Core.ViewModel
 
         /// <summary>
         ///     Called whenever the view model has a corresponding view come into focus
-        /// </summary>
+        /// </summary>        
         public void Activate(string viewName)
         {
             Activate(viewName, new Dictionary<string, object>());
@@ -131,10 +141,13 @@ namespace Jounce.Core.ViewModel
         }
 
         /// <summary>
-        ///     Called when a view is activated through navigation
+        /// Called when a view is activated through navigation
         /// </summary>
         /// <param name="viewName">The tag for the view</param>
         /// <param name="viewParameters">Parameters requested for the activation</param>
+        /// <remarks>
+        /// This will be called anytime a view is navigated to. Contains optional parameters.
+        /// </remarks>        
         protected virtual void ActivateView(string viewName, IDictionary<string, object> viewParameters)
         {
             
@@ -153,13 +166,17 @@ namespace Jounce.Core.ViewModel
         ///     Called when a view is deactivated through navigation
         /// </summary>
         /// <param name="viewName">The tag for the view</param>
+        /// <remarks>
+        /// When a deactivated navigation message is sent, typically to signal a view being removed from the 
+        /// visual tree, this method is called on the view model
+        /// </remarks>
         protected virtual void DeactivateView(string viewName)
         {
             
         }
 
         /// <summary>
-        ///     Force the to-string implementation for easier debugging
+        /// Force the to-string implementation for easier debugging
         /// </summary>
         /// <returns>The overridden to string method</returns>
         public override string ToString()

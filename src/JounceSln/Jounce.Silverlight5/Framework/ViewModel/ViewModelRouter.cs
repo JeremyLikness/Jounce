@@ -16,38 +16,44 @@ namespace Jounce.Framework.ViewModel
     /// <summary>
     ///     This class routes views and view models
     /// </summary>
+    /// <remarks>
+    /// Used to map views to view models and perform necessary bindings
+    /// </remarks>
     [Export(typeof (IViewModelRouter))]
     [Export(typeof (IFluentViewModelRouter))]
     public class ViewModelRouter : IViewModelRouter, IFluentViewModelRouter
     {
         /// <summary>
-        ///     The defined routes
+        /// Exported list of <see cref="ViewModelRoute"/>
         /// </summary>
         [ImportMany(AllowRecomposition = true)]
         public ViewModelRoute[] Routes { get; set; }
 
+        /// <summary>
+        /// Fluently configured list of <see cref="ViewModelRoute"/>
+        /// </summary>
         private readonly List<ViewModelRoute> _fluentRoutes = new List<ViewModelRoute>();
 
         /// <summary>
-        ///     The list of views
+        /// The list of views and their <see cref="IExportAsViewMetadata"/>
         /// </summary>
         [ImportMany(AllowRecomposition = true)]
         public Lazy<UserControl, IExportAsViewMetadata>[] Views { get; set; }
 
         /// <summary>
-        ///     View factories
+        ///  View factories for generating views
         /// </summary>
         [ImportMany(AllowRecomposition = true)]
         public List<ExportFactory<UserControl, IExportAsViewMetadata>> ViewFactory { get; set; }
 
         /// <summary>
-        ///     The list of view models
+        ///  The list of view models exported with <see cref="IExportAsViewMetadata"/>
         /// </summary>
         [ImportMany(AllowRecomposition = true)]
         public Lazy<IViewModel, IExportAsViewModelMetadata>[] ViewModels { get; set; }
 
         /// <summary>
-        ///     View model factories
+        ///  View model factories
         /// </summary>
         [ImportMany(AllowRecomposition = true)]
         public List<ExportFactory<IViewModel, IExportAsViewModelMetadata>> ViewModelFactory { get; set; }
@@ -419,8 +425,8 @@ namespace Jounce.Framework.ViewModel
         /// <summary>
         ///     Binds 
         /// </summary>
-        /// <param name="view"></param>
-        /// <param name="viewModel"></param>
+        /// <param name="view">The view</param>
+        /// <param name="viewModel">The view model</param>
         private static void _BindViewModel(FrameworkElement view, object viewModel)
         {
             var root = VisualTreeHelper.GetChild(view, 0);

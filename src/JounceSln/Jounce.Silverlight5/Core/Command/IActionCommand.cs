@@ -4,7 +4,7 @@ using System.Windows.Input;
 namespace Jounce.Core.Command
 {
     /// <summary>
-    ///     Typed action command
+    ///  Typed action command
     /// </summary>
     /// <typeparam name="T">The type to act against</typeparam>
     public interface IActionCommand<T> : IActionCommand

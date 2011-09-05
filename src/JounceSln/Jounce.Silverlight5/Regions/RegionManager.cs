@@ -198,12 +198,22 @@ namespace Jounce.Regions
             }                                  
         }
 
+        /// <summary>
+        /// Fluent interface for exporting a view to a region
+        /// </summary>
+        /// <param name="viewName">The tag for the view</param>
+        /// <param name="regionTag">The tag for the region</param>
         public void ExportViewToRegion(string viewName, string regionTag)
         {
             _fluentViews.Add(viewName, regionTag);
 
         }
 
+        /// <summary>
+        /// Fluent interface for exporting a view by type to a region
+        /// </summary>
+        /// <typeparam name="T">The type of the view (full name will be used for the tag)</typeparam>
+        /// <param name="regionTag">The tag for the region</param>
         public void ExportViewToRegion<T>(string regionTag) where T : UserControl
         {
             ExportViewToRegion(typeof(T).FullName, regionTag);
@@ -268,6 +278,10 @@ namespace Jounce.Regions
             _subscribed = true;
         }
 
+        /// <summary>
+        /// Called when a navigation event is fired
+        /// </summary>
+        /// <param name="navigationEvent">The instance of the <see cref="ViewNavigatedArgs"/></param>
         public void HandleEvent(ViewNavigatedArgs navigationEvent)
         {
             if (navigationEvent.Deactivate)

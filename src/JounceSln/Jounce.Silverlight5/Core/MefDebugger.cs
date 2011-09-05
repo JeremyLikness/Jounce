@@ -40,6 +40,11 @@ namespace Jounce.Core
             _DebugCatalog((AggregateCatalog)container.Catalog);
         }
 
+        /// <summary>
+        /// Fired when the exports change
+        /// </summary>
+        /// <param name="sender">The container</param>
+        /// <param name="args">The argumemtns for the exports</param>
         private void ExportsChanged(object sender, ExportsChangeEventArgs args)
         {
             try
@@ -121,8 +126,8 @@ namespace Jounce.Core
         /// <summary>
         ///     Parse the exports
         /// </summary>
-        /// <param name="tag"></param>
-        /// <param name="exports"></param>
+        /// <param name="tag">Tag for information</param>
+        /// <param name="exports">List of <see cref="ExportDefinition"/></param>
         private void _ParseExports(string tag, IEnumerable<ExportDefinition> exports)
         {
             foreach (var export in exports)
@@ -138,6 +143,9 @@ namespace Jounce.Core
             }
         }
 
+        /// <summary>
+        /// Unhooks the debugger
+        /// </summary>
         public void Close()
         {
             _logger.Log(LogSeverity.Information, GetType().FullName, Resources.MefDebugger_Close_MEF_Debugger_shutting_down);

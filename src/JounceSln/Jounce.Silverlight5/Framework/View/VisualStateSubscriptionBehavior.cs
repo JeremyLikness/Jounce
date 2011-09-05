@@ -7,8 +7,14 @@ using System.Windows.Media;
 
 namespace Jounce.Framework.View
 {
+    /// <summary>
+    /// Behavior used to map events to visual states
+    /// </summary>
     public class VisualStateSubscriptionBehavior : Behavior<FrameworkElement>
     {
+        /// <summary>
+        /// Constructor sets up the necessary references
+        /// </summary>
         public VisualStateSubscriptionBehavior()
         {
             if (!DesignerProperties.IsInDesignTool)
@@ -18,7 +24,7 @@ namespace Jounce.Framework.View
         }
 
         /// <summary>
-        ///     Aggreagtor reference
+        /// Reference to the <see cref="VisualStateAggregator"/>
         /// </summary>
         [Import]
         public VisualStateAggregator Aggregator { get; set; }
@@ -38,6 +44,9 @@ namespace Jounce.Framework.View
         /// </summary>
         public bool UseTransitions { get; set; }
 
+        /// <summary>
+        /// Called when attached to the control
+        /// </summary>
         protected override void OnAttached()
         {
             AssociatedObject.Loaded += _AssociatedObjectLoaded;
@@ -46,8 +55,8 @@ namespace Jounce.Framework.View
         /// <summary>
         ///     When loaded, subscribe
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The control</param>
+        /// <param name="e">The args for the laoded event</param>
         void _AssociatedObjectLoaded(object sender, RoutedEventArgs e)
         {
             AssociatedObject.Loaded -= _AssociatedObjectLoaded; // don't repeat this
@@ -66,7 +75,8 @@ namespace Jounce.Framework.View
                 {
                     parent = VisualTreeHelper.GetParent(parent);
                 }
-                if (parent is Control)
+
+                if (parent != null)
                 {
                     control = parent as Control;
                 }

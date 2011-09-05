@@ -5,6 +5,9 @@ namespace Jounce.Core.Event
     /// <summary>
     ///     The entity event args
     /// </summary>
+    /// <remarks>
+    /// Used for messages about entities in the system
+    /// </remarks>
     public class EntityEvent 
     {
         /// <summary>
@@ -13,6 +16,10 @@ namespace Jounce.Core.Event
         /// <param name="entity">The entity</param>
         /// <param name="command">The command</param>
         /// <returns>The args to wrap the command</returns>
+        /// <remarks>
+        /// Use this to create an entity event that includes the entity affected and the 
+        /// operation performed against the entity
+        /// </remarks>
         public static EntityEvent CreateArgsFor(object entity, EntityCommand command)
         {
             return new EntityEvent

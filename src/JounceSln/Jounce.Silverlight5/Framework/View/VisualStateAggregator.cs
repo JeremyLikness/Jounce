@@ -7,6 +7,9 @@ namespace Jounce.Framework.View
     /// <summary>
     ///     Handles aggregation of visual state events between separate controls
     /// </summary>
+    /// <remarks>
+    /// Use to coordinate visual states across views and controls
+    /// </remarks>
     [Export]
     public class VisualStateAggregator
     {

@@ -5,7 +5,7 @@ using System.Windows.Controls;
 namespace Jounce.Regions.Core
 {
     /// <summary>
-    ///     Tag to export a view to a region
+    ///  Tag to export a view to a region
     /// </summary>
     [MetadataAttribute]
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property, AllowMultiple = false)]
@@ -32,8 +32,14 @@ namespace Jounce.Regions.Core
             TargetRegion = targetRegion;
         }
 
+        /// <summary>
+        /// The tag for the view
+        /// </summary>
         public string ViewTypeForRegion { get; private set; }
 
+        /// <summary>
+        ///  The tag for the region
+        /// </summary>
         public string TargetRegion { get; private set; }
     }
 }

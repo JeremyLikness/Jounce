@@ -3,12 +3,12 @@ using System;
 namespace Jounce.Core.Application
 {
     /// <summary>
-    ///     Logger interface
+    /// Logger interface
     /// </summary>
     public interface ILogger
     {
         /// <summary>
-        ///     Sets the severity 
+        /// Sets the severity 
         /// </summary>
         /// <param name="minimumLevel">Minimum level</param>
         void SetSeverity(LogSeverity minimumLevel);

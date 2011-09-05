@@ -8,6 +8,10 @@ namespace Jounce.Core.ViewModel
     /// <summary>
     ///     Router for views and view models
     /// </summary>
+    /// <remarks>
+    /// This is part of the base view model and is used to resolve and communicate
+    /// with other view models
+    /// </remarks>
     public interface IViewModelRouter
     {
         /// <summary>

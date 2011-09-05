@@ -8,6 +8,9 @@ namespace Jounce.Framework.View
     /// <summary>
     ///     Trigger to raise the visual state aggregator event
     /// </summary>
+    /// <remarks>
+    /// Hook into an event to publish an aggregate view state transition
+    /// </remarks>
     public class VisualStateAggregatorTrigger : TriggerAction<FrameworkElement>
     {
         /// <summary>
@@ -22,7 +25,7 @@ namespace Jounce.Framework.View
         }
 
         /// <summary>
-        ///     Reference to the aggregator
+        ///     Reference to the <see cref="VisualStateAggregator"/>
         /// </summary>
         [Import]
         public VisualStateAggregator Aggregator { get; set; }

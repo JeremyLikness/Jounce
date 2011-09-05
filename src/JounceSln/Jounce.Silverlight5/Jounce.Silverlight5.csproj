@@ -98,7 +98,11 @@
     <Compile Include="Framework\Command\ActionCommand.cs" />
     <Compile Include="Framework\Exceptions\DeploymentCatalogDownloadException.cs" />
     <Compile Include="Framework\JounceHelper.cs" />
-    <Compile Include="Framework\Resources.Designer.cs" />
+    <Compile Include="Framework\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Framework\Services\ApplicationService.cs" />
     <Compile Include="Framework\Services\DefaultLogger.cs" />
     <Compile Include="Framework\Services\DeploymentService.cs" />
@@ -106,6 +110,7 @@
     <Compile Include="Framework\Services\NavigationTrigger.cs" />
     <Compile Include="Framework\ViewModel\BaseEntityViewModel.cs" />
     <Compile Include="Framework\ViewModel\JounceViewConverter.cs" />
+    <Compile Include="Framework\ViewModel\MapToViewModelExtension.cs" />
     <Compile Include="Framework\ViewModel\ViewModelRouter.cs" />
     <Compile Include="Framework\View\ViewRouter.cs" />
     <Compile Include="Framework\View\VisualStateAggregator.cs" />
@@ -131,7 +136,11 @@
     <Compile Include="Regions\ExportAsRegion.cs" />
     <Compile Include="Regions\RegionManager.cs" />
     <Compile Include="Regions\RegionMetadataComparer.cs" />
-    <Compile Include="Regions\Resources.Designer.cs" />
+    <Compile Include="Regions\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Core\Resources.resx">
@@ -139,8 +148,16 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Framework\Resources.resx" />
-    <EmbeddedResource Include="Regions\Resources.resx" />
+    <EmbeddedResource Include="Framework\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Regions\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <ProjectExtensions>

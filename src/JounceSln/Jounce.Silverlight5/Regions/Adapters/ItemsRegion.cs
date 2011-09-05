@@ -3,6 +3,13 @@ using System.Windows.Controls;
 
 namespace Jounce.Regions.Adapters
 {
+    /// <summary>
+    /// Region adapter for <see cref="ItemsControl"/>
+    /// </summary>
+    /// <remarks>
+    /// Simply adds views to the items control - view models should respond to navigation events to 
+    /// hide/show as needed.
+    /// </remarks>
     [RegionAdapterFor(typeof(ItemsControl))]
     public class ItemsRegion : RegionAdapterBase<ItemsControl> 
     {
