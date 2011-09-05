@@ -1,8 +1,13 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace Jounce.Regions.Adapters
 {
+    /// <summary>
+    /// Region adapter for a <see cref="ContentControl"/> region
+    /// </summary>
+    /// <remarks>
+    /// Simply swaps out the views when they are navigated to
+    /// </remarks>
     [RegionAdapterFor(typeof(ContentControl))]
     public class ContentRegion : RegionAdapterBase<ContentControl>
     {        

@@ -13,7 +13,14 @@ namespace Jounce.Regions.Adapters
     /// <typeparam name="TRegionType">The type of region this adapter handles</typeparam>
     public abstract class RegionAdapterBase<TRegionType> : IRegionAdapterBase where TRegionType: Control 
     {
+        /// <summary>
+        /// List of available regions
+        /// </summary>
         protected readonly Dictionary<string, TRegionType> Regions = new Dictionary<string,TRegionType>();
+
+        /// <summary>
+        /// List of available controls
+        /// </summary>
         protected readonly Dictionary<string, UserControl> Controls = new Dictionary<string, UserControl>();       
 
         /// <summary>
@@ -112,6 +119,10 @@ namespace Jounce.Regions.Adapters
             return Controls.ContainsKey(viewName);
         }
 
+        /// <summary>
+        /// Validate that the control exists
+        /// </summary>
+        /// <param name="controlName">The name of the control</param>
         protected virtual void ValidateControlName(string controlName)
         {
             if (string.IsNullOrEmpty(controlName))
@@ -125,6 +136,10 @@ namespace Jounce.Regions.Adapters
             }
         }
 
+        /// <summary>
+        /// Validate that the region exists
+        /// </summary>
+        /// <param name="targetRegion">The name of the region</param>
         protected virtual void ValidateRegionName(string targetRegion)
         {           
             if (!Regions.ContainsKey(targetRegion))

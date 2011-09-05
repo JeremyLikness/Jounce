@@ -16,6 +16,9 @@ namespace Jounce.Framework.View
     ///     It listens to view events, asks the deployment service to load, then
     ///     activates the view
     /// </summary>
+    /// <remarks>
+    /// This is the main router to locate and parse views.
+    /// </remarks>
     [Export]
     [Export(typeof(IFluentViewXapRouter))]
     public class ViewRouter : IFluentViewXapRouter, IPartImportsSatisfiedNotification, IEventSink<ViewNavigationArgs>
@@ -23,31 +26,37 @@ namespace Jounce.Framework.View
         private bool _initialized;
 
         /// <summary>
-        ///     The deployment service
+        /// The deployment service reference to <see cref="IDeploymentService"/>
         /// </summary>
         [Import]
         public IDeploymentService DeploymentService { get; set; }
 
         /// <summary>
-        ///     The router
+        /// The instance of the <see cref="IViewModelRouter"/>
         /// </summary>
         [Import]
         public IViewModelRouter ViewModelRouter { get; set; }
         
         /// <summary>
-        ///     View locations
+        ///  A list of view locations using the <see cref="ViewXapRoute"/>
         /// </summary>
         [ImportMany(AllowRecomposition = true)]
         public ViewXapRoute[] ViewLocations { get; set; }
 
+        /// <summary>
+        /// List of fluently configured <see cref="ViewXapRoute"/>
+        /// </summary>
         private readonly List<ViewXapRoute> _fluentRoutes = new List<ViewXapRoute>();
 
         /// <summary>
-        ///     Event aggregator
+        /// Event aggregator instance that implements <see cref="IEventAggregator"/>
         /// </summary>
         [Import]
         public IEventAggregator EventAggregator { get; set; }
 
+        /// <summary>
+        /// Instance of the <see cref="ILogger"/>
+        /// </summary>
         [Import(AllowDefault = true,AllowRecomposition = true)]
         public ILogger Logger { get; set; }
 
@@ -119,9 +128,24 @@ namespace Jounce.Framework.View
             EventAggregator.Publish(new ViewNavigatedArgs(viewName));
         }
 
+        /// <summary>
+        /// Use to fluently route a view to a xap file
+        /// </summary>
+        /// <param name="view">The tag for the view</param>
+        /// <param name="xap">The name of the XAP</param>
         public void RouteViewInXap(string view, string xap)
         {
             _fluentRoutes.Add(ViewXapRoute.Create(view, xap));
-        }        
+        }
+
+        /// <summary>
+        /// Use to fluently route a view type to a xap file
+        /// </summary>
+        /// <typeparam name="T">The type of the view (uses the full name for the tag)</typeparam>
+        /// <param name="xap">The name of the XAP file</param>
+        public void RouteViewInXap<T>(string xap) where T : UserControl
+        {
+            _fluentRoutes.Add(ViewXapRoute.Create<T>(xap));
+        }
     }
 }

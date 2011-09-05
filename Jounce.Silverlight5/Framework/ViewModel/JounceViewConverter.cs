@@ -11,6 +11,10 @@ namespace Jounce.Framework.ViewModel
     /// <summary>
     ///     Jounce view converter
     /// </summary>
+    /// <remarks>
+    /// Use this is generate an instance of a view bound to a view model - if you have a list of 
+    /// view models, this will generate non-shared views that are bound in lists
+    /// </remarks>
     public class JounceViewConverter : IValueConverter 
     {
         /// <summary>
@@ -19,7 +23,7 @@ namespace Jounce.Framework.ViewModel
         private static readonly JounceViewConverter _composedConverter = new JounceViewConverter();
 
         /// <summary>
-        ///     The view model router
+        /// The reference to the <see cref="IViewModelRouter"/>
         /// </summary>
         [Import]
         public IViewModelRouter Router { get; set; }

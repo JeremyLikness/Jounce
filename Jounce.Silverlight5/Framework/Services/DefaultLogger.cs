@@ -8,6 +8,10 @@ namespace Jounce.Framework.Services
     /// <summary>
     ///     The default (debug) logger
     /// </summary>
+    /// <remarks>
+    /// This logger simply writes to the debugger. To override it, implement the <see cref="ILogger"/>
+    /// interface and export your own logger.
+    /// </remarks>
     public class DefaultLogger : ILogger 
     {
         /// <summary>
@@ -15,13 +19,23 @@ namespace Jounce.Framework.Services
         /// </summary>
         private const string TEMPLATE = "{0} {1} {2} :: {3}";
 
+        /// <summary>
+        /// The sevierty of the message
+        /// </summary>
         private LogSeverity _severityLevel;
 
+        /// <summary>
+        /// Default constructor at the warning level
+        /// </summary>
         public DefaultLogger() : this(LogSeverity.Warning)
         {
             
         }
 
+        /// <summary>
+        /// Constructor with a user-specified level passed
+        /// </summary>
+        /// <param name="minimumSeverity">The minimum level to log</param>
         public DefaultLogger(LogSeverity minimumSeverity)
         {
             _severityLevel = minimumSeverity;                 

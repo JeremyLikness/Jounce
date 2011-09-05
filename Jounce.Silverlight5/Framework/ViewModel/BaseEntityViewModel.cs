@@ -16,9 +16,18 @@ namespace Jounce.Framework.ViewModel
     /// <remarks>
     ///     The INotifyDataErrorInfo implementation is based on the Prism MVVM quickstart:
     ///     http://compositewpf.codeplex.com/
+    /// This provides an inverted "is dirty" model using the <see cref="Committed"/> flag. The entity
+    /// starts out as "non-committed" and exposes a commit command. The command is allowed if the 
+    /// entity has non-committed changes and those changes pass validations, so you can bind your
+    /// submit buttons to the command directly. It will call <see cref="ValidateAll"/> prior to 
+    /// making any committments so you can hook into final validation, and only if everything passes
+    /// will the command invoke <see cref="OnCommitted"/> for you to apply your changes.
     /// </remarks>    
     public abstract class BaseEntityViewModel : BaseViewModel, INotifyDataErrorInfo
     {
+        /// <summary>
+        /// Constructor sets up the command
+        /// </summary>
         protected BaseEntityViewModel()
         {            
             // can only commit if no errors

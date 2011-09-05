@@ -8,6 +8,9 @@ namespace Jounce.Framework
     /// <summary>
     ///     Application core extensions
     /// </summary>
+    /// <remarked>
+    /// Used for easy extension methods, thread management, etc.
+    /// </remarked>
     public static class JounceHelper
     {         
         /// <summary>
@@ -23,8 +26,8 @@ namespace Jounce.Framework
         /// <summary>
         ///     String to navigation
         /// </summary>
-        /// <param name="viewName"></param>
-        /// <returns></returns>
+        /// <param name="viewName">The tag for the view</param>
+        /// <returns>The tag converted to a <see cref="ViewNavigationArgs"/></returns>
         public static ViewNavigationArgs AsViewNavigationArgs(this string viewName)
         {
             return new ViewNavigationArgs(viewName);            
@@ -37,7 +40,7 @@ namespace Jounce.Framework
         /// <param name="args">The view navigation arguments</param>
         /// <param name="name">The name of the parameter</param>
         /// <param name="value">The value of the parameter</param>
-        /// <returns></returns>
+        /// <returns>The instance of <see cref="ViewNavigationArgs"/></returns>
         public static ViewNavigationArgs AddNamedParameter<T>(this ViewNavigationArgs args, string name, T value)
         {
             args.ViewParameters.Add(name, value);

@@ -20,6 +20,9 @@ namespace Jounce.Framework.Services
     [Export(typeof(IDeploymentService))]
     public class DeploymentService : IDeploymentService, IPartImportsSatisfiedNotification
     {
+        /// <summary>
+        /// Flag indicates if it has been initialized yet or not
+        /// </summary>
         private bool _init;
 
         /// <summary>
@@ -27,33 +30,37 @@ namespace Jounce.Framework.Services
         /// </summary>
         private readonly List<Uri> _loaded = new List<Uri>();
         
+        /// <summary>
+        /// List of <see cref="IModuleInitializer"/> instances brought in by
+        /// importing dynamic XAP files
+        /// </summary>
         [ImportMany(AllowRecomposition = true)]
         public IModuleInitializer[] Modules { get; set; }
 
         /// <summary>
-        ///     Event aggregator
+        /// Event aggregator reference to <see cref="IEventAggregator"/>
         /// </summary>  
         [Import]     
         public IEventAggregator EventAggregator { get; set; }
 
         /// <summary>
-        ///     The main container
+        /// The main <see cref="CompositionContainer"/>
         /// </summary>
         public CompositionContainer Container { get; set; }
         
         /// <summary>
-        ///     Logger
+        /// Instance of the <see cref="ILogger"/>
         /// </summary>      
         [Import(AllowDefault = true, AllowRecomposition = true)]
         public ILogger Logger { get; set; }
                 
         /// <summary>
-        ///     The main catalog
+        /// The main <see cref="AggregateCatalog"/>
         /// </summary>
         public AggregateCatalog Catalog { get; set; }                       
 
         /// <summary>
-        ///     Request the xap
+        ///  Request the xap
         /// </summary>
         /// <param name="xapName">The name of the xap</param>
         public void RequestXap(string xapName)
@@ -81,6 +88,12 @@ namespace Jounce.Framework.Services
             WorkflowController.Begin(DownloadWorkflow(xapName, xapLoaded));
         }
 
+        /// <summary>
+        /// An internal workflow to facilitate downloading the XAP file
+        /// </summary>
+        /// <param name="xapName">The name of the XAP</param>
+        /// <param name="xapLoaded">The action to call once it is loaded</param>
+        /// <returns>A list of <see cref="IWorkflow"/> items to execute</returns>
         private IEnumerable<IWorkflow> DownloadWorkflow(string xapName, Action<Exception> xapLoaded)
         {
             var xap = xapName.Trim().ToLower();            
@@ -144,8 +157,11 @@ namespace Jounce.Framework.Services
         }
 
         /// <summary>
-        ///     Initialize modules
+        ///  Initialize modules
         /// </summary>
+        /// <remarks>
+        /// Fires any time a new module is loaded
+        /// </remarks>
         private void _InitModules()
         {
             foreach(var moduleInitializer in from m in Modules where !m.Initialized select m)

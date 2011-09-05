@@ -5,6 +5,9 @@ namespace Jounce.Core.ViewModel
     /// </summary>
     public interface IExportAsViewModelMetadata
     {
+        /// <summary>
+        /// Tag for the view model
+        /// </summary>
         string ViewModelType { get; }
     }
 }

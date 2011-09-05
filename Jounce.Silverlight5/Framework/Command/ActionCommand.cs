@@ -6,13 +6,29 @@ namespace Jounce.Framework.Command
     /// <summary>
     ///     Delegate command - does it all
     /// </summary>
+    /// <remarks>
+    /// Base for setting up commands
+    /// </remarks>
     public class ActionCommand<T> : IActionCommand<T>
     {
+        /// <summary>
+        /// Action to perform (defaults to empty)
+        /// </summary>
         private Action<T> _execute = obj => { };
+
+        /// <summary>
+        /// Function to determine if the action can execute
+        /// </summary>
         private readonly Func<T,bool> _canExecute = obj => true;
 
+        /// <summary>
+        /// Set to true if the original action was overridden
+        /// </summary>
         public bool Overridden { get; set; }
 
+        /// <summary>
+        /// Default constructor - do nothing
+        /// </summary>
         public ActionCommand()
         {
             
@@ -21,7 +37,10 @@ namespace Jounce.Framework.Command
         /// <summary>
         ///     Override the action
         /// </summary>
-        /// <param name="action"></param>
+        /// <param name="action">The action to override with</param>
+        /// <remarks>
+        /// Changes the function of the action after its initial definition
+        /// </remarks>
         public void OverrideAction(Action<T> action)
         {
             _execute = action;
@@ -40,8 +59,8 @@ namespace Jounce.Framework.Command
         /// <summary>
         ///     Constructor with action and condition
         /// </summary>
-        /// <param name="execute"></param>
-        /// <param name="canExecute"></param>
+        /// <param name="execute">The action to execute</param>
+        /// <param name="canExecute">A function to determine whether execution is allowed</param>
         public ActionCommand(Action<T> execute, Func<T,bool> canExecute)
         {
             _execute = execute;
@@ -72,6 +91,9 @@ namespace Jounce.Framework.Command
             }
         }
 
+        /// <summary>
+        /// Use this to indicate the action should reevaluate whether or not it can execute
+        /// </summary>
         public void RaiseCanExecuteChanged()
         {
             var handler = CanExecuteChanged;
@@ -81,6 +103,9 @@ namespace Jounce.Framework.Command
             }
         }
 
+        /// <summary>
+        /// Raised when the state of execution has changed
+        /// </summary>
         public event EventHandler CanExecuteChanged;
     }
 }

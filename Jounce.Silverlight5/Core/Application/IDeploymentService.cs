@@ -4,8 +4,13 @@ using System;
 namespace Jounce.Core.Application
 {
     /// <summary>
-    ///     Request the xap
+    ///     Service for downloading XAP files
     /// </summary>
+    /// <remarks>
+    /// This is a core interface that is explicitly implemented by the application service. Use it to get a reference to the main 
+    /// <see cref="AggregateCatalog"/> for the application and the MEF <see cref="CompositionContainer"/>. Import it to 
+    /// request XAP files with an optional callback once the XAP has been loaded
+    /// </remarks>
     public interface IDeploymentService
     {
         /// <summary>
@@ -22,17 +27,17 @@ namespace Jounce.Core.Application
         void RequestXap(string xapName, Action<Exception> xapLoaded);       
        
         /// <summary>
-        ///     The main catalog
+        /// The main catalog
         /// </summary>
         AggregateCatalog Catalog { get; set; }
 
         /// <summary>
-        ///     The main container
+        /// The main container
         /// </summary>
         CompositionContainer Container { get; set; }
 
         /// <summary>
-        ///     Logger
+        /// Logger
         /// </summary>
         ILogger Logger { get; set; }
     }

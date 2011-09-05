@@ -8,6 +8,9 @@ namespace Jounce.Regions
     /// <summary>
     ///     Comparer for region metadata
     /// </summary>
+    /// <remarks>
+    /// Facilitates filtering in the region manager
+    /// </remarks>
     public class RegionMetadataComparer : IEqualityComparer<Lazy<UserControl,IExportViewToRegionMetadata>>
     {
         /// <summary>

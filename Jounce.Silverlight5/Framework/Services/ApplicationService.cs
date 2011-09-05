@@ -15,7 +15,10 @@ namespace Jounce.Framework.Services
 {
     /// <summary>
     ///     Main application service
-    /// </summary>        
+    /// </summary>   
+    /// <remarks>
+    /// This is placed in the main <value>App.xaml</value> file 
+    /// </remarks>     
     public class ApplicationService : IApplicationService, IApplicationLifetimeAware, IDisposable
     {
         private bool _disposed;
@@ -36,22 +39,32 @@ namespace Jounce.Framework.Services
         private MefDebugger _mefDebugger;
 
         /// <summary>
-        ///     Deployment service
+        /// Deployment service reference to <see cref="IDeploymentService"/>
         /// </summary>
         [Import]
         public IDeploymentService DeploymentService { get; set; }
 
+        /// <summary>
+        /// Reference to the <see cref="IEventAggregator"/>
+        /// </summary>
         [Import]
         public IEventAggregator EventAggregator { get; set; }
 
+
+        /// <summary>
+        /// Reference to the main instance of the <see cref="ViewRouter"/>
+        /// </summary>
         [Import]
         public ViewRouter Router { get; set; }
         
+        /// <summary>
+        /// Holds a list of all views and their <see cref="IExportAsViewMetadata"/>
+        /// </summary>
         [ImportMany(AllowRecomposition = true)]
         public Lazy<UserControl, IExportAsViewMetadata>[] Views { get; set; }
 
         /// <summary>
-        ///     The logger
+        /// The reference to <see cref="ILogger"/>
         /// </summary>
         [Import(AllowDefault = true, AllowRecomposition = true)]
         public ILogger Logger { get; set; }
@@ -185,6 +198,10 @@ namespace Jounce.Framework.Services
             Logger.Log(LogSeverity.Information, GetType().FullName, MethodBase.GetCurrentMethod().Name);
         }
 
+        /// <summary>
+        ///  When disposed - likely will never get called
+        /// </summary>
+        /// <param name="disposing">True when disposing</param>
         protected virtual void Dispose(bool disposing)
         {
             if (_disposed) return;

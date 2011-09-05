@@ -7,6 +7,9 @@ namespace Jounce.Regions.Core
     /// <summary>
     ///     Region manager
     /// </summary>
+    /// <remarks>
+    /// Handles delegation of views to region adapters
+    /// </remarks>
     public interface IRegionManager
     {
         /// <summary>

@@ -19,31 +19,7 @@ namespace Jounce.Core.Model
         /// <summary>
         /// Raised when a property on this object has a new value.
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        ///     Raise a property change and infer the frame from the stack
-        /// </summary>
-        /// <remarks>
-        ///     May not work on some systems (64-bit, for example, not yet supported by Silverlight). 
-        /// </remarks>
-        [MethodImpl(MethodImplOptions.NoInlining)]
-        public virtual void RaisePropertyChanged()
-        {
-            var frames = new System.Diagnostics.StackTrace();
-            for (var i = 0; i < frames.FrameCount; i++)
-            {
-                var frame = frames.GetFrame(i).GetMethod() as MethodInfo;
-                if (frame != null)
-                    if (frame.IsSpecialName && frame.Name.StartsWith("set_"))
-                    {
-                        RaisePropertyChanged(frame.Name.Substring(4));
-                        return;
-                    }
-            }
-            throw new InvalidOperationException("NotifyPropertyChanged() can only by invoked within a property setter.");
-        }
-
+        public event PropertyChangedEventHandler PropertyChanged;       
 
         /// <summary>
         /// Raises this object's PropertyChanged event.
@@ -81,6 +57,16 @@ namespace Jounce.Core.Model
             RaisePropertyChanged(propertyName);
         }
 
+        /// <summary>
+        /// Extracts the property name from the property expression
+        /// </summary>
+        /// <typeparam name="T">The type of the property</typeparam>
+        /// <param name="propertyExpression">An expression that evaluates to the property</param>
+        /// <returns>The property name</returns>
+        /// <remarks>
+        /// Use this to take an expression like <code>() => MyProperty</code> and evaluate to the
+        /// string "MyProperty"
+        /// </remarks>
         protected string ExtractPropertyName<T>(Expression<Func<T>> propertyExpression)
         {
             if (propertyExpression == null)
