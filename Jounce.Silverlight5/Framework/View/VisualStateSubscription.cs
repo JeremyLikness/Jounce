@@ -83,11 +83,20 @@ namespace Jounce.Framework.View
             }
         }
 
+        /// <summary>
+        /// True when objects are equal
+        /// </summary>
+        /// <param name="obj">The object to compare to</param>
+        /// <returns>True when the other object is a visual subscription with a matching id</returns>
         public override bool Equals(object obj)
         {
             return obj is VisualStateSubscription && ((VisualStateSubscription)obj)._id==_id;
         }
 
+        /// <summary>
+        /// Provides the hash code
+        /// </summary>
+        /// <returns>Hash code is computed from the <see cref="_id"/></returns>
         public override int GetHashCode()
         {
             return _hashCode;

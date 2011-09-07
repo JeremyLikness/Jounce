@@ -12,7 +12,14 @@ namespace Jounce.Core.Workflow
     /// </remarks>
     public interface IWorkflow
     {
+        /// <summary>
+        /// Invoke starts the sequence
+        /// </summary>
         void Invoke();
+
+        /// <summary>
+        /// Invoked is called when the sequence ends (usually chained to the next instance)
+        /// </summary>
         Action Invoked { get; set; }
     }
 }

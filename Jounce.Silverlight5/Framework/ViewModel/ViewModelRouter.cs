@@ -143,6 +143,9 @@ namespace Jounce.Framework.ViewModel
                     select vm).FirstOrDefault();
         }
 
+        /// <summary>
+        ///     Instance of the <see cref="ILogger"/>
+        /// </summary>
         [Import(AllowDefault = true, AllowRecomposition = true)]
         public ILogger Logger { get; set; }
 
@@ -451,6 +454,11 @@ namespace Jounce.Framework.ViewModel
             _fluentRoutes.Add(ViewModelRoute.Create(viewModel, view));
         }
 
+        /// <summary>
+        /// Route a view to a view model
+        /// </summary>
+        /// <typeparam name="T">The type of the view model</typeparam>
+        /// <typeparam name="TView">The type of the view</typeparam>
         public void RouteViewModelForView<T, TView>() where T : IViewModel where TView : UserControl
         {
             RouteViewModelForView(typeof(T).FullName, typeof(TView).FullName);

@@ -49,6 +49,10 @@ namespace Jounce.Core.ViewModel
         /// </summary>
         public string ViewType { get; private set; }
 
+        /// <summary>
+        /// To string
+        /// </summary>
+        /// <returns>The string representation</returns>
         public override string ToString()
         {
             return string.Format(Resources.ViewModelRoute_ToString_ViewModelRoute, ViewModelType, ViewType);

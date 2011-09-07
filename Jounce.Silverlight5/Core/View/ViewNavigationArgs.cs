@@ -76,6 +76,10 @@ namespace Jounce.Core.View
         /// </summary>
         public string ViewType { get; private set; }
 
+        /// <summary>
+        /// String representation
+        /// </summary>
+        /// <returns>The string representation of the route</returns>
         public override string ToString()
         {
             return string.Format(Resources.ViewNavigationArgs_ToString_ViewNavigation,

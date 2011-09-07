@@ -47,9 +47,8 @@ namespace Jounce.Framework.Services
         /// <summary>
         /// Reference to the <see cref="IEventAggregator"/>
         /// </summary>
-        [Import]
+        [Import]        
         public IEventAggregator EventAggregator { get; set; }
-
 
         /// <summary>
         /// Reference to the main instance of the <see cref="ViewRouter"/>
@@ -70,12 +69,31 @@ namespace Jounce.Framework.Services
         public ILogger Logger { get; set; }
 
         /// <summary>
+        /// Set to true to suppress Jounce from intercepting unhandled exceptions
+        /// </summary>
+        public bool IgnoreUnhandledExceptions { get; set; }
+
+        private LogSeverity _severity = LogSeverity.Warning;
+
+        /// <summary>
+        /// Sets the initial severity level for the log.         
+        /// </summary>
+        /// <remarks>
+        /// Overridden if this is set in the init parameters
+        /// </remarks>        
+        public LogSeverity LogSeverityLevel
+        {
+            get { return _severity; }
+            set { _severity = value; }
+        }
+
+        /// <summary>
         /// Called by an application in order to initialize the application extension service.
         /// </summary>
         /// <param name="context">Provides information about the application state. </param>
         public void StartService(ApplicationServiceContext context)
         {
-            var logLevel = LogSeverity.Warning;
+            var logLevel = LogSeverityLevel;
 
             if (context.ApplicationInitParams.ContainsKey(Constants.INIT_PARAM_LOGLEVEL))
             {
@@ -120,7 +138,10 @@ namespace Jounce.Framework.Services
         /// </summary>
         public void Starting()
         {
-            Application.Current.UnhandledException += _CurrentUnhandledException;
+            if (!IgnoreUnhandledExceptions)
+            {
+                Application.Current.UnhandledException += _CurrentUnhandledException;
+            }
 
             var viewInfo = (from v in Views where v.Metadata.IsShell select v).FirstOrDefault();
 
@@ -165,7 +186,7 @@ namespace Jounce.Framework.Services
 
             var exception = new UnhandledExceptionEvent
                                 {
-                                    Handled = false,
+                                    Handled = e.Handled,
                                     UncaughtException = e.ExceptionObject
                                 };
             EventAggregator.Publish(exception);
