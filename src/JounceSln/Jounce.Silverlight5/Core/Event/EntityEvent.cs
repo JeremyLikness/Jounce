@@ -71,6 +71,10 @@ namespace Jounce.Core.Event
             return Entity == null ? default(T) : (T) Entity;           
         }
 
+        /// <summary>
+        /// String representation
+        /// </summary>
+        /// <returns>The string representation</returns>
         public override string ToString()
         {
             return string.Format(Resources.EntityEvent_ToString_EntityEvent, Command, EntityType.FullName, Entity);

@@ -50,6 +50,10 @@ namespace Jounce.Core.View
         /// </summary>
         public string ViewXap { get; private set; }
 
+        /// <summary>
+        /// String representation
+        /// </summary>
+        /// <returns>The string representation</returns>
         public override string ToString()
         {
             return string.Format(Resources.ViewXapRoute_ToString_View_Route_View, ViewName, ViewXap);
