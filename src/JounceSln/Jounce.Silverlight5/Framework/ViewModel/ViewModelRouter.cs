@@ -245,20 +245,29 @@ namespace Jounce.Framework.ViewModel
         /// <returns>The view</returns>
         public UserControl GetNonSharedView(string viewTag, object dataContext, Dictionary<string,object> parameters)
         {
-            var view = (from factory in ViewFactory
+            var viewEntry = (from factory in ViewFactory
                         where factory.Metadata.ExportedViewType.Equals(viewTag)
-                        select factory.CreateExport().Value).FirstOrDefault();
+                        select factory).FirstOrDefault();
 
-            if (view == null)
+            if (viewEntry == null)
             {
                 return null;
             }
 
+            var view = viewEntry.CreateExport().Value;
+            var viewMetadata = viewEntry.Metadata;
+            
             BindViewModel(view, dataContext);
                 
             var viewModel = dataContext as IViewModel;
             if (viewModel != null)
             {
+                if (viewMetadata.DeactivateOnUnload)
+                {
+                    view.Unloaded += (o, e) => 
+                        viewModel.Deactivate(viewMetadata.ExportedViewType);
+                }
+
                 viewModel.RegisterVisualState(viewTag,
                                                     (state, transitions) =>
                                                     JounceHelper.ExecuteOnUI(
@@ -378,7 +387,8 @@ namespace Jounce.Framework.ViewModel
 
             if (HasView(viewName))
             {
-                var view = ViewQuery(viewName);
+                var viewInfo = GetViewInfo(viewName);
+                var view = viewInfo.Value;
 
                 var viewModelInfo = GetViewModelInfoForView(viewName);
 
@@ -401,6 +411,10 @@ namespace Jounce.Framework.ViewModel
 
                     if (firstTime)
                     {
+                        if (viewInfo.Metadata.DeactivateOnUnload)
+                        {
+                            view.Unloaded += (o, e) => viewModel.Deactivate(viewName);
+                        }
                         viewModel.Initialize();
                         RoutedEventHandler loaded = null;
                         loaded = (o, e) =>
