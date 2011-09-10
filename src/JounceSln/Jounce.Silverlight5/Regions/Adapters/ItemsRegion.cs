@@ -1,5 +1,8 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace Jounce.Regions.Adapters
 {
@@ -17,6 +20,8 @@ namespace Jounce.Regions.Adapters
         ///     Keep track of views already added
         /// </summary>
         private readonly List<string> _addedViews = new List<string>();
+        private readonly ObservableCollection<UserControl> _views = new ObservableCollection<UserControl>();
+        private readonly List<string> _boundRegions = new List<string>(); 
 
         /// <summary>
         ///     Activates a control for a region
@@ -28,13 +33,18 @@ namespace Jounce.Regions.Adapters
             ValidateControlName(viewName);
             ValidateRegionName(targetRegion);
 
-            var region = Regions[targetRegion];
+            var region = Regions[targetRegion];                       
 
-            if (!_addedViews.Contains(viewName))
+            if (!_boundRegions.Contains(targetRegion))
             {
-                _addedViews.Add(viewName);
-                region.Items.Add(Controls[viewName]);   
-            }                     
+                region.ItemsSource = _views;
+                _boundRegions.Add(targetRegion);
+            }
+
+            if (_addedViews.Contains(viewName)) return;
+
+            _addedViews.Add(viewName);
+            _views.Add(Controls[viewName]);
         }        
     }
 }
