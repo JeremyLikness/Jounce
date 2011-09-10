@@ -65,7 +65,7 @@ namespace Jounce.Framework.ViewModel
         /// <returns>The view model tag</returns>
         public string GetViewModelTagForView(string view)
         {
-            var vm = _GetViewModelInfoForView(view);
+            var vm = GetViewModelInfoForView(view);
             return vm == null ? string.Empty : vm.Metadata.ViewModelType;
         }
 
@@ -99,7 +99,7 @@ namespace Jounce.Framework.ViewModel
         /// <returns></returns>
         public UserControl ViewQuery(string name)
         {
-            var v = _GetViewInfo(name);
+            var v = GetViewInfo(name);
             return v == null ? null : v.Value;
         }
 
@@ -110,7 +110,7 @@ namespace Jounce.Framework.ViewModel
         /// <returns></returns>
         public bool HasView(string name)
         {
-            return _GetViewInfo(name) != null;
+            return GetViewInfo(name) != null;
         }
 
 
@@ -119,7 +119,7 @@ namespace Jounce.Framework.ViewModel
         /// </summary>
         /// <param name="viewName">The name of the view</param>
         /// <returns></returns>
-        private Lazy<UserControl, IExportAsViewMetadata> _GetViewInfo(string viewName)
+        private Lazy<UserControl, IExportAsViewMetadata> GetViewInfo(string viewName)
         {
             return (from v in Views where v.Metadata.ExportedViewType.Equals(viewName) select v).FirstOrDefault();
         }
@@ -129,7 +129,7 @@ namespace Jounce.Framework.ViewModel
         /// </summary>
         /// <param name="view">The view</param>
         /// <returns>The corresponding view model information</returns>
-        private Lazy<IViewModel, IExportAsViewModelMetadata> _GetViewModelInfoForView(string view)
+        private Lazy<IViewModel, IExportAsViewModelMetadata> GetViewModelInfoForView(string view)
         {
             return (from r in _fluentRoutes
                     from vm in ViewModels
@@ -158,7 +158,7 @@ namespace Jounce.Framework.ViewModel
         {
             if (HasView(viewName))
             {
-                var vm = _GetViewModelInfoForView(viewName);
+                var vm = GetViewModelInfoForView(viewName);
                 if (vm != null)
                 {
                     if (vm.IsValueCreated)
@@ -254,25 +254,25 @@ namespace Jounce.Framework.ViewModel
                 return null;
             }
 
-            _BindViewModel(view, dataContext);
+            BindViewModel(view, dataContext);
                 
-            var baseViewModel = dataContext as BaseViewModel;
-            if (baseViewModel != null)
+            var viewModel = dataContext as IViewModel;
+            if (viewModel != null)
             {
-                baseViewModel.RegisterVisualState(viewTag,
+                viewModel.RegisterVisualState(viewTag,
                                                     (state, transitions) =>
                                                     JounceHelper.ExecuteOnUI(
                                                         () => VisualStateManager.GoToState(view, state,
                                                                                             transitions)));
-                baseViewModel.RegisteredViews.Add(viewTag);
-                baseViewModel.Initialize();
+                viewModel.RegisteredViews.Add(viewTag);
+                viewModel.Initialize();
                 RoutedEventHandler loaded = null;
                 loaded = (o, e) =>
                                 {
                                     // ReSharper disable AccessToModifiedClosure
                                     ((UserControl) o).Loaded -= loaded;
                                     // ReSharper restore AccessToModifiedClosure
-                                    baseViewModel.Activate(viewTag, parameters);
+                                    viewModel.Activate(viewTag, parameters);
                                 };
                 view.Loaded += loaded;
             }
@@ -360,7 +360,7 @@ namespace Jounce.Framework.ViewModel
         /// <returns>The meta data for the view</returns>
         public IExportAsViewMetadata GetMetadataForView(string view)
         {
-            var viewInfo = _GetViewInfo(view);
+            var viewInfo = GetViewInfo(view);
             return viewInfo == null ? null : viewInfo.Metadata;
         }
 
@@ -380,25 +380,23 @@ namespace Jounce.Framework.ViewModel
             {
                 var view = ViewQuery(viewName);
 
-                var viewModelInfo = _GetViewModelInfoForView(viewName);
+                var viewModelInfo = GetViewModelInfoForView(viewName);
 
                 if (viewModelInfo != null)
                 {
                     var firstTime = !viewModelInfo.IsValueCreated;
 
-                    var viewModel = viewModelInfo.Value;
+                    var viewModel = viewModelInfo.Value;                    
 
-                    var baseViewModel = (BaseViewModel) viewModel;
-
-                    if (!baseViewModel.RegisteredViews.Contains(viewName))
+                    if (!viewModel.RegisteredViews.Contains(viewName))
                     {
-                        baseViewModel.RegisterVisualState(viewName,
+                        viewModel.RegisterVisualState(viewName,
                                                           (state, transitions) =>
                                                           JounceHelper.ExecuteOnUI(
                                                               () => VisualStateManager.GoToState(view, state,
                                                                                                  transitions)));
-                        _BindViewModel(view, viewModel);
-                        baseViewModel.RegisteredViews.Add(viewName);
+                        BindViewModel(view, viewModel);
+                        viewModel.RegisteredViews.Add(viewName);
                     }
 
                     if (firstTime)
@@ -430,7 +428,7 @@ namespace Jounce.Framework.ViewModel
         /// </summary>
         /// <param name="view">The view</param>
         /// <param name="viewModel">The view model</param>
-        private static void _BindViewModel(FrameworkElement view, object viewModel)
+        private static void BindViewModel(FrameworkElement view, object viewModel)
         {
             var root = VisualTreeHelper.GetChild(view, 0);
             

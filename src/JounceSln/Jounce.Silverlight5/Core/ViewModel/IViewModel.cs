@@ -15,6 +15,18 @@ namespace Jounce.Core.ViewModel
         Action<string,bool> GoToVisualState { get; set; }
 
         /// <summary>
+        ///     List of view tags registered to the current view model
+        /// </summary>
+        List<string> RegisteredViews { get; }
+
+        /// <summary>
+        ///     Register the visual state transition
+        /// </summary>
+        /// <param name="view">The tag of the view being bound</param>
+        /// <param name="action">The delegate to set a visual state on the view</param>
+        void RegisterVisualState(string view, Action<string, bool> action);
+
+        /// <summary>
         ///     Visual state for a specific view
         /// </summary>
         /// <param name="view">The view</param>
