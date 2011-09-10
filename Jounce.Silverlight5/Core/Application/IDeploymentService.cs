@@ -24,7 +24,16 @@ namespace Jounce.Core.Application
         /// </summary>
         /// <param name="xapName">The name of the XAP to download</param>
         /// <param name="xapLoaded">Callback when xap is loaded</param>
-        void RequestXap(string xapName, Action<Exception> xapLoaded);       
+        void RequestXap(string xapName, Action<Exception> xapLoaded);
+
+        /// <summary>
+        ///  Request a xap to be downloaded and integrated
+        /// </summary>
+        /// <param name="xapName">The name of the xap to download</param>
+        /// <param name="xapLoaded">Callback when xap is loaded</param>
+        /// <param name="xapProgress">Callback to report xap progress (bytes received, percent complete, total bytes)</param>
+        void RequestXap(string xapName, Action<Exception> xapLoaded,
+                        Action<long, int, long> xapProgress);
        
         /// <summary>
         /// The main catalog
