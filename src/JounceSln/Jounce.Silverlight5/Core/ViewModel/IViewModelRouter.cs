@@ -145,6 +145,18 @@ namespace Jounce.Core.ViewModel
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        bool HasView(string name);        
+        bool HasView(string name);
+
+        /// <summary>
+        /// List of exported routes
+        /// </summary>
+        List<ViewModelRoute> RouteList { get; }
+
+        /// <summary>
+        /// Get the <see cref="IExportAsViewMetadata"/> for a view
+        /// </summary>
+        /// <param name="viewName">The name of the view</param>
+        /// <returns>The <see cref="IExportAsViewMetadata"/> for the view</returns>
+        IExportAsViewMetadata GetViewMetadata(string viewName);
     }
 }
