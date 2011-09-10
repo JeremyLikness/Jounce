@@ -11,6 +11,12 @@ namespace Jounce.Core.View
         string ExportedViewType { get; }
 
         /// <summary>
+        /// Set to true to automatically call deactivate on the view model when the
+        /// view is unloaded
+        /// </summary>
+        bool DeactivateOnUnload { get; }
+
+        /// <summary>
         /// True if the view is the main shell for the application
         /// </summary>
         bool IsShell { get; }

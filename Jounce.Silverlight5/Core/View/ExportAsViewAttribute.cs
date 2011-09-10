@@ -13,7 +13,7 @@ namespace Jounce.Core.View
     /// </remarks>
     [MetadataAttribute]
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property, AllowMultiple = false)]
-    public class ExportAsViewAttribute : ExportAttribute 
+    public class ExportAsViewAttribute : ExportAttribute, IExportAsViewMetadata
     {
         /// <summary>
         ///     Constructor to use type
@@ -42,6 +42,12 @@ namespace Jounce.Core.View
         /// </summary>
         public string ExportedViewType { get; private set; }
 
+        /// <summary>
+        /// Set to true to automatically call deactivate on the view model when
+        /// the view is unloaded
+        /// </summary>
+        public bool DeactivateOnUnload { get; set; }
+        
         /// <summary>
         /// Set to true for the view that should serve as the main shell
         /// </summary>

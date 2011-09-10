@@ -34,6 +34,12 @@ namespace Jounce.Framework.ViewModel
         public bool CreateNew { get; set; }
 
         /// <summary>
+        /// Set to true to automatically call deactivate on the 
+        /// view model when unloaded
+        /// </summary>
+        public bool CallDeactivateOnUnload { get; set; }
+
+        /// <summary>
         /// Instance of the <see cref="IViewModelRouter"/>
         /// </summary>
         [Import]
@@ -84,7 +90,7 @@ namespace Jounce.Framework.ViewModel
                                                       JounceHelper.ExecuteOnUI(
                                                           () => VisualStateManager.GoToState(view, state,
                                                                                              transitions)));
-                    _BindViewModel(view, baseViewModel);
+                    BindViewModel(view, baseViewModel);
                     baseViewModel.RegisteredViews.Add(viewName);
                 }
 
@@ -97,6 +103,11 @@ namespace Jounce.Framework.ViewModel
                     baseViewModel.Activate(viewName);
                 };
                 view.Loaded += loaded;
+
+                if (CallDeactivateOnUnload)
+                {
+                    view.Unloaded += (o, e) => vm.Deactivate(viewName);
+                }
 
             }
 
@@ -112,7 +123,7 @@ namespace Jounce.Framework.ViewModel
         /// </remarks>
         /// <param name="view">The view the markup extension is found in</param>
         /// <param name="viewModel">The view model instance</param>
-        private static void _BindViewModel(FrameworkElement view, IViewModel viewModel)
+        private static void BindViewModel(FrameworkElement view, IViewModel viewModel)
         {
             var root = view.FindName("LayoutRoot");
             if (root != null)
