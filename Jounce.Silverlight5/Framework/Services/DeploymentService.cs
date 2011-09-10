@@ -5,6 +5,7 @@ using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Linq;
 using System.Reflection;
+using System.Windows;
 using Jounce.Core;
 using Jounce.Core.Application;
 using Jounce.Core.Event;
@@ -80,7 +81,8 @@ namespace Jounce.Framework.Services
                 throw new ArgumentNullException("xapName");
             }
 
-            if (!xapName.EndsWith(".xap", StringComparison.InvariantCultureIgnoreCase))
+            var uri = new Uri(Application.Current.Host.Source, xapName);
+            if (!uri.GetComponents(UriComponents.Path, UriFormat.Unescaped).EndsWith(".xap", StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new ArgumentOutOfRangeException("xapName", Resources.DeploymentService_RequestXap_XAPExtensionError);
             }   
@@ -111,7 +113,7 @@ namespace Jounce.Framework.Services
                 yield break;
             }            
 
-            var deploymentCatalog = new DeploymentCatalog(uri);
+            var deploymentCatalog = new DeploymentCatalog(uri);            
 
             var downloadAction = new WorkflowEvent<AsyncCompletedEventArgs>(deploymentCatalog.DownloadAsync,
                                                    h => deploymentCatalog.DownloadCompleted += h,
