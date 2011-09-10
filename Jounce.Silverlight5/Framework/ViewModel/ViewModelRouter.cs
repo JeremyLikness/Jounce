@@ -30,6 +30,14 @@ namespace Jounce.Framework.ViewModel
         public ViewModelRoute[] Routes { get; set; }
 
         /// <summary>
+        /// List of routes (both exported and fluent)
+        /// </summary>
+        public List<ViewModelRoute> RouteList
+        {
+            get { return new List<ViewModelRoute>(Routes.ToList().Concat(_fluentRoutes)); }
+        }
+
+        /// <summary>
         /// Fluently configured list of <see cref="ViewModelRoute"/>
         /// </summary>
         private readonly List<ViewModelRoute> _fluentRoutes = new List<ViewModelRoute>();
@@ -113,6 +121,16 @@ namespace Jounce.Framework.ViewModel
             return GetViewInfo(name) != null;
         }
 
+        /// <summary>
+        ///     Get the meta data for a view
+        /// </summary>
+        /// <param name="viewName">The name of the view</param>
+        /// <returns>The <see cref="IExportAsViewMetadata"/> for a view</returns>
+        public IExportAsViewMetadata GetViewMetadata(string viewName)
+        {
+            var info = GetViewInfo(viewName);
+            return info == null ? null : info.Metadata;
+        }
 
         /// <summary>
         ///     Get info for a view
