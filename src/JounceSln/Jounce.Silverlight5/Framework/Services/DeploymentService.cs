@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Windows;
 using Jounce.Core;
@@ -70,11 +71,23 @@ namespace Jounce.Framework.Services
         }       
 
         /// <summary>
+        /// Request the xap with notification when finished
+        /// </summary>
+        /// <param name="xapName">The name of the XAP</param>
+        /// <param name="xapLoaded">Callback when complete</param>
+        public void RequestXap(string xapName, Action<Exception> xapLoaded)
+        {
+            RequestXap(xapName, xapLoaded, null);
+        }
+
+        /// <summary>
         ///     Request a xap to be downloaded and integrated
         /// </summary>
         /// <param name="xapName">The name of the XAP to download</param>
         /// <param name="xapLoaded">Callback once xap is loaded</param>
-        public void RequestXap(string xapName, Action<Exception> xapLoaded)
+        /// <param name="xapProgress">Callback for xap progress with bytes received, pct, and total bytes</param>
+        public void RequestXap(string xapName, Action<Exception> xapLoaded,
+            Action<long,int,long> xapProgress)
         {
             if (string.IsNullOrEmpty(xapName))
             {
@@ -87,7 +100,7 @@ namespace Jounce.Framework.Services
                 throw new ArgumentOutOfRangeException("xapName", Resources.DeploymentService_RequestXap_XAPExtensionError);
             }   
        
-            WorkflowController.Begin(DownloadWorkflow(xapName, xapLoaded));
+            WorkflowController.Begin(DownloadWorkflow(xapName, xapLoaded, xapProgress));
         }
 
         /// <summary>
@@ -95,8 +108,12 @@ namespace Jounce.Framework.Services
         /// </summary>
         /// <param name="xapName">The name of the XAP</param>
         /// <param name="xapLoaded">The action to call once it is loaded</param>
+        /// <param name="xapProgress">Action to call to report download progress</param>
         /// <returns>A list of <see cref="IWorkflow"/> items to execute</returns>
-        private IEnumerable<IWorkflow> DownloadWorkflow(string xapName, Action<Exception> xapLoaded)
+        private IEnumerable<IWorkflow> DownloadWorkflow(
+            string xapName, 
+            Action<Exception> xapLoaded,
+            Action<long, int, long> xapProgress)
         {
             var xap = xapName.Trim().ToLower();            
 
@@ -113,18 +130,35 @@ namespace Jounce.Framework.Services
                 yield break;
             }            
 
-            var deploymentCatalog = new DeploymentCatalog(uri);            
+            var deploymentCatalog = new DeploymentCatalog(uri);
+
+            EventHandler<DownloadProgressChangedEventArgs> eventHandler = null;
+
+            if (xapProgress != null)
+            {
+                eventHandler = (o, args) => xapProgress(
+                    args.BytesReceived,
+                    args.ProgressPercentage,
+                    args.TotalBytesToReceive);
+                deploymentCatalog.DownloadProgressChanged += eventHandler;
+            }            
 
             var downloadAction = new WorkflowEvent<AsyncCompletedEventArgs>(deploymentCatalog.DownloadAsync,
                                                    h => deploymentCatalog.DownloadCompleted += h,
                                                    h => deploymentCatalog.DownloadCompleted -= h);
+
             Catalog.Catalogs.Add(deploymentCatalog);
             
             EventAggregator.Publish(Constants.BEGIN_BUSY);
 
             yield return downloadAction;
 
-            _InitModules();
+            if (xapProgress != null)
+            {
+                deploymentCatalog.DownloadProgressChanged -= eventHandler;
+            }
+
+            InitModules();
 
             EventAggregator.Publish(Constants.END_BUSY);
             
@@ -156,7 +190,7 @@ namespace Jounce.Framework.Services
                     xapLoaded(null);
                 }
             }
-        }
+        }       
 
         /// <summary>
         ///  Initialize modules
@@ -164,7 +198,7 @@ namespace Jounce.Framework.Services
         /// <remarks>
         /// Fires any time a new module is loaded
         /// </remarks>
-        private void _InitModules()
+        private void InitModules()
         {
             foreach(var moduleInitializer in from m in Modules where !m.Initialized select m)
             {
@@ -177,11 +211,10 @@ namespace Jounce.Framework.Services
         /// </summary>
         public void OnImportsSatisfied()
         {
-            if (!_init)
-            {
-                _init = true;
-                _InitModules();
-            }
+            if (_init) return;
+
+            _init = true;
+            InitModules();
         }
     }
 }
