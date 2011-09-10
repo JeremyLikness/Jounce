@@ -29,6 +29,11 @@ namespace Jounce.Framework.ViewModel
         public string ViewModelName { get; set; }
 
         /// <summary>
+        /// Set to true for a non-shared instance
+        /// </summary>
+        public bool CreateNew { get; set; }
+
+        /// <summary>
         /// Instance of the <see cref="IViewModelRouter"/>
         /// </summary>
         [Import]
@@ -57,7 +62,10 @@ namespace Jounce.Framework.ViewModel
             var ipvt = serviceProvider.GetService(typeof(IProvideValueTarget))
                 as IProvideValueTarget;
 
-            var vm = Router.ResolveViewModel<IViewModel>(true, ViewModelName);
+            var vm = 
+                CreateNew ? 
+                Router.GetNonSharedViewModel(ViewModelName) : 
+                Router.ResolveViewModel<IViewModel>(true, ViewModelName);
 
             if (ipvt != null)
             {
