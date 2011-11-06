@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Composition;
 using System.Reflection;
+using System.Windows.Browser;
 using Jounce.Core.Application;
 using Jounce.Core.Event;
 using Jounce.Core.Model;
@@ -94,11 +95,48 @@ namespace Jounce.Core.ViewModel
         /// <summary>
         ///     True if in the designer
         /// </summary>
-        protected bool InDesigner
+        public bool InDesigner
         {
             get
             {
                 return DesignerProperties.IsInDesignTool;
+            }
+        }
+
+        /// <summary>
+        ///     True when running in out of browser mode
+        /// </summary>
+        public bool IsRunningOutOfBrowser
+        {
+            get { return System.Windows.Application.Current.IsRunningOutOfBrowser; }
+        }
+
+        /// <summary>
+        ///     True when application is installed
+        /// </summary>
+        public bool IsInstalled
+        {
+            get
+            {
+                return System.Windows.Application.Current
+                  .InstallState.Equals(System.Windows.InstallState.Installed);
+            }
+        }
+
+        /// <summary>
+        /// Sets the title regardless of whether it is running 
+        /// in-browser or out of browser
+        /// </summary>
+        /// <param name="title">The title to set</param>
+        public void SetTitle(string title)
+        {
+            if (HtmlPage.IsEnabled)
+            {
+                HtmlPage.Document.SetProperty("title", title);
+            }
+            else if (IsRunningOutOfBrowser)
+            {
+                System.Windows.Application.Current.MainWindow.Title = title;
             }
         }
 
