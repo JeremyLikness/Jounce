@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using Jounce.Core;
 using Jounce.Core.Application;
 using Jounce.Core.Fluent;
 using Jounce.Core.View;
@@ -173,7 +174,7 @@ namespace Jounce.Framework.ViewModel
         /// <param name="viewName">The view name</param>
         /// <returns>The user control</returns>
         public bool DeactivateView(string viewName)
-        {
+        {            
             if (HasView(viewName))
             {
                 var vm = GetViewModelInfoForView(viewName);
@@ -390,7 +391,7 @@ namespace Jounce.Framework.ViewModel
             var viewInfo = GetViewInfo(view);
             return viewInfo == null ? null : viewInfo.Metadata;
         }
-
+        
         /// <summary>
         ///     Activates a view and returns the view
         /// </summary>
@@ -448,6 +449,41 @@ namespace Jounce.Framework.ViewModel
                     {
                         viewModel.Activate(viewName, parameters);
                     }
+                }
+
+                if (parameters.ContainsKey(Constants.AS_WINDOW) &&
+                    parameters.ParameterValue<bool>(Constants.AS_WINDOW))
+                {
+                    var title = string.Empty;
+
+                    if (parameters.ContainsKey(Constants.WINDOW_TITLE))
+                    {
+                        title = parameters.ParameterValue<string>(Constants.WINDOW_TITLE);
+                    }
+
+                    var height = 480.0;
+                    if (parameters.ContainsKey(Constants.WINDOW_HEIGHT))
+                    {
+                        height = parameters.ParameterValue<double>(Constants.WINDOW_HEIGHT);
+                    }
+
+                    var width = 640.0;
+                    if (parameters.ContainsKey(Constants.WINDOW_WIDTH))
+                    {
+                        width = parameters.ParameterValue<double>(Constants.WINDOW_WIDTH);
+                    }
+
+                    var window = new Window
+                                     {
+                                         Height = height,
+                                         Width = width,
+                                         WindowState = WindowState.Normal,
+                                         TopMost = true,
+                                         Title = title,
+                                         Content = view,
+                                         Visibility = Visibility.Visible
+                                     };
+                    parameters.Add(Constants.WINDOW_REFERENCE, window);
                 }
 
                 return true;
