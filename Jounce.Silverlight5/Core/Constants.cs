@@ -23,6 +23,29 @@ namespace Jounce.Core
         /// </summary>
         public const string INIT_PARAM_LOGLEVEL = "Jounce.LogLevel";
 
+        /// <summary>
+        /// Parameter to set a view as a window
+        /// </summary>
+        public const string AS_WINDOW = "Jounce.OOBWindow";
 
+        /// <summary>
+        /// Window width
+        /// </summary>
+        public const string WINDOW_WIDTH = "Jounce.WindowWidth";
+
+        /// <summary>
+        /// Window height
+        /// </summary>
+        public const string WINDOW_HEIGHT = "Jounce.WindowHeight";
+
+        /// <summary>
+        /// Set window title
+        /// </summary>
+        public const string WINDOW_TITLE = "Jounce.Title";
+
+        /// <summary>
+        /// Set a reference to the window
+        /// </summary>
+        public const string WINDOW_REFERENCE = "Jounce.WindowReference";
     }
 }
