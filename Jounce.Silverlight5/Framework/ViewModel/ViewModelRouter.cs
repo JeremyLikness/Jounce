@@ -449,6 +449,11 @@ namespace Jounce.Framework.ViewModel
                     {
                         viewModel.Activate(viewName, parameters);
                     }
+
+                    if (parameters.ContainsKey(Constants.WINDOW_TITLE))
+                    {
+                        viewModel.SetTitle(parameters.ParameterValue<string>(Constants.WINDOW_TITLE));
+                    }
                 }
 
                 if (parameters.ContainsKey(Constants.AS_WINDOW) &&
