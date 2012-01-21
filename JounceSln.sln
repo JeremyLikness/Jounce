@@ -1,88 +1,38 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JounceApplication", "Jounce\JounceApplication.csproj", "{EE2A4B9C-8669-4260-8DFB-00875DF26EE9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Web", "Jounce.Web\Jounce.Web.csproj", "{9BAABD04-CAF0-4A18-8743-2872486C8A6C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce", "Jounce.Core\Jounce.csproj", "{B981528B-2608-499A-9088-985E6B351F6B}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{60DD768A-81B3-4F0E-B144-6114F1F47D6F}"
-	ProjectSection(SolutionItems) = preProject
-		Shared\SharedAssemblyInfo.cs = Shared\SharedAssemblyInfo.cs
-		Shared\VersionInfo.cs = Shared\VersionInfo.cs
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{61209905-5B73-46C7-915C-FB8C3F3492CF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Test", "Tests\Jounce.Test\Jounce.Test.csproj", "{0FEF726F-F0E5-4EC6-8AF2-E989B75FF2F0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Test.Web", "Tests\Jounce.Test.Web\Jounce.Test.Web.csproj", "{9727E4C7-78B4-4003-837B-18438B59D1C5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Silverlight5", "Jounce.Silverlight5\Jounce.Silverlight5.csproj", "{51E06FF4-B2BC-4D26-8646-2315BC691430}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverlightApplication", "SilverlightApplication\SilverlightApplication.csproj", "{1C65EF23-0BF4-4C99-84C8-D3406A4ED6BE}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 7
+		SccNumberOfProjects = 3
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs04
 		SccLocalPath0 = .
-		SccProjectUniqueName1 = Jounce.Web\\Jounce.Web.csproj
-		SccProjectName1 = Jounce.Web
-		SccLocalPath1 = Jounce.Web
-		SccProjectUniqueName2 = Jounce\\JounceApplication.csproj
-		SccProjectName2 = Jounce
-		SccLocalPath2 = Jounce
-		SccProjectUniqueName3 = Jounce.Core\\Jounce.csproj
-		SccProjectName3 = Jounce.Core
-		SccLocalPath3 = Jounce.Core
-		SccProjectUniqueName4 = Tests\\Jounce.Test\\Jounce.Test.csproj
-		SccProjectTopLevelParentUniqueName4 = JounceSln.sln
-		SccProjectName4 = Tests/Jounce.Test
-		SccLocalPath4 = Tests\\Jounce.Test
-		SccProjectUniqueName5 = Tests\\Jounce.Test.Web\\Jounce.Test.Web.csproj
-		SccProjectTopLevelParentUniqueName5 = JounceSln.sln
-		SccProjectName5 = Tests/Jounce.Test.Web
-		SccLocalPath5 = Tests\\Jounce.Test.Web
-		SccProjectUniqueName6 = Jounce.Silverlight5\\Jounce.Silverlight5.csproj
-		SccProjectName6 = Jounce.Silverlight5
-		SccLocalPath6 = Jounce.Silverlight5
+		SccProjectUniqueName1 = Jounce.Silverlight5\\Jounce.Silverlight5.csproj
+		SccProjectName1 = Jounce.Silverlight5
+		SccLocalPath1 = Jounce.Silverlight5
+		SccProjectUniqueName2 = SilverlightApplication\\SilverlightApplication.csproj
+		SccProjectName2 = SilverlightApplication
+		SccLocalPath2 = SilverlightApplication
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EE2A4B9C-8669-4260-8DFB-00875DF26EE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EE2A4B9C-8669-4260-8DFB-00875DF26EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EE2A4B9C-8669-4260-8DFB-00875DF26EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EE2A4B9C-8669-4260-8DFB-00875DF26EE9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9BAABD04-CAF0-4A18-8743-2872486C8A6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9BAABD04-CAF0-4A18-8743-2872486C8A6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9BAABD04-CAF0-4A18-8743-2872486C8A6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9BAABD04-CAF0-4A18-8743-2872486C8A6C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B981528B-2608-499A-9088-985E6B351F6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B981528B-2608-499A-9088-985E6B351F6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B981528B-2608-499A-9088-985E6B351F6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B981528B-2608-499A-9088-985E6B351F6B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0FEF726F-F0E5-4EC6-8AF2-E989B75FF2F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0FEF726F-F0E5-4EC6-8AF2-E989B75FF2F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0FEF726F-F0E5-4EC6-8AF2-E989B75FF2F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0FEF726F-F0E5-4EC6-8AF2-E989B75FF2F0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9727E4C7-78B4-4003-837B-18438B59D1C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9727E4C7-78B4-4003-837B-18438B59D1C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9727E4C7-78B4-4003-837B-18438B59D1C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9727E4C7-78B4-4003-837B-18438B59D1C5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{51E06FF4-B2BC-4D26-8646-2315BC691430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{51E06FF4-B2BC-4D26-8646-2315BC691430}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51E06FF4-B2BC-4D26-8646-2315BC691430}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51E06FF4-B2BC-4D26-8646-2315BC691430}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C65EF23-0BF4-4C99-84C8-D3406A4ED6BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C65EF23-0BF4-4C99-84C8-D3406A4ED6BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C65EF23-0BF4-4C99-84C8-D3406A4ED6BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C65EF23-0BF4-4C99-84C8-D3406A4ED6BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{0FEF726F-F0E5-4EC6-8AF2-E989B75FF2F0} = {61209905-5B73-46C7-915C-FB8C3F3492CF}
-		{9727E4C7-78B4-4003-837B-18438B59D1C5} = {61209905-5B73-46C7-915C-FB8C3F3492CF}
 	EndGlobalSection
 EndGlobal

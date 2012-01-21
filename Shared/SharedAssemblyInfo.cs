@@ -9,7 +9,7 @@ using System.Resources;
 // associated with an assembly.
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Jounce")]
-[assembly: AssemblyCopyright("Copyright © Jeremy Likness 2011")]
+[assembly: AssemblyCopyright("Copyright © Jeremy Likness 2011-2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

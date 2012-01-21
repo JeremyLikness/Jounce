@@ -1,17 +1,16 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Resources;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Jounce")]
+[assembly: AssemblyTitle("SilverlightApplication")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Jeremy Likness")]
-[assembly: AssemblyProduct("Jounce")]
-[assembly: AssemblyCopyright("Copyright © Jeremy Likness 2011-2012")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SilverlightApplication")]
+[assembly: AssemblyCopyright("Copyright ©  2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -21,7 +20,7 @@ using System.Resources;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("a67b1c76-3f7e-4ff5-b296-051855265db9")]
+[assembly: Guid("e82b0289-fdb7-4484-ab88-ec2c17796c5c")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,6 +31,5 @@ using System.Resources;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("2.0.0.*")]
-[assembly: AssemblyFileVersion("2.0.0.0")]
-[assembly: NeutralResourcesLanguageAttribute("en-US")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
