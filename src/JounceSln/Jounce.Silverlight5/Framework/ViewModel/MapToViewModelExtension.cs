@@ -81,7 +81,7 @@ namespace Jounce.Framework.ViewModel
 
                 var viewName = view.GetType().FullName;
 
-                var baseViewModel = (BaseViewModel)vm;
+                var baseViewModel = vm;
 
                 if (!baseViewModel.RegisteredViews.Contains(viewName))
                 {
