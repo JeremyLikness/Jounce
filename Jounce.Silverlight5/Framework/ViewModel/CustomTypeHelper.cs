@@ -19,6 +19,10 @@ namespace Jounce.Framework.ViewModel
         private static readonly List<CustomPropertyInfoHelper> _customProperties = new List<CustomPropertyInfoHelper>();
         private readonly Dictionary<string, object> _customPropertyValues;
         private CustomTypeDelegate _ctype;
+        
+        /// <summary>
+        ///     Property changed event
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyPropertyChanged(String info)
@@ -29,6 +33,9 @@ namespace Jounce.Framework.ViewModel
             }
         }
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public CustomTypeHelper()
         {
             _customPropertyValues = new Dictionary<string, object>();
@@ -38,18 +45,33 @@ namespace Jounce.Framework.ViewModel
             }
         }
 
+        /// <summary>
+        /// Add a new string property to the dynamic type
+        /// </summary>
+        /// <param name="name">The name of the property</param>
         public static void AddProperty(string name)
         {
             if (!CheckIfNameExists(name))
                 _customProperties.Add(new CustomPropertyInfoHelper(name, typeof (String)));
         }
 
+        /// <summary>
+        /// Add a new property of a specific type
+        /// </summary>
+        /// <param name="name">The name of the property</param>
+        /// <param name="propertyType">The type of the property</param>
         public static void AddProperty(string name, Type propertyType)
         {
             if (!CheckIfNameExists(name))
                 _customProperties.Add(new CustomPropertyInfoHelper(name, propertyType));
         }
 
+        /// <summary>
+        /// Add a new property with a list of attributes
+        /// </summary>
+        /// <param name="name">The name of the property</param>
+        /// <param name="propertyType">The type of the property</param>
+        /// <param name="attributes">The attributes associated with the property</param>
         public static void AddProperty(string name, Type propertyType, List<Attribute> attributes)
         {
             if (!CheckIfNameExists(name))
@@ -64,6 +86,12 @@ namespace Jounce.Framework.ViewModel
             return false;
         }
 
+        /// <summary>
+        /// Set the value of the property
+        /// </summary>
+        /// <param name="propertyName">The name of the property</param>
+        /// <param name="value">The value of the property</param>
+        /// <exception cref="Exception">Exceptions thrown if the property is not valid or incorrect type</exception>
         public void SetPropertyValue(string propertyName, object value)
         {
             var propertyInfo =
@@ -99,6 +127,12 @@ namespace Jounce.Framework.ViewModel
             return type.IsInstanceOfType(value);
         }
 
+        /// <summary>
+        /// Get the value of a property
+        /// </summary>
+        /// <param name="propertyName">The name of the property</param>
+        /// <returns>The value of the property</returns>
+        /// <exception cref="Exception">Exception if the name is incorrect</exception>
         public object GetPropertyValue(string propertyName)
         {
             if (_customPropertyValues.ContainsKey(propertyName))
@@ -106,11 +140,19 @@ namespace Jounce.Framework.ViewModel
             throw new Exception("There is no property " + propertyName);
         }
 
+        /// <summary>
+        /// Get the list of all properties
+        /// </summary>
+        /// <returns>The list of properties</returns>
         public PropertyInfo[] GetProperties()
         {
             return GetCustomType().GetProperties();
         }
 
+        /// <summary>
+        /// Get the type for the property
+        /// </summary>
+        /// <returns>The custom type</returns>
         public Type GetCustomType()
         {
             return _ctype ?? (_ctype = new CustomTypeDelegate(typeof (T)));
