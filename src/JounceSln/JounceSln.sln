@@ -9,9 +9,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Tests", "Jounce.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jounce.Tests.Web", "Jounce.Tests.Web\Jounce.Tests.Web.csproj", "{D236AC26-EE06-4057-A967-48510273B1C7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QuickStarts", "QuickStarts", "{854DEA7B-D86C-44E6-A3F5-E3B1BA2385B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickStarts.Web", "QuickStarts.Web\QuickStarts.Web.csproj", "{D6C183C9-7D6D-4AD0-9624-000169E8A7CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workflow", "Workflow\Workflow.csproj", "{EA03F0B8-DD9E-4A2B-A4D6-7BDDDDB15BA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSMAggregator", "VSMAggregator\VSMAggregator.csproj", "{6694C6CB-AEAB-43E6-9B5D-677CEF7AF9E0}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
+		SccNumberOfProjects = 8
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs04
 		SccLocalPath0 = .
@@ -27,6 +35,18 @@ Global
 		SccProjectUniqueName4 = Jounce.Tests.Web\\Jounce.Tests.Web.csproj
 		SccProjectName4 = Jounce.Tests.Web
 		SccLocalPath4 = Jounce.Tests.Web
+		SccProjectUniqueName5 = QuickStarts.Web\\QuickStarts.Web.csproj
+		SccProjectTopLevelParentUniqueName5 = JounceSln.sln
+		SccProjectName5 = QuickStarts.Web
+		SccLocalPath5 = QuickStarts.Web
+		SccProjectUniqueName6 = Workflow\\Workflow.csproj
+		SccProjectTopLevelParentUniqueName6 = JounceSln.sln
+		SccProjectName6 = Workflow
+		SccLocalPath6 = Workflow
+		SccProjectUniqueName7 = VSMAggregator\\VSMAggregator.csproj
+		SccProjectTopLevelParentUniqueName7 = JounceSln.sln
+		SccProjectName7 = VSMAggregator
+		SccLocalPath7 = VSMAggregator
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,8 +69,25 @@ Global
 		{D236AC26-EE06-4057-A967-48510273B1C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D236AC26-EE06-4057-A967-48510273B1C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D236AC26-EE06-4057-A967-48510273B1C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6C183C9-7D6D-4AD0-9624-000169E8A7CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6C183C9-7D6D-4AD0-9624-000169E8A7CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6C183C9-7D6D-4AD0-9624-000169E8A7CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6C183C9-7D6D-4AD0-9624-000169E8A7CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA03F0B8-DD9E-4A2B-A4D6-7BDDDDB15BA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA03F0B8-DD9E-4A2B-A4D6-7BDDDDB15BA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA03F0B8-DD9E-4A2B-A4D6-7BDDDDB15BA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA03F0B8-DD9E-4A2B-A4D6-7BDDDDB15BA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6694C6CB-AEAB-43E6-9B5D-677CEF7AF9E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6694C6CB-AEAB-43E6-9B5D-677CEF7AF9E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6694C6CB-AEAB-43E6-9B5D-677CEF7AF9E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6694C6CB-AEAB-43E6-9B5D-677CEF7AF9E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D6C183C9-7D6D-4AD0-9624-000169E8A7CE} = {854DEA7B-D86C-44E6-A3F5-E3B1BA2385B4}
+		{EA03F0B8-DD9E-4A2B-A4D6-7BDDDDB15BA8} = {854DEA7B-D86C-44E6-A3F5-E3B1BA2385B4}
+		{6694C6CB-AEAB-43E6-9B5D-677CEF7AF9E0} = {854DEA7B-D86C-44E6-A3F5-E3B1BA2385B4}
 	EndGlobalSection
 EndGlobal
