@@ -18,7 +18,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <SilverlightApplicationList>{EA03F0B8-DD9E-4A2B-A4D6-7BDDDDB15BA8}|..\Workflow\Workflow.csproj|ClientBin|False,{6694C6CB-AEAB-43E6-9B5D-677CEF7AF9E0}|..\VSMAggregator\VSMAggregator.csproj|ClientBin|False</SilverlightApplicationList>
+    <SilverlightApplicationList>{EA03F0B8-DD9E-4A2B-A4D6-7BDDDDB15BA8}|..\Workflow\Workflow.csproj|ClientBin|False,{6694C6CB-AEAB-43E6-9B5D-677CEF7AF9E0}|..\VSMAggregator\VSMAggregator.csproj|ClientBin|False,{05C65CE6-334B-4EA7-A753-E88B759E26CB}|..\SimpleNavigationWithRegion\SimpleNavigationWithRegion.csproj|ClientBin|False</SilverlightApplicationList>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,9 +56,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ClientBin\SimpleNavigationWithRegion.xap" />
     <Content Include="ClientBin\VSMAggregator.xap" />
     <Content Include="ClientBin\Workflow.xap" />
     <Content Include="Silverlight.js" />
+    <Content Include="SimpleNavigationWithRegionTestPage.aspx" />
     <Content Include="VSMAggregatorTestPage.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
