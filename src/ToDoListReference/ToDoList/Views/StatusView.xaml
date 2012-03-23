@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="ToDoList.Views.StatusView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:SampleData="clr-namespace:ToDoList.SampleData" xmlns:Converters="clr-namespace:ToDoList.Converters"
+             mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+
+    <Grid Margin="3" x:Name="LayoutRoot" Background="{StaticResource DarkControlBackgroundBrush}"
+          Width="350"
+          d:DataContext="{d:DesignInstance SampleData:DesignServerStatusViewModel, IsDesignTimeCreatable=True}">
+        <Grid.Resources>
+            <Converters:BooleanToStatusBrushConverter x:Key="StatusConverter"/>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Margin="3"  Text="Last Sync: "/>
+        <TextBlock Margin="3" Text="Sync Status: " Grid.Row="1"/>
+        <TextBlock Margin="3" Text="{Binding LastSyncDisplay}" Foreground="{StaticResource HighlightBrushBlue}"  Grid.Column="1"/>
+        <TextBlock Margin="3" Text="{Binding SyncStatus}" Foreground="{Binding Online, Converter={StaticResource StatusConverter}}"  Grid.Row="1" Grid.Column="1"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,15 @@
+﻿<Application xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             x:Class="ToDoList.SLTests.App"
+             >
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/ToDoList.Theme;component/JetPack/Brushes.xaml" />
+                <ResourceDictionary Source="/ToDoList.Theme;component/JetPack/Fonts.xaml" />
+                <ResourceDictionary Source="/ToDoList.Theme;component/JetPack/CoreStyles.xaml" />
+                <ResourceDictionary Source="/ToDoList.Theme;component/JetPack/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

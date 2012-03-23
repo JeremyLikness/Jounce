@@ -1,0 +1,105 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList", "ToDoList\ToDoList.csproj", "{FFED6C51-8CC5-4DE1-B9FE-23C5594B484C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F83D5BC3-33D5-4133-BCDB-120C2F722A68} = {F83D5BC3-33D5-4133-BCDB-120C2F722A68}
+		{F83D5BC3-33D5-4133-BCDB-120C2F722A68} = {F83D5BC3-33D5-4133-BCDB-120C2F722A68}
+		{F83D5BC3-33D5-4133-BCDB-120C2F722A68} = {F83D5BC3-33D5-4133-BCDB-120C2F722A68}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Web", "ToDoList.Web\ToDoList.Web.csproj", "{F83D5BC3-33D5-4133-BCDB-120C2F722A68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Model", "ToDoList.Model\ToDoList.Model.csproj", "{59B7217C-BC8F-472F-8D77-004874C982A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.SLTests", "ToDoList.SLTests\ToDoList.SLTests.csproj", "{17BE1D75-7F80-43C1-9287-881CA3899281}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Contracts", "ToDoList.Contracts\ToDoList.Contracts.csproj", "{4FE68372-D9E5-4FF2-88FA-936625FEC62C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Theme", "ToDoList.Theme\ToDoList.Theme.csproj", "{ACB10A6E-63D2-4AF0-869C-17303FEAD2DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.SterlingDatabase", "ToDoList.SterlingDatabase\ToDoList.SterlingDatabase.csproj", "{4DF13ED7-50A1-4137-A019-632086AF1AA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Silverlight.SterlingDatabase", "ToDoList.Silverlight.SterlingDatabase\ToDoList.Silverlight.SterlingDatabase.csproj", "{E7EE8A8D-CCCD-4A0F-A8F9-5C7BC23952A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReadMe", "ReadMe", "{84FA8F9C-9C77-461E-A3F2-71EC889A4125}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.txt = ReadMe.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 9
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs04
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ToDoList.Contracts\\ToDoList.Contracts.csproj
+		SccProjectName1 = ToDoList.Contracts
+		SccLocalPath1 = ToDoList.Contracts
+		SccProjectUniqueName2 = ToDoList.Model\\ToDoList.Model.csproj
+		SccProjectName2 = ToDoList.Model
+		SccLocalPath2 = ToDoList.Model
+		SccProjectUniqueName3 = ToDoList.Silverlight.SterlingDatabase\\ToDoList.Silverlight.SterlingDatabase.csproj
+		SccProjectName3 = ToDoList.Silverlight.SterlingDatabase
+		SccLocalPath3 = ToDoList.Silverlight.SterlingDatabase
+		SccProjectUniqueName4 = ToDoList.SLTests\\ToDoList.SLTests.csproj
+		SccProjectName4 = ToDoList.SLTests
+		SccLocalPath4 = ToDoList.SLTests
+		SccProjectUniqueName5 = ToDoList.SterlingDatabase\\ToDoList.SterlingDatabase.csproj
+		SccProjectName5 = ToDoList.SterlingDatabase
+		SccLocalPath5 = ToDoList.SterlingDatabase
+		SccProjectUniqueName6 = ToDoList.Theme\\ToDoList.Theme.csproj
+		SccProjectName6 = ToDoList.Theme
+		SccLocalPath6 = ToDoList.Theme
+		SccProjectUniqueName7 = ToDoList.Web\\ToDoList.Web.csproj
+		SccProjectName7 = ToDoList.Web
+		SccLocalPath7 = ToDoList.Web
+		SccProjectUniqueName8 = ToDoList\\ToDoList.csproj
+		SccProjectName8 = ToDoList
+		SccLocalPath8 = ToDoList
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = ToDoList.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFED6C51-8CC5-4DE1-B9FE-23C5594B484C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFED6C51-8CC5-4DE1-B9FE-23C5594B484C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFED6C51-8CC5-4DE1-B9FE-23C5594B484C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFED6C51-8CC5-4DE1-B9FE-23C5594B484C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F83D5BC3-33D5-4133-BCDB-120C2F722A68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F83D5BC3-33D5-4133-BCDB-120C2F722A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F83D5BC3-33D5-4133-BCDB-120C2F722A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F83D5BC3-33D5-4133-BCDB-120C2F722A68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59B7217C-BC8F-472F-8D77-004874C982A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59B7217C-BC8F-472F-8D77-004874C982A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59B7217C-BC8F-472F-8D77-004874C982A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59B7217C-BC8F-472F-8D77-004874C982A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17BE1D75-7F80-43C1-9287-881CA3899281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17BE1D75-7F80-43C1-9287-881CA3899281}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17BE1D75-7F80-43C1-9287-881CA3899281}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17BE1D75-7F80-43C1-9287-881CA3899281}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FE68372-D9E5-4FF2-88FA-936625FEC62C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FE68372-D9E5-4FF2-88FA-936625FEC62C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FE68372-D9E5-4FF2-88FA-936625FEC62C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FE68372-D9E5-4FF2-88FA-936625FEC62C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACB10A6E-63D2-4AF0-869C-17303FEAD2DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACB10A6E-63D2-4AF0-869C-17303FEAD2DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACB10A6E-63D2-4AF0-869C-17303FEAD2DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACB10A6E-63D2-4AF0-869C-17303FEAD2DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DF13ED7-50A1-4137-A019-632086AF1AA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DF13ED7-50A1-4137-A019-632086AF1AA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DF13ED7-50A1-4137-A019-632086AF1AA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DF13ED7-50A1-4137-A019-632086AF1AA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7EE8A8D-CCCD-4A0F-A8F9-5C7BC23952A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7EE8A8D-CCCD-4A0F-A8F9-5C7BC23952A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7EE8A8D-CCCD-4A0F-A8F9-5C7BC23952A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7EE8A8D-CCCD-4A0F-A8F9-5C7BC23952A4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

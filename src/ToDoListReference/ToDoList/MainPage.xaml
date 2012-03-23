@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="ToDoList.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:region="clr-namespace:Jounce.Regions;assembly=Jounce" xmlns:ToDoList="clr-namespace:ToDoList"
+             xmlns:Views="clr-namespace:ToDoList.Views" mc:Ignorable="d"
+             xmlns:Jounce="clr-namespace:Jounce.Framework.ViewModel;assembly=Jounce"
+             xmlns:ViewModels="clr-namespace:ToDoList.ViewModels" xmlns:Converters="clr-namespace:ToDoList.Converters"
+             d:DesignHeight="600" d:DesignWidth="900">
+
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+          d:DataContext="{d:DesignInstance ViewModels:MainViewModel, IsDesignTimeCreatable=true}"
+          Background="{StaticResource DarkControlBackgroundBrush}">
+        <Grid.Resources>
+            <Converters:BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+        </Grid.Resources>
+        <Border Style="{StaticResource BackgroundBorderStyle}">
+            <Grid x:Name="LayoutRoot" Style="{StaticResource LayoutRootGridStyle}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="To-Do List" Style="{StaticResource ApplicationNameStyle}"/>
+                <TextBlock Text="{Binding UserName}" Margin="30 0 3 35" VerticalAlignment="Bottom"/>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
+                        HorizontalAlignment="Right" 
+                        Margin="0 3 360 3">
+                    <Button Style="{StaticResource BlueButton}"
+                        Content="Export"
+                        Visibility="{Binding OutOfBrowser,Converter={StaticResource VisibilityConverter}}"
+                        Command="{Binding ExportCommand}"/>
+                    <Button Style="{StaticResource BlueButton}" 
+                        Content="{Binding InstallText}"
+                        Command="{Binding InstallCommand}"
+                        />
+                    <Button Style="{StaticResource BlueButton}" 
+                        Content="Print"
+                        Command="{Binding PrintCommand}"
+                        />
+                </StackPanel>
+                <ContentControl Width="350" HorizontalAlignment="Right" region:ExportAsRegion.RegionName="StatusRegion"
+                                d:DataContext="{d:DesignInstance Views:StatusView, IsDesignTimeCreatable=True}"
+                                Content="{Binding}"/>                                
+                <StackPanel Grid.Row="2" Orientation="Horizontal">
+                    <ContentControl region:ExportAsRegion.RegionName="QuickAddRegion"
+                                    d:DataContext="{d:DesignInstance Views:QuickAddView,IsDesignTimeCreatable=True}"
+                                    Content="{Binding}"/>                                          
+                    <ContentControl Margin="10 0 0 0">
+                        <Grid Background="{StaticResource DarkControlBackgroundBrush}">
+                            <Button Style="{StaticResource GreenButton}" Content="New" Command="{Binding NewCommand}"/>
+                        </Grid>                        
+                    </ContentControl>
+                </StackPanel>
+                <ContentControl Grid.Row="4" d:DataContext="{d:DesignInstance Views:FilterView,IsDesignTimeCreatable=True}"
+                                Content="{Binding}"
+                                region:ExportAsRegion.RegionName="FilterRegion"/>    
+                <StackPanel Grid.Row="6" Orientation="Horizontal">
+                    <ContentControl 
+                        VerticalAlignment="Center"
+                        d:DataContext="{d:DesignInstance Views:TextFilterView,IsDesignTimeCreatable=True}"
+                                Content="{Binding}"
+                                region:ExportAsRegion.RegionName="TextFilterRegion"/>
+                    <ContentControl d:DataContext="{d:DesignInstance Views:SortView,IsDesignTimeCreatable=True}"
+                                    VerticalAlignment="Center"
+                                    Margin="20 0 0 0"
+                                Content="{Binding}"
+                                region:ExportAsRegion.RegionName="SortRegion"/>
+                </StackPanel>                
+                <ContentControl Grid.Row="8" region:ExportAsRegion.RegionName="MainRegion"/>                   
+            </Grid>            
+        </Border>
+        <Rectangle 
+            x:Name="OverlayRectangle"
+            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="3"
+                           Fill="Black" Opacity="0.7"/>
+        <ContentControl x:Name="EditContainer"             
+            d:DataContext="{d:DesignInstance Views:EditView,IsDesignTimeCreatable=True}"
+                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Content="{Binding}" region:ExportAsRegion.RegionName="EditRegion"/>
+    </Grid>
+</UserControl>

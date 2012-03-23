@@ -1,0 +1,15 @@
+<OutOfBrowserSettings ShortName="To-Do List" EnableGPUAcceleration="True" ShowInstallMenuItem="True">
+  <OutOfBrowserSettings.Blurb>A helpful application to manage your tasks.</OutOfBrowserSettings.Blurb>
+  <OutOfBrowserSettings.WindowSettings>
+    <WindowSettings Title="To-Do List" Height="600" Width="900" />
+  </OutOfBrowserSettings.WindowSettings>
+  <OutOfBrowserSettings.SecuritySettings>
+    <SecuritySettings ElevatedPermissions="Required" />
+  </OutOfBrowserSettings.SecuritySettings>
+  <OutOfBrowserSettings.Icons>
+    <Icon Size="16,16">Assets/icon16x16.png</Icon>
+    <Icon Size="32,32">Assets/icon32x32.png</Icon>
+    <Icon Size="48,48">Assets/icon48x48.png</Icon>
+    <Icon Size="128,128">Assets/icon128x128.png</Icon>
+  </OutOfBrowserSettings.Icons>
+</OutOfBrowserSettings>
