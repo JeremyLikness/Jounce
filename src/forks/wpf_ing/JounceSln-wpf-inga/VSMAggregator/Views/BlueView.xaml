@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="VSMAggregator.Views.BlueView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:design="clr-namespace:VSMAggregator.DesignData" xmlns:Interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:Views="clr-namespace:Jounce.Framework.Views;assembly=Jounce.Framework" xmlns:Services="clr-namespace:Jounce.Framework.Services;assembly=Jounce.Framework" mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+    
+    <Grid x:Name="LayoutRoot" Background="Blue" d:DataContext="{d:DesignInstance design:DesignBlueViewModel, IsDesignTimeCreatable=True}"
+          RenderTransformOrigin="0.5,0.5">
+        <Grid.RenderTransform>
+            <ScaleTransform/>
+        </Grid.RenderTransform>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="NavigationStates">
+                <VisualStateGroup.States>
+                    <VisualState x:Name="Default"/>
+                    <VisualState x:Name="ShowState">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LayoutRoot" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Visibility>Visible</Visibility>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="HideState">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LayoutRoot" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Visibility>Collapsed</Visibility>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup.States>
+                <VisualStateGroup.Transitions>
+                    <VisualTransition To="ShowState" GeneratedDuration="0:0:1">
+                        <Storyboard Duration="0:0:1">
+                            <DoubleAnimation Storyboard.TargetName="LayoutRoot" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                             From="0" To="1"/>
+                            <DoubleAnimation Storyboard.TargetName="LayoutRoot" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                             From="0" To="1"/>
+                        </Storyboard>
+                    </VisualTransition>
+                    <VisualTransition To="HideState" GeneratedDuration="0:0:1">
+                        <Storyboard Duration="0:0:1">
+                            <DoubleAnimation Storyboard.TargetName="LayoutRoot" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                             From="1" To="0"/>
+                            <DoubleAnimation Storyboard.TargetName="LayoutRoot" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                             From="1" To="0"/>
+                        </Storyboard>
+                    </VisualTransition>
+                </VisualStateGroup.Transitions>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ListBox Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                 ItemsSource="{Binding Dates}"/>
+        <Button Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10"
+                Content=" RED " Command="{Binding RedCommand}"/>                    
+    </Grid>
+</UserControl>
