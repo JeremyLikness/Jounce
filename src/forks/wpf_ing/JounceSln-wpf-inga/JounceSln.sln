@@ -23,6 +23,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickStarts.Wpf", "QuickSta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication", "WpfApplication\WpfApplication.csproj", "{260386D0-EBED-4CD1-A1E3-EAD70F8749E2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{746EA9FC-278F-4768-88FD-B2C7FD9E5FEC}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 11
