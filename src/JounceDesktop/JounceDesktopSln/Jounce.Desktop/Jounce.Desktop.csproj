@@ -47,13 +47,18 @@
     <Compile Include="Core\Application\IModuleInitializer.cs" />
     <Compile Include="Core\Application\LogSeverity.cs" />
     <Compile Include="Core\Command\IActionCommand.cs" />
+    <Compile Include="Core\Model\BaseNotify.cs" />
     <Compile Include="Framework\Command\ActionCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\Event\" />
     <Folder Include="Core\Fluent\" />
-    <Folder Include="Core\Model\" />
     <Folder Include="Core\ViewModel\" />
     <Folder Include="Core\View\" />
     <Folder Include="Core\Workflow\" />
@@ -63,6 +68,12 @@
     <Folder Include="Framework\View\" />
     <Folder Include="Framework\Workflow\" />
     <Folder Include="Regions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
