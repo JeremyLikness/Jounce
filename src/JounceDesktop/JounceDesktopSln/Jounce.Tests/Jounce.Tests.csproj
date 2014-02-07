@@ -54,10 +54,16 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Core\BaseNotifyTests.cs" />
+    <Compile Include="Helpers\BaseNotifyTestHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Core\" />
+    <ProjectReference Include="..\Jounce.Desktop\Jounce.Desktop.csproj">
+      <Project>{bf54c8fd-5ea7-4e18-af27-5a4b0c82612b}</Project>
+      <Name>Jounce.Desktop</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
