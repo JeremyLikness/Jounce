@@ -129,4 +129,46 @@
   <data name="BaseNotify_ExtractPropertyName_Static" xml:space="preserve">
     <value>The referenced property is a static property</value>
   </data>
+  <data name="MefDebugger_Close_MEF_Debugger_shutting_down" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MefDebugger__dbgMefCatalog_MEF__Found_catalog" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MefDebugger__dbgMefKey" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MefDebugger__dbgMefPart_MEF__Found_part" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MefDebugger__dbgMefWithExport_With_export" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MefDebugger__dbgMefWithImport_With_import" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MefDebugger__dbgMefWithKey" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MefDebugger__msgAddExport_Added_Export" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MefDebugger__msgChangeContract_Changed_contracts" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MefDebugger__msgChangedExport_Removed_Export" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ViewNavigationArgs_ToString_Activate" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ViewNavigationArgs_ToString_Deactivate" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ViewNavigationArgs_ToString_ViewNavigation" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ViewXapRoute_ToString_View_Route_View" xml:space="preserve">
+    <value>View Route: View {0} in XAP {1}</value>
+  </data>
 </root>

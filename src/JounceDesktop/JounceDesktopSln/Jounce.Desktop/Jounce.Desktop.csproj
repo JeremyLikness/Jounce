@@ -72,8 +72,10 @@
     <Compile Include="Core\Application\IModuleInitializer.cs" />
     <Compile Include="Core\Application\LogSeverity.cs" />
     <Compile Include="Core\Command\IActionCommand.cs" />
+    <Compile Include="Core\Constants.cs" />
     <Compile Include="Core\Event\IEventAggregator.cs" />
     <Compile Include="Core\Event\IEventSink.cs" />
+    <Compile Include="Core\MefDebugger.cs" />
     <Compile Include="Core\Model\BaseNotify.cs" />
     <Compile Include="Core\ViewModel\BaseViewModel.cs" />
     <Compile Include="Core\ViewModel\ExportAsViewModelAttribute.cs" />
@@ -81,7 +83,12 @@
     <Compile Include="Core\ViewModel\IViewModel.cs" />
     <Compile Include="Core\ViewModel\IViewModelRouter.cs" />
     <Compile Include="Core\ViewModel\ViewModelRoute.cs" />
+    <Compile Include="Core\View\ExportAsViewAttribute.cs" />
     <Compile Include="Core\View\IExportAsViewMetadata.cs" />
+    <Compile Include="Core\View\ViewNavigatedArgs.cs" />
+    <Compile Include="Core\View\ViewNavigationArgs.cs" />
+    <Compile Include="Core\View\ViewRoute.cs" />
+    <Compile Include="Core\Workflow\IWorkflow.cs" />
     <Compile Include="Framework\Command\ActionCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.Designer.cs">
@@ -92,7 +99,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\Fluent\" />
-    <Folder Include="Core\Workflow\" />
     <Folder Include="Framework\Exceptions\" />
     <Folder Include="Framework\Services\" />
     <Folder Include="Framework\ViewModel\" />
