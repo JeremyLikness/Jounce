@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
-using JounceDesktop.Core.Model;
+using Jounce.Desktop.Core.Model;
 
 namespace Jounce.Tests.Helpers
 {

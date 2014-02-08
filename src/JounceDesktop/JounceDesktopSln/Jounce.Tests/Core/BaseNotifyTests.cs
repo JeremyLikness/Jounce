@@ -1,6 +1,6 @@
 ﻿using System;
+using Jounce.Desktop.Core.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using JounceDesktop.Core.Model;
 using Jounce.Tests.Helpers;
 
 namespace Jounce.Tests.Core

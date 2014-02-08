@@ -1,7 +1,7 @@
 ﻿using System;
 using JounceDesktop.Core.Command;
 
-namespace JounceDesktop.Framework.Command
+namespace Jounce.Desktop.Framework.Command
 {
     /// <summary>
     ///     Delegate command - does it all

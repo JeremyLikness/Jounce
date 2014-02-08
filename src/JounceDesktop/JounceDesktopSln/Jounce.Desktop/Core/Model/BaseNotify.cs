@@ -1,12 +1,9 @@
-﻿
-using Jounce.Desktop;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 
-namespace JounceDesktop.Core.Model
+namespace Jounce.Desktop.Core.Model
 {
     /// <summary>
     ///     Base class for items that implement property changed
